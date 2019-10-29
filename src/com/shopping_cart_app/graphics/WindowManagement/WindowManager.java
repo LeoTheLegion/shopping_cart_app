@@ -6,6 +6,8 @@ package com.shopping_cart_app.graphics.WindowManagement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.WindowConstants;
+
 import com.shopping_cart_app.core.App;
 import com.shopping_cart_app.graphics.Window;
 
@@ -21,6 +23,8 @@ public class WindowManager {
 		windows = new ArrayList<Window>();
 		
 		createNewWindow(0);
+		
+		windows.get(0).setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 

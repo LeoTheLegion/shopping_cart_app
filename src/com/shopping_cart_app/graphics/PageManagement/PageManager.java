@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shopping_cart_app.graphics.Page;
+import com.shopping_cart_app.graphics.PageManagement.Pages.LoginPage;
 import com.shopping_cart_app.graphics.PageManagement.Pages.TestPage;
 import com.shopping_cart_app.graphics.PageManagement.Pages.TestPage2;
 
@@ -22,7 +23,7 @@ public class PageManager {
 	public static void init() {
 		pages = new ArrayList<Page>();
 		
-		
+		LoadPage(new LoginPage());
 		LoadPage(new TestPage());
 		LoadPage(new TestPage2());
 		
@@ -32,7 +33,7 @@ public class PageManager {
 	 * 
 	 */
 	private static void LoadPage(Page p) {
-		System.out.println("Loading Page " + p.getClass() + ". Assigning to pageIndex:" + pages.size() );
+		System.out.println("Building Page " + p.getClass() + ". Assigning to pageIndex:" + pages.size() );
 		pages.add(p);
 	}
 

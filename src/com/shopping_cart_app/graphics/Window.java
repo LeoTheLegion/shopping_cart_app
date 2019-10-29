@@ -45,8 +45,8 @@ public class Window extends JFrame {
 		this.repaint();
 		
 		Page page = PageManager.getPage(pageIndex);
-		
 		System.out.println("Setting Page to " + page.getClass() );
+		page.load();
 		
 		page.setBounds(0,0,this.getWidth(),this.getHeight());
 		page.repaint();

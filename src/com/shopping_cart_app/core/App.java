@@ -17,8 +17,6 @@ public class App {
 	public App() {		
 		
 		Session.createNewSession();
-		Session.createCookie("Test", "Hello World");
-		Session.createCookie("Test2", "World Hello");
 		
 		PageManager.init();
 		WindowManager.init();

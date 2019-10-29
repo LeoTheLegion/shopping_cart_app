@@ -11,81 +11,73 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.shopping_cart_app.core.Session;
 import com.shopping_cart_app.graphics.Page;
-import com.shopping_cart_app.graphics.Window;
 import com.shopping_cart_app.graphics.PageManagement.PageManager;
 
 /**
  * @author mmena2017
  *
  */
-public class TestPage extends Page {
+public class LoginPage extends Page {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	JLabel test1,test2;
 
-	public TestPage() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
+	 * @see com.shopping_cart_app.graphics.Page#buildPage()
 	 */
 	@Override
 	protected void buildPage() {
 		// TODO Auto-generated method stub
+		super.buildPage();
+		
 		
 		setBackground(Color.BLACK);
-		this.setLayout(new GridLayout(1,2));
+		this.setLayout(new GridLayout(1,3));
 		
 		JPanel testpanel = new JPanel(new GridLayout(3,1));
 		
 		testpanel.setBackground(getBackground());
 		
-		test1 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
-		test2 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
-		JButton testBtn = new JButton();
+		JTextField userField = new JTextField("A user name", SwingConstants.CENTER);
+		JTextField passField = new JTextField("A password", SwingConstants.CENTER);
+		JButton loginBtn = new JButton();
 		
-		test1.setForeground(Color.WHITE);
-		test2.setForeground(Color.WHITE);
-		testBtn.setText("Next Page");
+		loginBtn.setText("Login in");
 		
 		Page pageinQuestion = this;
 		
-		testBtn.addActionListener(new ActionListener() {
+		loginBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				
+				Session.createCookie("username", userField.getText());
+				Session.createCookie("password", passField.getText());
+				
 				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
 			}
 		
 		});
 		
-		testpanel.add(test1);
-		testpanel.add(test2);
-		testpanel.add(testBtn);
+		testpanel.add(userField);
+		testpanel.add(passField);
+		testpanel.add(loginBtn);
 		
+		
+		add(new JPanel());
 		add(testpanel);
+		add(new JPanel());
 	}
+	
+	
+	
 
-	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#load()
-	 */
-	@Override
-	protected void load() {
-		// TODO Auto-generated method stub
-		super.load();
-		
-		test2.setText((String) Session.getCookie("username"));
-	}
-	
-	
 }

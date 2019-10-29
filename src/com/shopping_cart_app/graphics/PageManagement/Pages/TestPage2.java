@@ -28,6 +28,8 @@ public class TestPage2 extends Page {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	JLabel test1,test2;
+	
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -42,8 +44,8 @@ public class TestPage2 extends Page {
 		
 		testpanel.setBackground(getBackground());
 		
-		JLabel test1 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
-		JLabel test2 = new JLabel((String) Session.getCookie("Test2"), SwingConstants.CENTER);
+		test1 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
+		test2 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
 		
 		test1.setForeground(Color.WHITE);
 		test2.setForeground(Color.WHITE);
@@ -71,4 +73,14 @@ public class TestPage2 extends Page {
 		add(testpanel);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.shopping_cart_app.graphics.Page#load()
+	 */
+	@Override
+	protected void load() {
+		// TODO Auto-generated method stub
+		super.load();
+		
+		test2.setText((String) Session.getCookie("password"));
+	}
 }

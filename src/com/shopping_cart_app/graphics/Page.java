@@ -42,4 +42,9 @@ public abstract class Page extends JPanel {
 	protected Window getWindow() {
 		return (Window) SwingUtilities.getWindowAncestor(this);
 	}
+
+	protected void load() {
+		System.out.println("Loading Page "+this.getClass().getName());
+		
+	}
 }
