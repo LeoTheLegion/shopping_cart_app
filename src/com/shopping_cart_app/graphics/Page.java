@@ -39,7 +39,7 @@ public abstract class Page extends JPanel {
 		
 	}
 	
-	Window GetWindow() {
+	protected Window getWindow() {
 		return (Window) SwingUtilities.getWindowAncestor(this);
 	}
 }

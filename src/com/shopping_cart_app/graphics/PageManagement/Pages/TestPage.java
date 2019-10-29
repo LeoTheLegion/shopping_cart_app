@@ -5,13 +5,18 @@ package com.shopping_cart_app.graphics.PageManagement.Pages;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import com.shopping_cart_app.core.Session;
 import com.shopping_cart_app.graphics.Page;
 import com.shopping_cart_app.graphics.Window;
+import com.shopping_cart_app.graphics.PageManagement.PageManager;
 
 /**
  * @author mmena2017
@@ -42,18 +47,34 @@ public class TestPage extends Page {
 		
 		testpanel.setBackground(getBackground());
 		
-		JLabel test1 = new JLabel("THIS IS A BLANK PAGE", SwingConstants.CENTER);
-		JLabel test2 = new JLabel("THIS IS A BLANK PAGE", SwingConstants.CENTER);
-		JLabel test3 = new JLabel("THIS IS A BLANK PAGE", SwingConstants.CENTER);
+		JLabel test1 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
+		JLabel test2 = new JLabel((String) Session.getCookie("Test"), SwingConstants.CENTER);
+		JButton testBtn = new JButton();
 		
 		test1.setForeground(Color.WHITE);
 		test2.setForeground(Color.WHITE);
-		test3.setForeground(Color.WHITE);
+		testBtn.setText("Next Page");
+		
+		Page pageinQuestion = this;
+		
+		testBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+			}
+		
+		});
 		
 		testpanel.add(test1);
 		testpanel.add(test2);
-		testpanel.add(test3);
+		testpanel.add(testBtn);
+		
+		
 		
 		add(testpanel);
 	}
+	
+	
 }

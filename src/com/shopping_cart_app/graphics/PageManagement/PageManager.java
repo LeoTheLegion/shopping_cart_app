@@ -3,6 +3,7 @@
  */
 package com.shopping_cart_app.graphics.PageManagement;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +38,19 @@ public class PageManager {
 
 	public static Page getPage(int pageIndex) {
 		// TODO Auto-generated method stub
+		
+		if(pageIndex >= pages.size())/// <------creates page loop
+			return pages.get(0);
+		
 		return pages.get(pageIndex);
+	}
+
+	public static int getPageIndex(Page page) {
+		for (int i = 0; i < pages.size(); i++) {
+			if(getPage(i) == page)
+				return i;
+		}
+		return -1;
 	}
 	
 	

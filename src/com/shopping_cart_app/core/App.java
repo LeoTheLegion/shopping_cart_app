@@ -15,6 +15,11 @@ public class App {
 	public static final int WINDOW_HEIGHT = WINDOW_WIDTH / 16 * 9; // 16 by 9 aspect ratio
 	
 	public App() {		
+		
+		Session.createNewSession();
+		Session.createCookie("Test", "Hello World");
+		Session.createCookie("Test2", "World Hello");
+		
 		PageManager.init();
 		WindowManager.init();
 	}

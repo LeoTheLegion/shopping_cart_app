@@ -53,6 +53,7 @@ public class Window extends JFrame {
 		
 		this.add(page);
 		this.repaint();
+		this.setVisible(true);
 	}
 
 }
