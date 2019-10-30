@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.shopping_cart_app.graphics.PageManagement.Pages;
+package com.cop4331.shopping_cart_app.graphics.pages;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -13,22 +13,27 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import com.shopping_cart_app.core.Session;
-import com.shopping_cart_app.graphics.Page;
-import com.shopping_cart_app.graphics.PageManagement.PageManager;
+import com.cop4331.shopping_cart_app.core.Session;
+import com.cop4331.shopping_cart_app.graphics.Page;
+import com.cop4331.shopping_cart_app.graphics.Window;
+import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 
 /**
  * @author mmena2017
  *
  */
-public class TestPage2 extends Page {
-
+public class TestPage extends Page {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
 	JLabel test1,test2;
+
+	public TestPage() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
@@ -37,7 +42,7 @@ public class TestPage2 extends Page {
 	protected void buildPage() {
 		// TODO Auto-generated method stub
 		
-		setBackground(Color.gray);
+		setBackground(Color.BLACK);
 		this.setLayout(new GridLayout(1,2));
 		
 		JPanel testpanel = new JPanel(new GridLayout(3,1));
@@ -46,12 +51,10 @@ public class TestPage2 extends Page {
 		
 		test1 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
 		test2 = new JLabel("THIS IS A TEST PAGE", SwingConstants.CENTER);
+		JButton testBtn = new JButton();
 		
 		test1.setForeground(Color.WHITE);
 		test2.setForeground(Color.WHITE);
-		
-		JButton testBtn = new JButton();
-		
 		testBtn.setText("Next Page");
 		
 		Page pageinQuestion = this;
@@ -72,7 +75,7 @@ public class TestPage2 extends Page {
 		
 		add(testpanel);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#load()
 	 */
@@ -81,6 +84,8 @@ public class TestPage2 extends Page {
 		// TODO Auto-generated method stub
 		super.load();
 		
-		test2.setText((String) Session.getCookie("password"));
+		test2.setText((String) Session.getCookie("username"));
 	}
+	
+	
 }

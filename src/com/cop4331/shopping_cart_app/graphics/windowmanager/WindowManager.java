@@ -1,15 +1,15 @@
 /**
  * 
  */
-package com.shopping_cart_app.graphics.WindowManagement;
+package com.cop4331.shopping_cart_app.graphics.windowmanager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.WindowConstants;
 
-import com.shopping_cart_app.core.App;
-import com.shopping_cart_app.graphics.Window;
+import com.cop4331.shopping_cart_app.App;
+import com.cop4331.shopping_cart_app.graphics.Window;
 
 /**
  * @author mmena2017

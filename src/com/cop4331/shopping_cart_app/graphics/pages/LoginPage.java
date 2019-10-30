@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.shopping_cart_app.graphics.PageManagement.Pages;
+package com.cop4331.shopping_cart_app.graphics.pages;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import com.shopping_cart_app.core.Session;
-import com.shopping_cart_app.graphics.Page;
-import com.shopping_cart_app.graphics.PageManagement.PageManager;
+import com.cop4331.shopping_cart_app.core.Session;
+import com.cop4331.shopping_cart_app.graphics.Page;
+import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 
 /**
  * @author mmena2017

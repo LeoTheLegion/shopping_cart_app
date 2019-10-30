@@ -1,4 +1,4 @@
-package com.shopping_cart_app.core;
+package com.cop4331.shopping_cart_app.core;
 
 import java.util.HashMap;
 

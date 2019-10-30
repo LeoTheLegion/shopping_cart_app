@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.shopping_cart_app.graphics;
+package com.cop4331.shopping_cart_app.graphics;
 
 import java.awt.Color;
 import java.awt.GridLayout;
