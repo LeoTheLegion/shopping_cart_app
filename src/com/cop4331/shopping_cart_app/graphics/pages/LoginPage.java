@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.cop4331.shopping_cart_app.core.Authenticator;
 import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
@@ -59,10 +60,18 @@ public class LoginPage extends Page {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				
-				Session.createCookie("username", userField.getText());
-				Session.createCookie("password", passField.getText());
 				
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+				String user = userField.getText();
+				String pass = passField.getText();
+				
+				if(Authenticator.Auth(user, pass)) {
+					Session.createCookie("username", user);
+					Session.createCookie("password", passField.getText());
+					
+					getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+				}
+				
+				
 			}
 		
 		});
