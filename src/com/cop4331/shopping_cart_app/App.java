@@ -18,6 +18,7 @@ public class App {
 	public App() {		
 		
 		Session.createNewSession();
+		
 		PageManager.init();
 		WindowManager.init();
 	}

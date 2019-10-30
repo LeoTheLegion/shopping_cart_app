@@ -45,6 +45,5 @@ public abstract class Page extends JPanel {
 
 	protected void load() {
 		System.out.println("Loading Page "+this.getClass().getName());
-		
 	}
 }

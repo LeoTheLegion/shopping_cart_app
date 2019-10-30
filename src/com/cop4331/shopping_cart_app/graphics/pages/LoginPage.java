@@ -66,7 +66,7 @@ public class LoginPage extends Page {
 				
 				if(Authenticator.Auth(user, pass)) {
 					Session.createCookie("username", user);
-					Session.createCookie("password", passField.getText());
+					Session.createCookie("password", pass);
 					
 					getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
 				}
