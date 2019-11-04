@@ -47,7 +47,7 @@ public class LoginPage extends Page {
 		testpanel.setBackground(getBackground());
 		
 		JTextField userField = new JTextField("A user name", SwingConstants.CENTER);
-		JTextField passField = new JTextField("A password", SwingConstants.CENTER);
+		JTextField passField = new JTextField("test", SwingConstants.CENTER);
 		JButton loginBtn = new JButton();
 		
 		loginBtn.setText("Login in");

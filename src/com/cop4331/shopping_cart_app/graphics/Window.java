@@ -48,7 +48,9 @@ public class Window extends JFrame {
 		System.out.println("Setting Page to " + page.getClass() );
 		page.load();
 		
-		page.setBounds(0,0,this.getWidth(),this.getHeight());
+		page.setBounds(0,0,this.getWidth() - this.getInsets().left- this.getInsets().right,
+				this.getHeight() - this.getInsets().top);
+		
 		page.repaint();
 		
 		this.add(page);

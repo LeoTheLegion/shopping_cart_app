@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cop4331.shopping_cart_app.graphics.Page;
-import com.cop4331.shopping_cart_app.graphics.pages.LoginPage;
-import com.cop4331.shopping_cart_app.graphics.pages.TestPage;
-import com.cop4331.shopping_cart_app.graphics.pages.TestPage2;
+import com.cop4331.shopping_cart_app.graphics.pages.*;
 
 /**
  * @author mmena2017
@@ -23,9 +21,10 @@ public class PageManager {
 	public static void init() {
 		pages = new ArrayList<Page>();
 		
-		LoadPage(new LoginPage());
-		LoadPage(new TestPage());
-		LoadPage(new TestPage2());
+		//LoadPage(new LoginPage());
+		LoadPage(new ShoppingPage());
+		//LoadPage(new TestPage());
+		//LoadPage(new TestPage2());
 		
 	}
 
