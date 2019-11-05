@@ -10,21 +10,38 @@ import java.util.*;
 
 public class ItemDB {
 
-	List<Item> item=new ArrayList<Item>();
+	static List<Item> item=new ArrayList<Item>();
 	
-    public void BuildDB() {
+	/*
+    public static void BuildDB() {
     	
     }
-    
-    public void Populate() { 
+    */
+	
+    public static void Populate() { 
+    	//populates the item ArrayList
+    	//sample items
     	
+    	//Item(name, info, seller, quantity)
+    	Item a=new Item("Banana", "Fresh banana", "John Wick", 14);
+    	item.add(a);
+    	a=new Item("Milk", "Whole milk", "Bob", 12);
+    	item.add(a);
     }
     
-    public void UpdateItem(Item a) {
-    	
+    //updates the quantity of a certain item
+    public static void UpdateItem(Item a, int new_quantity) {
+    	for(int i=0; i<item.size(); i++) {
+    		if(a==item.get(i)) {
+    			if(new_quantity==0)
+    				item.remove(i);
+    			else
+    				item.get(i).quantity=new_quantity;
+    		}
+    	}
     }
     
-    public Item GetItemBySeller(String s) {
+    public static Item GetItemBySeller(String s) {
     	Item a=new Item();
     	for(int i=0; i<item.size(); i++) {
     		if(item.get(i).seller==s) a=item.get(i);
@@ -32,7 +49,7 @@ public class ItemDB {
     	return a;
     }
     
-    public void AddItem(Item a) {
+    public static void AddItem(Item a) {
     	item.add(a);
     }
     
