@@ -1,20 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package shopping_cart_app.src.com.cop4331.shopping_cart_app.core;
 
+package com.cop4331.shopping_cart_app.core;
 /**
  *
  * @author Justin Ament
  */
+
 public class Item {
-    String item_name;
+    String name;
     String info;
     int quantity;
+    String seller; 
+    
+    public Item(String name, String info, String seller, int quantity) {
+        this.name=name;
+        this.info=info;
+        this.seller=seller;
+        this.quantity=quantity;
+    }
     
     public Item() {
-        
+    	this.name="";
+    	this.info="";
+    	this.seller="";
+    	this.quantity=0;
     }
 }
