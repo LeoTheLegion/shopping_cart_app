@@ -15,6 +15,7 @@ public class ItemDB {
 	
 	public static void init() { 
 		item =new ArrayList<Item>();
+		Populate();
 	}
 	
     public static void Populate() { 
