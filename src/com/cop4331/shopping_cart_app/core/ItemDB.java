@@ -11,13 +11,11 @@ import java.util.*;
 
 public class ItemDB {
 
-	static List<Item> item=new ArrayList<Item>();
+	static List<Item> item;
 	
-	/*
-    public static void BuildDB() {
-    	
-    }
-    */
+	public static void init() { 
+		item =new ArrayList<Item>();
+	}
 	
     public static void Populate() { 
     	//populates the item ArrayList
@@ -28,6 +26,7 @@ public class ItemDB {
     	item.add(a);
     	a=new Item("Milk", "Whole milk", 1, 12);
     	item.add(a);
+    	a=new Item("Item", "test item", 2, 1);
     }
     
     //updates the quantity of a certain item
@@ -42,18 +41,24 @@ public class ItemDB {
     	}
     }
     
-    //method not completed 
-    /*
-    public static Item GetItemBySeller(String s, AccountDB ac) {
-    	Item a=new Item();
-        int id;
+    //gets all items from a seller
+    public static List<Item> GetItemBySeller(int id) {
+    	List<Item> seller_items=new ArrayList<Item>();
     	for(int i=0; i<item.size(); i++) {
-                id=item.get(i).getSellerID();
-    		if(AccountDB.accounts.get(id).name==s) a=item.get(i);
+    		if(item.get(i).getSellerID()==id) seller_items.add(item.get(i));
     	}
-    	return a;
+    	return seller_items;
     }
-    */
+    
+    //returns full item list
+    public static List<Item> getFullInventory() {
+    	return item;
+    }
+    
+    public static Item getItem(int itemID) {
+    	return item.get(itemID);
+    }
+    
     public static void AddItem(Item a) {
     	item.add(a);
     }

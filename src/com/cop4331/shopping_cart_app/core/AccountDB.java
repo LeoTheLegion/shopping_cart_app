@@ -8,7 +8,10 @@ import java.util.*;
  */
 public class AccountDB {
     
-    static List accounts=new ArrayList<Account>();
+    public static List<Account> accounts=new ArrayList<Account>();
     
+    public static void init() {
+    	
+    }
     
 }

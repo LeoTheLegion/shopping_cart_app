@@ -10,5 +10,6 @@ package com.cop4331.shopping_cart_app.core;
  * @author Justin Ament
  */
 public class Account {
-    String name="";
+    public static String name="";
+	//String name="";
 }
