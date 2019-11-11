@@ -23,11 +23,11 @@ public class ItemDB {
     	//sample items
     	
     	//Item(name, item_description, seller, quantity)
-    	Item a=new Item("Banana", "Fresh banana", 0, 14);
+    	Item a=new Item("Banana", "Fresh banana", 0, 14, 0.70);
     	item.add(a);
-    	a=new Item("Milk", "Whole milk", 1, 12);
+    	a=new Item("Milk", "Whole milk", 1, 12, 2.40);
     	item.add(a);
-    	a=new Item("Item", "test item", 2, 1);
+    	a=new Item("Item", "test item", 2, 1, 1.0);
     }
     
     //updates the quantity of a certain item
@@ -60,7 +60,7 @@ public class ItemDB {
     	return item.get(itemID);
     }
     
-    public static int getID(Item a) {
+    public static int getItemID(Item a) {
     	int value=-1;
     	for(int i=0; i<item.size(); i++) {
     		if(a==item.get(i)) value=i;

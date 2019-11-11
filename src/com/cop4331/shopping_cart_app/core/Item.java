@@ -10,12 +10,14 @@ public class Item {
     String item_description;
     int quantity;
     int sellerID; 
+    double price;
     
-    public Item(String name, String item_description, int sellerID, int quantity) {
+    public Item(String name, String item_description, int sellerID, int quantity, double price) {
         this.name=name;
         this.item_description=item_description;
         this.sellerID=sellerID;
         this.quantity=quantity;
+        this.price=price;
     }
     
     public Item() {
@@ -23,6 +25,7 @@ public class Item {
     	this.item_description="";
     	this.sellerID=-1;
     	this.quantity=0;
+    	this.price=0;
     }
     
     public String getName() {
@@ -39,5 +42,9 @@ public class Item {
     
     public int getQuantity() {
         return quantity;
+    }
+    
+    public double getPrice() { 
+    	return price;
     }
 }
