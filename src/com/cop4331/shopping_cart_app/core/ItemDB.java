@@ -31,15 +31,8 @@ public class ItemDB {
     }
     
     //updates the quantity of a certain item
-    public static void UpdateItem(Item a, int new_quantity) {
-    	for(int i=0; i<item.size(); i++) {
-    		if(a==item.get(i)) {
-    			if(new_quantity==0)
-    				item.remove(i);
-    			else
-    				item.get(i).quantity=new_quantity;
-    		}
-    	}
+    public static void UpdateItem(int itemID, int new_quantity) {
+    	item.get(itemID).quantity=new_quantity;
     }
     
     //gets all items from a seller
@@ -51,7 +44,7 @@ public class ItemDB {
     	return seller_items;
     }
     
-    //returns full item list
+    //returns full item list, eventually change to sample list of items
     public static List<Item> getFullInventory() {
     	return item;
     }
