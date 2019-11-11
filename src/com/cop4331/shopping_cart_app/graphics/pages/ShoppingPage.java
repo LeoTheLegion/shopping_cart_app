@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -18,13 +20,14 @@ import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.cop4331.shopping_cart_app.core.Authenticator;
+import com.cop4331.shopping_cart_app.core.Item;
+import com.cop4331.shopping_cart_app.core.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 
 public class ShoppingPage extends Page {
-
-	JLabel test1,test2;
 	
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
@@ -35,6 +38,10 @@ public class ShoppingPage extends Page {
 		
 		setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
+		
+		HashMap<Integer,Integer> cart = new HashMap<Integer,Integer>();//<itemid,quality>
+		
+		Session.createCookie("cart", cart);
 		
 		BuildHeadPanel();
 		BuildContentPanel();
@@ -59,6 +66,15 @@ public class ShoppingPage extends Page {
 		cartBtn.setText("cart");
 		headPanel.add(cartBtn);
 		
+		Page pageinQuestion = this;
+		
+		cartBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+			}
+		});
+		
 	}
 	/**
 	 * 
@@ -74,15 +90,16 @@ public class ShoppingPage extends Page {
 		itemContainerPanel.setBackground(Color.black);
 		//contentPanel.add(itemContainerPanel);
 		
-		int numOfItemsToDisplay = 10;
+						
+		List<Item> itemsSearched = ItemDB.getFullInventory();
 		
-		for (int i = 0; i < numOfItemsToDisplay; i++) {
-			JPanel item = createItem();
+		for (int i = 0; i < itemsSearched.size(); i++) {
+			JPanel item = createItem(itemsSearched.get(i));
 			item.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(item);
 		}
 		
-		int totalHeight = itemContainer_Layout.getHgap() +(100 + itemContainer_Layout.getHgap()) * numOfItemsToDisplay;
+		int totalHeight = itemContainer_Layout.getHgap() +(100 + itemContainer_Layout.getHgap()) * itemsSearched.size();
 		itemContainerPanel.setPreferredSize(new Dimension(1200,totalHeight));
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
@@ -95,14 +112,41 @@ public class ShoppingPage extends Page {
 	/**
 	 * @return
 	 */
-	private JPanel createItem() {
+	private JPanel createItem(Item i) {
 		JPanel item = new JPanel(new GridLayout(1,2));
 		
-		JLabel itemName = new JLabel("item_name");
+		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);
 		item.add(itemName);
 		
-		JButton addToCartBtn = new JButton("Add To Cart");
+		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
+		item.add(sellerName);
+		
+		JLabel quantity = new JLabel(Integer.toString(i.getQuantity()), SwingConstants.CENTER);
+		item.add(quantity);
+		
+		JButton addToCartBtn = new JButton("Add To Cart ( $" + i.getPrice()+ " )");
 		item.add(addToCartBtn);
+		
+		addToCartBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
+				
+				int itemID = ItemDB.getItemID(i);
+				
+				
+				
+				if(cart.containsKey(itemID)) {
+					cart.put(itemID, cart.get(itemID) + 1 );
+				}
+				else {
+					cart.put(itemID, 1)	;
+				}
+					
+			}	
+			;
+			
+		});
 		
 		return item;
 	}

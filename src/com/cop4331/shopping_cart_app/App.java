@@ -3,6 +3,7 @@ package com.cop4331.shopping_cart_app;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cop4331.shopping_cart_app.core.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.Window;
@@ -17,10 +18,13 @@ public class App {
 	
 	public App() {		
 		
+		ItemDB.init();
+		
 		Session.createNewSession();
 		
 		PageManager.init();
 		WindowManager.init();
+		
 	}
 	
 

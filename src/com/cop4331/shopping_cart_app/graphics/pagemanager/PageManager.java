@@ -23,8 +23,8 @@ public class PageManager {
 		
 		//LoadPage(new LoginPage());
 		LoadPage(new ShoppingPage());
-		//LoadPage(new TestPage());
-		//LoadPage(new TestPage2());
+		LoadPage(new CartPage());
+		LoadPage(new CheckOutPage());
 		
 	}
 
