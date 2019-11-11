@@ -60,6 +60,14 @@ public class ItemDB {
     	return item.get(itemID);
     }
     
+    public static int getID(Item a) {
+    	int value=-1;
+    	for(int i=0; i<item.size(); i++) {
+    		if(a==item.get(i)) value=i;
+    	}
+    	return value; 
+    }
+    
     public static void AddItem(Item a) {
     	item.add(a);
     }
