@@ -77,7 +77,7 @@ public class CheckOutPage extends Page {
 				
 				Session.createCookie("cart", cart);
 				
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+				getWindow().SetPage(1);
 				
 			}
 		});

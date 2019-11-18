@@ -21,10 +21,12 @@ public class PageManager {
 	public static void init() {
 		pages = new ArrayList<Page>();
 		
-		//LoadPage(new LoginPage());
+		LoadPage(new LoginPage());
 		LoadPage(new ShoppingPage());
 		LoadPage(new CartPage());
 		LoadPage(new CheckOutPage());
+		
+		LoadPage(new DescriptionPage());
 		
 	}
 

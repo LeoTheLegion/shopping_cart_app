@@ -24,26 +24,31 @@ public class WindowManager {
 		
 		createNewWindow(0);
 		
-		windows.get(0).setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		getMainWindow().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 
-	private static void createNewWindow(int pageIndex) {
+	public static void createNewWindow(int pageIndex) {
+		createNewWindow(pageIndex,App.WINDOW_WIDTH,App.WINDOW_HEIGHT);
+	}
+	
+	public static void createNewWindow(int pageIndex,int width,int height) {
 		// TODO Auto-generated method stub
-		System.out.println("Building new window" );
+		System.out.println("Building new window :" + 
+				((windows.size() == 0) ? "(MAIN)" : "(POPUP)")
+		);
 		Window w = new Window();
 
-		w.setSize(App.WINDOW_WIDTH,App.WINDOW_HEIGHT);
+		w.setSize(width,height);
 		
 		w.SetPage(pageIndex);
 		windows.add(w);
 	}
 
-
 	/**
 	 * @return
 	 */
-	public Window getMainWindow() {
+	public static Window getMainWindow() {
 		return windows.get(0);
 	}
 }

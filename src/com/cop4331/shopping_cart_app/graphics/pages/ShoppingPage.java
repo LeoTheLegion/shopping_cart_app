@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,6 +28,7 @@ import com.cop4331.shopping_cart_app.core.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
+import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 public class ShoppingPage extends Page {
 	
@@ -117,6 +120,16 @@ public class ShoppingPage extends Page {
 		
 		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);
 		item.add(itemName);
+		
+		itemName.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int popUpPageID = 4;
+				DescriptionPage d = (DescriptionPage) PageManager.getPage(popUpPageID);
+				d.setItemToDisplay(i);
+				
+				WindowManager.createNewWindow(popUpPageID, 500, 700);
+			}
+		});
 		
 		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
 		item.add(sellerName);

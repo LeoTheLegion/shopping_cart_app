@@ -108,7 +108,6 @@ public class CartPage extends Page {
 		
 		HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
 		Object[] keyset = cart.keySet().toArray();
-		
 		for (int i = 0; i < keyset.length; i++) {
 			
 			Item item = ItemDB.getItem((int) keyset[i]);
@@ -171,11 +170,10 @@ public class CartPage extends Page {
 						cart.put(i.getSellerID(), cart.get(i.getSellerID()) - 1 );
 						quantity.setText(Integer.toString(cart.get(i.getSellerID())));
 					}
-					else
-					{
+					
+					if(cart.get(i.getSellerID()) < 1){
 						cart.remove(i.getSellerID());
 						//BuildItemContainer();
-						
 						//getWindow().repaint();
 					}
 						

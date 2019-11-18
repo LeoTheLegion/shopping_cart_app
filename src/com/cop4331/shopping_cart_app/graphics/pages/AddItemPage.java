@@ -3,13 +3,14 @@
  */
 package com.cop4331.shopping_cart_app.graphics.pages;
 
+import com.cop4331.shopping_cart_app.graphics.IPopUp;
 import com.cop4331.shopping_cart_app.graphics.Page;
 
 /**
  * @author HalEl
  *
  */
-public class AddItemPage extends Page {
+public class AddItemPage extends Page implements IPopUp {
 
 	/* (non-Javadoc)
 	 * @see com.cop4331.shopping_cart_app.graphics.Page#buildPage()
