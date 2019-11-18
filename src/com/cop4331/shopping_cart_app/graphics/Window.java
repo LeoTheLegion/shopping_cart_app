@@ -5,6 +5,7 @@ package com.cop4331.shopping_cart_app.graphics;
 
 import java.awt.Component;
 import java.awt.HeadlessException;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
@@ -56,6 +57,10 @@ public class Window extends JFrame {
 		this.add(page);
 		this.repaint();
 		this.setVisible(true);
+	}
+	public void close() {
+		// TODO Auto-generated method stub
+		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 	}
 
 }

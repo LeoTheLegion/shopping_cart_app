@@ -3,6 +3,8 @@
  */
 package com.cop4331.shopping_cart_app.graphics.windowmanager;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +40,16 @@ public class WindowManager {
 				((windows.size() == 0) ? "(MAIN)" : "(POPUP)")
 		);
 		Window w = new Window();
+		
+		w.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                System.out.println("A window had been closed");
+                windows.remove(e.getWindow());
+                e.getWindow().dispose();
+            }
+        });
 
 		w.setSize(width,height);
 		
@@ -50,5 +62,11 @@ public class WindowManager {
 	 */
 	public static Window getMainWindow() {
 		return windows.get(0);
+	}
+
+
+	public static int count() {
+		// TODO Auto-generated method stub
+		return windows.size();
 	}
 }

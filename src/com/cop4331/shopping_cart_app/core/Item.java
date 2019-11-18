@@ -10,9 +10,9 @@ public class Item {
     String item_description;
     int quantity;
     int sellerID; 
-    double price;
+    float price;
     
-    public Item(String name, String item_description, int sellerID, int quantity, double price) {
+    public Item(String name, String item_description, int sellerID, int quantity, float price) {
         this.name=name;
         this.item_description=item_description;
         this.sellerID=sellerID;
@@ -44,7 +44,11 @@ public class Item {
         return quantity;
     }
     
-    public double getPrice() { 
+    public float getPrice() { 
     	return price;
+    }
+    
+    public void setQuantity(int q) {
+    	this.quantity = q;
     }
 }

@@ -23,11 +23,11 @@ public class ItemDB {
     	//sample items
     	
     	//Item(name, item_description, seller, quantity)
-    	Item a=new Item("Banana", "Fresh banana", 0, 14, 0.70);
+    	Item a=new Item("Banana", "Fresh banana", 0, 14, 0.70f);
     	item.add(a);
-    	a=new Item("Milk", "Whole milk", 1, 12, 2.40);
+    	a=new Item("Milk", "Whole milk", 1, 12, 2.40f);
     	item.add(a);
-    	a=new Item("Item", "test item", 2, 1, 1.0);
+    	a=new Item("Item", "test item", 2, 1, 1.0f);
     }
     
     //updates the quantity of a certain item

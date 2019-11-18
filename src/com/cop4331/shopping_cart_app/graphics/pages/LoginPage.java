@@ -64,11 +64,16 @@ public class LoginPage extends Page {
 				String user = userField.getText();
 				String pass = passField.getText();
 				
+				if(pass.equals("s")) {//temp code
+					getWindow().SetPage(5);
+					return;
+				}
+				
 				if(Authenticator.Auth(user, pass)) {
 					Session.createCookie("username", user);
 					Session.createCookie("password", pass);
 					
-					getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+					getWindow().SetPage(1);
 				}
 				
 				

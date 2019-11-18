@@ -22,12 +22,16 @@ public class PageManager {
 		pages = new ArrayList<Page>();
 		
 		LoadPage(new LoginPage());
+		
+		//buyer
 		LoadPage(new ShoppingPage());
 		LoadPage(new CartPage());
 		LoadPage(new CheckOutPage());
-		
 		LoadPage(new DescriptionPage());
 		
+		//seller
+		LoadPage(new InventoryPage());
+		LoadPage(new AddItemPage());
 	}
 
 	/**

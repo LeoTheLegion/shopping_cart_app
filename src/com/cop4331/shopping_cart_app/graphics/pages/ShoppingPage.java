@@ -32,6 +32,7 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 public class ShoppingPage extends Page {
 	
+	JPanel itemContainerPanel;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -88,12 +89,25 @@ public class ShoppingPage extends Page {
 		add(contentPanel,BorderLayout.CENTER);
 		
 		
-		FlowLayout itemContainer_Layout = new FlowLayout();
-		JPanel itemContainerPanel =  new JPanel(itemContainer_Layout);
+		itemContainerPanel =  new JPanel(new FlowLayout());
 		itemContainerPanel.setBackground(Color.black);
-		//contentPanel.add(itemContainerPanel);
 		
-						
+		BuildItemContainer();
+		
+		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
+		scrollableItemContainer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
+		contentPanel.add(scrollableItemContainer);
+		
+	}
+	/**
+	 * 
+	 */
+	private void BuildItemContainer() {
+		
+		itemContainerPanel.removeAll();
+		
 		List<Item> itemsSearched = ItemDB.getFullInventory();
 		
 		for (int i = 0; i < itemsSearched.size(); i++) {
@@ -102,15 +116,8 @@ public class ShoppingPage extends Page {
 			itemContainerPanel.add(item);
 		}
 		
-		int totalHeight = itemContainer_Layout.getHgap() +(100 + itemContainer_Layout.getHgap()) * itemsSearched.size();
+		int totalHeight = ((FlowLayout) itemContainerPanel.getLayout()).getHgap() +(100 + ((FlowLayout) itemContainerPanel.getLayout()).getHgap()) * itemsSearched.size();
 		itemContainerPanel.setPreferredSize(new Dimension(1200,totalHeight));
-		
-		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
-		scrollableItemContainer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
-		contentPanel.add(scrollableItemContainer);
-		
 	}
 	/**
 	 * @return
@@ -171,6 +178,7 @@ public class ShoppingPage extends Page {
 	protected void load() {
 		// TODO Auto-generated method stub
 		super.load();
+		BuildItemContainer();
 	}
 
 }
