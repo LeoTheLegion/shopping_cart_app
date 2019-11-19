@@ -1,5 +1,5 @@
 
-package com.cop4331.shopping_cart_app.core;
+package com.cop4331.shopping_cart_app.backend;
 /**
  *
  * @author Justin Ament
