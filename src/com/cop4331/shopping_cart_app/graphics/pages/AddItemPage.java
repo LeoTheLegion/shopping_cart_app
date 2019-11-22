@@ -68,7 +68,7 @@ public class AddItemPage extends Page implements IPopUp {
 					return;
 				}
 				
-				ItemDB.AddItem(new Item(name,item_description,sellerID,quantity,price));
+				ItemDB.addItem(new Item(name,item_description,sellerID,quantity,price));
 				
 				WindowManager.getMainWindow().SetPage(5);
 				

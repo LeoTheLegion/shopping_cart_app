@@ -11,90 +11,85 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.*;
 
+//Create interface adapter called IRead that reads from a file
+
 
 /**
  *
  * @author Justin Ament
  */
 
-public class ItemDB {
+public class ItemDB extends JSon {
 
-	static List<Item> item;
+	private static ArrayList<Item> items;
 	
 	public static void init() { 
-		item =new ArrayList<Item>();
-		toFile();
+		ItemDB a=new ItemDB();
 		//Populate();
 	}
 	
-	public static void toFile() {
-		JSONObject jo=new JSONObject();
-
-		//name, description, quantity, price
-		try {
-			jo.put("name", "Banana");
-			jo.put("item_description", "Fresh Banana");
-			jo.put("quantity", 14);
-			jo.put("price", 0.70);
+	public ItemDB() {
+		items =new ArrayList<Item>();
+		//toFile();
+		items=this.load("itemdb.json");
+		for(int i=0; i<items.size();i++) {
+			System.out.println("Constructor " + items.get(i).print());
 			
-			PrintWriter pw=new PrintWriter("itemdb.json");
-			pw.write(jo.toString());
-			pw.flush();
-			//pw.close();
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
 		}
-		catch(FileNotFoundException e) {
-			System.out.println("No file found");
-		}
+		//Tester();
 	}
-
-    public static void Populate() { 
-    	
-    	//Item(name, item_description, seller, quantity)
-    	Item a=new Item("Banana", "Fresh banana", 0, 14, 0.70f);
-    	item.add(a);
-    	a=new Item("Milk", "Whole milk", 1, 12, 2.40f);
-    	item.add(a);
-    	a=new Item("Item", "test item", 2, 1, 1.0f);
-    	
-    	
+	
+	public ItemDB(ArrayList<Item> item) {
+		this.items=item;
+		this.save("itemdb.json", items);
+	}
+	
+    public static void Tester() { 
+    	System.out.println("Making first item: ");
+		Item a=new Item("Tester1", "testing thing1", 11, 21, 31.0);
+		addItem(a);
     }
     
     //updates the quantity of a certain item
-    public static void UpdateItem(int itemID, int new_quantity) {
-    	item.get(itemID).quantity=new_quantity;
+    public static void setQuantity(int itemID, int new_quantity) {
+    	items.get(itemID).setQuantity(new_quantity);
     }
     
     //gets all items from a seller
-    public static List<Item> GetItemBySeller(int id) {
+    public static List<Item> getItemBySeller(int id) {
     	List<Item> seller_items=new ArrayList<Item>();
-    	for(int i=0; i<item.size(); i++) {
-    		if(item.get(i).getSellerID()==id) seller_items.add(item.get(i));
+    	for(int i=0; i<items.size(); i++) {
+    		if(items.get(i).getSellerID()==id) seller_items.add(items.get(i));
     	}
     	return seller_items;
     }
     
     //returns full item list, eventually change to sample list of items
     public static List<Item> getFullInventory() {
-    	return item;
+    	return items;
     }
     
     public static Item getItem(int itemID) {
-    	return item.get(itemID);
+    	return items.get(itemID);
     }
     
     public static int getItemID(Item a) {
     	int value=-1;
-    	for(int i=0; i<item.size(); i++) {
-    		if(a==item.get(i)) value=i;
+    	for(int i=0; i<items.size(); i++) {
+    		if(a==items.get(i)) value=i;
     	}
     	return value; 
     }
     
-    public static void AddItem(Item a) {
-    	item.add(a);
+    public static void addItem(Item a) {
+    	items.add(a);
+    	ItemDB x =new ItemDB(items);
     }
-    
+
+    public void save() {
+    	this.save();
+    }
 }
+
+
+//Need to add a way to save the file with the new contents after the addItem function

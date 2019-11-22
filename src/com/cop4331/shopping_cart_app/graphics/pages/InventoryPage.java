@@ -154,7 +154,7 @@ public class InventoryPage extends Page {
 			}
 		});
 		
-		JLabel price = new JLabel(Float.toString(i.getPrice()), SwingConstants.CENTER);
+		JLabel price = new JLabel(Double.toString(i.getPrice()), SwingConstants.CENTER);
 		item.add(price);
 		
 		JTextField quantity = new JTextField(Integer.toString(i.getQuantity()), SwingConstants.CENTER);
@@ -197,7 +197,7 @@ public class InventoryPage extends Page {
 				}
 				
 				int itemID = ItemDB.getItemID(i);
-				ItemDB.UpdateItem(itemID, newQuantity);
+				ItemDB.setQuantity(itemID, newQuantity);
 			}
 		});
 		
