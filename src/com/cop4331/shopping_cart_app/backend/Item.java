@@ -1,18 +1,19 @@
 
-package com.cop4331.shopping_cart_app.core;
+package com.cop4331.shopping_cart_app.backend;
 /**
  *
  * @author Justin Ament
  */
 
 public class Item {
-    String name;
-    String item_description;
-    int quantity;
-    int sellerID; 
-    float price;
+    private static String name="";
+    private static String item_description="";
+    private static int quantity=0;
+    private static int sellerID=-1; 
+    private static double price=0;
     
-    public Item(String name, String item_description, int sellerID, int quantity, float price) {
+    //name, description, quantity, price
+    public Item(String name, String item_description, int sellerID, int quantity, double price) {
         this.name=name;
         this.item_description=item_description;
         this.sellerID=sellerID;
@@ -20,12 +21,9 @@ public class Item {
         this.price=price;
     }
     
+    //Item doesn't exist
     public Item() {
-    	this.name="";
-    	this.item_description="";
-    	this.sellerID=-1;
-    	this.quantity=0;
-    	this.price=0;
+
     }
     
     public String getName() {
@@ -44,11 +42,16 @@ public class Item {
         return quantity;
     }
     
-    public float getPrice() { 
+    public double getPrice() { 
     	return price;
     }
     
     public void setQuantity(int q) {
     	this.quantity = q;
+    }
+    
+    //used for testing purposes
+    public String print() {
+    	return name+" "+ item_description + " " + Integer.toString(quantity) + " " + Double.toString(price);
     }
 }
