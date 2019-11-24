@@ -64,7 +64,7 @@ public class TestPage extends Page {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+				getWindow().SetPage(PageManager.getInstance().getPageIndex(pageinQuestion)+1);
 			}
 		
 		});

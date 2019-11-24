@@ -59,7 +59,7 @@ public class CheckOutPage extends Page {
 		backToCheckOutBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)-1);
+				getWindow().SetPage(PageManager.getInstance().getPageIndex(pageinQuestion)-1);
 			}
 		});
 		

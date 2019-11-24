@@ -75,7 +75,7 @@ public class ShoppingPage extends Page {
 		cartBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+				getWindow().SetPage(PageManager.getInstance().getPageIndex(pageinQuestion)+1);
 			}
 		});
 		
@@ -131,7 +131,7 @@ public class ShoppingPage extends Page {
 		itemName.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int popUpPageID = 4;
-				DescriptionPage d = (DescriptionPage) PageManager.getPage(popUpPageID);
+				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);
 				d.setItemToDisplay(i);
 				
 				WindowManager.createNewWindow(popUpPageID, 500, 700);

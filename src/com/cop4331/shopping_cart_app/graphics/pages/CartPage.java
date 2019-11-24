@@ -60,7 +60,7 @@ public class CartPage extends Page {
 		KeepShoppingBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)-1);
+				getWindow().SetPage(PageManager.getInstance().getPageIndex(pageinQuestion)-1);
 			}
 		});
 		
@@ -73,7 +73,7 @@ public class CartPage extends Page {
 		checkoutBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				getWindow().SetPage(PageManager.getPageIndex(pageinQuestion)+1);
+				getWindow().SetPage(PageManager.getInstance().getPageIndex(pageinQuestion)+1);
 			}
 		});
 	}

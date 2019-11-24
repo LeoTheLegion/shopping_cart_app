@@ -147,7 +147,7 @@ public class InventoryPage extends Page {
 		itemName.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				int popUpPageID = 4;
-				DescriptionPage d = (DescriptionPage) PageManager.getPage(popUpPageID);
+				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);
 				d.setItemToDisplay(i);
 				
 				WindowManager.createNewWindow(popUpPageID, 500, 700);

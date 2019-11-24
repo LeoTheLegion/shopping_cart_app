@@ -16,11 +16,11 @@ import com.cop4331.shopping_cart_app.graphics.pages.*;
  */
 public class PageManager {
 	
-	static List<Page> pages;
+	private List<Page> pages;
+	private static PageManager INSTANCE = null;
 	
-	public static void init() {
+	private PageManager() {
 		pages = new ArrayList<Page>();
-		
 		LoadPage(new LoginPage());
 		
 		//buyer
@@ -33,16 +33,30 @@ public class PageManager {
 		LoadPage(new InventoryPage());
 		LoadPage(new AddItemPage());
 	}
+	
+	public static void init() {
+		getInstance();
+	}
+	
+	public static PageManager getInstance() {
+		if(INSTANCE == null) {
+			synchronized(PageManager.class) {
+				if(INSTANCE == null)
+					INSTANCE = new PageManager();
+			}
+		}
+		return INSTANCE;
+	}
 
 	/**
 	 * 
 	 */
-	private static void LoadPage(Page p) {
+	private void LoadPage(Page p) {
 		System.out.println("Building Page " + p.getClass() + ". Assigning to pageIndex:" + pages.size() );
 		pages.add(p);
 	}
 
-	public static Page getPage(int pageIndex) {
+	public Page getPage(int pageIndex) {
 		// TODO Auto-generated method stub
 		
 		if(pageIndex >= pages.size())/// <------creates page loop
@@ -51,7 +65,7 @@ public class PageManager {
 		return pages.get(pageIndex);
 	}
 
-	public static int getPageIndex(Page page) {
+	public int getPageIndex(Page page) {
 		for (int i = 0; i < pages.size(); i++) {
 			if(getPage(i) == page)
 				return i;
