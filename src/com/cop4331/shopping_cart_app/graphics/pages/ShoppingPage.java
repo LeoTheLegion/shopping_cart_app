@@ -134,7 +134,7 @@ public class ShoppingPage extends Page {
 				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);
 				d.setItemToDisplay(i);
 				
-				WindowManager.createNewWindow(popUpPageID, 500, 700);
+				WindowManager.getInstance().createNewWindow(popUpPageID, 500, 700);
 			}
 		});
 		

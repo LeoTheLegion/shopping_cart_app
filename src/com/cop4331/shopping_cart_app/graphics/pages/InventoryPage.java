@@ -85,14 +85,14 @@ public class InventoryPage extends Page {
 		addNewItemBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(WindowManager.count() > 1) {
+				if(WindowManager.getInstance().count() > 1) {
 					System.err.println("you are already adding an item!");
 					return;
 				}
 				
 				int popUpPageID = 6;
 				
-				WindowManager.createNewWindow(popUpPageID, 500, 700);
+				WindowManager.getInstance().createNewWindow(popUpPageID, 500, 700);
 			}
 		});
 		
@@ -150,7 +150,7 @@ public class InventoryPage extends Page {
 				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);
 				d.setItemToDisplay(i);
 				
-				WindowManager.createNewWindow(popUpPageID, 500, 700);
+				WindowManager.getInstance().createNewWindow(popUpPageID, 500, 700);
 			}
 		});
 		
