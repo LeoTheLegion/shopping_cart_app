@@ -22,7 +22,7 @@ public class JsonSaveItems implements ISave<Item> {
 			jo.put("sellerID", Integer.toString(items.get(i).getSellerID()));
 			jo.put("quantity", Integer.toString(items.get(i).getQuantity()));
 			jo.put("price", Double.toString(items.get(i).getPrice()));
-			//System.out.println("Printing new item: " +jo.toString());
+			System.out.println("Saving item: " +jo.toString());
 			ja.add(jo);
 		}
 

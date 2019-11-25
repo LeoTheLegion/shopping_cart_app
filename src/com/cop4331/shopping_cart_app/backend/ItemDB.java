@@ -16,7 +16,7 @@ import com.cop4331.shopping_cart_app.backend.Item;
 
 /**
  *
- * @author Justin Ament
+ * @author Justin Ament , Michael Mena
  */
 
 public class ItemDB{
@@ -28,23 +28,23 @@ public class ItemDB{
 	public static void init() {
 		if(ifFileExists()) {
 			load();
-			
-			for(int i = 0 ; i < items.size(); i++)
-				System.out.println(items.get(i).print());
-			
 		}else {
-			items = new ArrayList<Item>();
-			
-			addItem(new Item("Testing1", "Testing1", 1,1,1));
-			addItem(new Item("Testing2", "Testing2", 2,2,2));
-			
-			for(int i = 0 ; i < items.size(); i++)
-				System.out.println(items.get(i).print());
-			
-			save();
+			buildInitialDB();
 		}
+	}
+
+	/**
+	 * 
+	 */
+	private static void buildInitialDB() {
+		items = new ArrayList<Item>();
 		
+		addItem(new Item("Testing1", "Testing1", 1,1,1));
+		addItem(new Item("Testing2", "Testing2", 2,2,2));
 		
+		addItem(new Item("Banana", "Fresh banana", 0, 14, 0.70f));
+		addItem(new Item("Milk", "Whole milk", 1, 12, 2.40f));
+		addItem(new Item("Item", "test item", 2, 1, 1.0f));
 	}
 
 	
@@ -81,6 +81,7 @@ public class ItemDB{
     
     public static void addItem(Item a) {
     	items.add(a);
+    	save();
     }
 	
 	

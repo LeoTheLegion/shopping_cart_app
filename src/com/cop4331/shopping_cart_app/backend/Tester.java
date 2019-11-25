@@ -6,8 +6,11 @@ public class Tester {
 		// TODO Auto-generated method stub
 
 		ItemDB.init();
+				
+		ItemDB.save();
+		
 		//System.out.println(ItemDB.getFullInventory());
-		//ItemDB.addItem(new Item("Testing1", "Testing1", 1,1,1));
+		;
 		//ItemDB.addItem(new Item("Testing2", "Testing2", 2,2,2));
 	}
 

@@ -6,11 +6,11 @@ package com.cop4331.shopping_cart_app.backend;
  */
 
 public class Item {
-    private static String name="";
-    private static String item_description="";
-    static int quantity=0;
-    private static int sellerID=-1; 
-    private static double price=0;
+    private  String name="";
+    private  String item_description="";
+    int quantity=0;
+    private  int sellerID=-1; 
+    private  double price=0;
     
     //name, description, quantity, price
     public Item(String name, String item_description, int sellerID, int quantity, double price) {
