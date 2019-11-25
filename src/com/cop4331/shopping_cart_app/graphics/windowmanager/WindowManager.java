@@ -21,6 +21,14 @@ public class WindowManager {
 	static List<Window> windows;
 	
 	
+	private WindowManager() {
+		windows = new ArrayList<Window>();
+		
+		createNewWindow(0);
+		
+		getMainWindow().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	}
+	
 	public static void init() {
 		windows = new ArrayList<Window>();
 		

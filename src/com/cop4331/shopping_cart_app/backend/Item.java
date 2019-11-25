@@ -8,7 +8,7 @@ package com.cop4331.shopping_cart_app.backend;
 public class Item {
     private static String name="";
     private static String item_description="";
-    private static int quantity=0;
+    static int quantity=0;
     private static int sellerID=-1; 
     private static double price=0;
     

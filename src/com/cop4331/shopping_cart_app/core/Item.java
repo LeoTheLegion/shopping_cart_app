@@ -8,7 +8,7 @@ package com.cop4331.shopping_cart_app.core;
 public class Item {
     String name;
     String item_description;
-    int quantity;
+    public int quantity;
     int sellerID; 
     float price;
     

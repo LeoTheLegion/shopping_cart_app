@@ -6,7 +6,7 @@ import java.util.*;
  *
  * @author Justin Ament
  */
-public class AccountDB extends JSon{
+public class AccountDB {
     
     private static List<Account> accounts=new ArrayList<Account>();
     
