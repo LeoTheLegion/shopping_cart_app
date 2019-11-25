@@ -31,7 +31,7 @@ public class ItemDB {
     }
     
     //updates the quantity of a certain item
-    public static void UpdateItem(int itemID, int new_quantity) {
+    public static void setQuantity(int itemID, int new_quantity) {
     	item.get(itemID).quantity=new_quantity;
     }
     
@@ -61,7 +61,7 @@ public class ItemDB {
     	return value; 
     }
     
-    public static void AddItem(Item a) {
+    public static void addItem(Item a) {
     	item.add(a);
     }
     
