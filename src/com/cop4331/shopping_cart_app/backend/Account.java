@@ -10,9 +10,9 @@ package com.cop4331.shopping_cart_app.backend;
  * @author Justin Ament
  */
 public class Account {
-    private static String username="";
-    private static String password="";
-    public static String acc_type="";
+    private  String username="";
+    private  String password="";
+    public  String acc_type="";
     
     public Account(String username, String password, String acc_type) {
     	this.username=username;
@@ -31,4 +31,10 @@ public class Account {
     public String getUsername() {
     	return this.username;
     }
+    
+    public String getPassword() {
+    	return this.password;
+    }
 }
+//could use inheritance pattern
+//could seperate seller and buyer by files

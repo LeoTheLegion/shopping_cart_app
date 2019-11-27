@@ -54,7 +54,7 @@ public class ItemDB{
     }
     
     //gets all items from a seller
-    public static List<Item> GetItemBySeller(int id) {
+    public static List<Item> getItemBySeller(int id) {
     	List<Item> seller_items=new ArrayList<Item>();
     	for(int i=0; i<items.size(); i++) {
     		if(items.get(i).getSellerID()==id) seller_items.add(items.get(i));

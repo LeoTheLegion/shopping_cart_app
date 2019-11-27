@@ -7,11 +7,11 @@ public class Tester {
 
 		ItemDB.init();
 				
-		ItemDB.save();
+		//ItemDB.save();
+		//ItemDB.addItem(new Item("New Item","Cool description", 3, 73, 6.9));
 		
-		//System.out.println(ItemDB.getFullInventory());
-		;
-		//ItemDB.addItem(new Item("Testing2", "Testing2", 2,2,2));
+		AccountDB.init();
+		
 	}
 
 }

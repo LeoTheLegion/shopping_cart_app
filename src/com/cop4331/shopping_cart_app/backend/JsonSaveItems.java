@@ -12,30 +12,30 @@ public class JsonSaveItems implements ISave<Item> {
 	@Override
 	public void save(String fileName, ArrayList<Item> items) {
 		// TODO Auto-generated method stub
-		JSONArray ja=new JSONArray();
+		JSONArray item_list=new JSONArray();
 		
 		for(int i=0; i<items.size(); i++) {
 			//System.out.println("saving: "+ items.get(i).print());
-			JSONObject jo=new JSONObject();
-			jo.put("name", items.get(i).getName());
-			jo.put("item_description", items.get(i).getDescription());
-			jo.put("sellerID", Integer.toString(items.get(i).getSellerID()));
-			jo.put("quantity", Integer.toString(items.get(i).getQuantity()));
-			jo.put("price", Double.toString(items.get(i).getPrice()));
-			System.out.println("Saving item: " +jo.toString());
-			ja.add(jo);
+			JSONObject item=new JSONObject();
+			item.put("name", items.get(i).getName());
+			item.put("item_description", items.get(i).getDescription());
+			item.put("sellerID", Integer.toString(items.get(i).getSellerID()));
+			item.put("quantity", Integer.toString(items.get(i).getQuantity()));
+			item.put("price", Double.toString(items.get(i).getPrice()));
+			System.out.println("Saving item: " +item.toString());
+			item_list.add(item);
 		}
 
-		PrintWriter pw = null;
+		PrintWriter writer = null;
 		try {
-			pw = new PrintWriter(fileName);
+			writer = new PrintWriter(fileName);
 		} catch (FileNotFoundException e) {
 			
 			System.out.println("File not found");
 		}
-		pw.write(ja.toString());
-		pw.flush();
-		pw.close();
+		writer.write(item_list.toString());
+		writer.flush();
+		writer.close();
 	}
 
 }

@@ -21,13 +21,6 @@ public class JsonLoadItems implements ILoad<Item> {
 			JSONArray jo=(JSONArray) obj;
 			JSONObject ja=new JSONObject();
 			ja=(JSONObject) jo.get(0);
-			/*
-			System.out.println(ja.get("name"));
-			System.out.println(ja.get("item_description"));
-			System.out.println(ja.get("quantity"));
-			System.out.println(ja.get("price"));
-			System.out.println(ja.get("sellerID"));
-			*/
 			
 			//name, description, quantity, price
 			

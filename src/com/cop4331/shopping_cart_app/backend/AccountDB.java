@@ -1,5 +1,6 @@
 package com.cop4331.shopping_cart_app.backend;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -8,14 +9,16 @@ import java.util.*;
  */
 public class AccountDB {
     
-    private static List<Account> accounts=new ArrayList<Account>();
-    
-    public AccountDB() {
-    	//will have to load/create the file for the database
-    }
+    private static ArrayList<Account> accounts;
+    private static String fileName="Accounts.json";
     
     public static void init() {
-    	AccountDB db=new AccountDB();
+    	
+    	if(ifFileExists()) {
+			load();
+		}else {
+			createInitialAccounts();
+		}
     }
     
     public static boolean verify(String username, String password) {
@@ -31,4 +34,28 @@ public class AccountDB {
     	}
     	return new Account();
     }
+    
+    public Account getAccount(String username, String password) {
+    	return null;
+    }
+    
+    public static void createInitialAccounts() {
+    	accounts=new ArrayList<Account>();
+    	accounts.add(new Account("michael", "1234", "customer"));
+    	accounts.add(new Account("justin", "1234", "seller"));
+    	save();
+    }
+    
+    public static void save() {
+    	ISave<Account> accountSaver=new JsonSaveAccounts();
+    	accountSaver.save(fileName, accounts);
+    }
+    
+    public static void load() {
+    	
+    }
+    
+    private static boolean ifFileExists() {
+		return new File(fileName).exists();
+	}
 }
