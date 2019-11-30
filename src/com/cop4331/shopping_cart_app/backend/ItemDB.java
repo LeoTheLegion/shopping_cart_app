@@ -81,7 +81,7 @@ public class ItemDB{
     
     public static void addItem(Item a) {
     	items.add(a);
-    	save();
+    	//save(); <--- too slow
     }
 	
 	
@@ -100,7 +100,7 @@ public class ItemDB{
 		items = itemloader.load(fileName);
 	}
 	
-	static void save() {
+	public static void save() {
 		System.out.println("SAVING ITEMS");
 		ISave<Item> itemSaver = new JsonSaveItems();
 		itemSaver.save(fileName,items);

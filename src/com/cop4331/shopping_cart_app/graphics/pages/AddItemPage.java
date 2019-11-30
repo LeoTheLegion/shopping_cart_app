@@ -69,6 +69,7 @@ public class AddItemPage extends Page implements IPopUp {
 				}
 				
 				ItemDB.addItem(new Item(name,item_description,sellerID,quantity,price));
+				ItemDB.save();
 				
 				WindowManager.getInstance().getMainWindow().SetPage(5);
 				

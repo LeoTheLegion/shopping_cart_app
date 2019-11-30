@@ -73,6 +73,20 @@ public class CheckOutPage extends Page {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
+				HashMap<Integer,Integer> oldcart  = (HashMap<Integer, Integer>) Session.getCookie("cart");
+				Object[] keyset = oldcart.keySet().toArray();
+				for (int i = 0; i < keyset.length; i++) {
+					int itemID = (int) keyset[i];
+					int qual = oldcart.get(keyset[i]);
+					
+					int new_quantity = ItemDB.getItem(itemID).getQuantity() - qual;
+					
+					ItemDB.setQuantity(itemID, new_quantity);
+					ItemDB.save();
+					
+				}
+				
+				
 				HashMap<Integer,Integer> cart = new HashMap<Integer,Integer>();//<itemid,quality>
 				
 				Session.createCookie("cart", cart);

@@ -182,7 +182,6 @@ public class CartPage extends Page {
 					System.out.println("dwadw");
 				}
 
-				System.out.println(Integer.toString(qual));
 				quantity.setText(Integer.toString(cart.get(itemID)));
 				
 			}
