@@ -81,6 +81,12 @@ public class CheckOutPage extends Page {
 					
 					int new_quantity = ItemDB.getItem(itemID).getQuantity() - qual;
 					
+					if(new_quantity < 0) {
+						new_quantity = 0;
+						System.err.println("the new quantity is negative... how?");
+					}
+						
+					
 					ItemDB.setQuantity(itemID, new_quantity);
 					ItemDB.save();
 					

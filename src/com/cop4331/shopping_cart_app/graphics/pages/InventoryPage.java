@@ -223,6 +223,7 @@ public class InventoryPage extends Page {
 				
 				int itemID = ItemDB.getItemID(i);
 				ItemDB.setQuantity(itemID, newQuantity);
+				ItemDB.save();//<--- SUPER SLOW
 			}
 		});
 		
