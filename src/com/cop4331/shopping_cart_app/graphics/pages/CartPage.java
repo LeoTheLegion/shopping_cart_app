@@ -138,9 +138,8 @@ public class CartPage extends Page {
 		HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
 		Object[] keyset = cart.keySet().toArray();
 		for (int i = 0; i < keyset.length; i++) {
-			
-			Item item = ItemDB.getItem((int) keyset[i]);
-			JPanel itemPanel = createItem(item,cart.get(keyset[i]));
+			int itemID = (int) keyset[i];
+			JPanel itemPanel = createItem(itemID,cart.get(keyset[i]));
 			itemPanel.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(itemPanel);
 		}
@@ -153,55 +152,59 @@ public class CartPage extends Page {
 	 * @param q 
 	 * @return
 	 */
-	private JPanel createItem(Item i,int qual) {
-		JPanel item = new JPanel(new GridLayout(1,2));
+	private JPanel createItem(int itemID,int qual) {
+		Item i = ItemDB.getItem(itemID);
+		JPanel itemDisplay = new JPanel(new GridLayout(1,2));
 		
 		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);
-		item.add(itemName);
+		itemDisplay.add(itemName);
 		
 		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
-		item.add(sellerName);
+		itemDisplay.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(qual), SwingConstants.CENTER);
-		item.add(quantity);
+		itemDisplay.add(quantity);
 		
 		JButton addBtn = new JButton("Add ( $" + i.getPrice()+ " )");
-		item.add(addBtn);
+		itemDisplay.add(addBtn);
 		
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
 				
-				if(cart.containsKey(i.getSellerID())) {
-					cart.put(i.getSellerID(), cart.get(i.getSellerID()) + 1 );
+				if(cart.containsKey(itemID)) {
+					cart.put(itemID, cart.get(itemID) + 1 );
+					
 				}
 				else {
-					cart.put(i.getSellerID(), 1)	;
+					cart.put(itemID, 1)	;
+					System.out.println("dwadw");
 				}
-				
-				quantity.setText(Integer.toString(cart.get(i.getSellerID())));
+
+				System.out.println(Integer.toString(qual));
+				quantity.setText(Integer.toString(cart.get(itemID)));
 				
 			}
 		});
 		
 		JButton deleteBtn = new JButton("Delete");
-		item.add(deleteBtn);
+		itemDisplay.add(deleteBtn);
 		
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
 				
-				if(cart.containsKey(i.getSellerID())) {
+				if(cart.containsKey(itemID)) {
 					
-					if(cart.get(i.getSellerID()) > 0) {
-						cart.put(i.getSellerID(), cart.get(i.getSellerID()) - 1 );
-						quantity.setText(Integer.toString(cart.get(i.getSellerID())));
+					if(cart.get(itemID) > 0) {
+						cart.put(itemID, cart.get(itemID) - 1 );
+						quantity.setText(Integer.toString(cart.get(itemID)));
 					}
 					
-					if(cart.get(i.getSellerID()) < 1){
-						cart.remove(i.getSellerID());
+					if(cart.get(itemID) < 1){
+						cart.remove(itemID);
 						//BuildItemContainer();
 						//getWindow().repaint();
 					}
@@ -211,7 +214,7 @@ public class CartPage extends Page {
 			}
 		});
 		
-		return item;
+		return itemDisplay;
 	}
 
 	/* (non-Javadoc)
