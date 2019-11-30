@@ -105,6 +105,7 @@ public class InventoryPage extends Page {
 		contentPanel.setBackground(Color.gray);
 		add(contentPanel,BorderLayout.CENTER);
 		
+		contentPanel.add(createItemContainerHeader());
 		
 		itemContainerPanel =  new JPanel(new FlowLayout());
 		itemContainerPanel.setBackground(Color.black);
@@ -116,6 +117,30 @@ public class InventoryPage extends Page {
 		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
 		contentPanel.add(scrollableItemContainer);
+	}
+	private JPanel createItemContainerHeader() {
+		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
+		
+		JLabel itemName = new JLabel("Name", SwingConstants.CENTER);
+		itemName.setBackground(Color.white);
+		itemName.setOpaque(true);
+		ItemContainerHeader.add(itemName);
+		
+		JLabel Price = new JLabel("Price", SwingConstants.CENTER);
+		Price.setBackground(Color.white);
+		Price.setOpaque(true);
+		ItemContainerHeader.add(Price);
+		
+		JLabel quantity = new JLabel("Quantity", SwingConstants.CENTER);
+		quantity.setBackground(Color.white);
+		quantity.setOpaque(true);
+		ItemContainerHeader.add(quantity);
+
+		
+		ItemContainerHeader.setOpaque(false);
+		ItemContainerHeader.setPreferredSize(new Dimension(1100, 25));
+		
+		return ItemContainerHeader;
 	}
 	/**
 	 * 

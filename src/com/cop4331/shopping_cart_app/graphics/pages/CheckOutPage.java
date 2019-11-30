@@ -89,7 +89,11 @@ public class CheckOutPage extends Page {
 		JPanel contentPanel = new JPanel(new FlowLayout());
 		contentPanel.setBackground(Color.gray);
 		add(contentPanel,BorderLayout.CENTER);
-		
+
+		JPanel cartview = new JPanel(new FlowLayout());
+		cartview.setOpaque(false);
+		cartview.setPreferredSize(new Dimension(400,600));
+		cartview.add(createItemContainerHeader());
 		
 		FlowLayout itemContainer_Layout = new FlowLayout();
 		itemContainerPanel =  new JPanel(itemContainer_Layout);
@@ -99,8 +103,9 @@ public class CheckOutPage extends Page {
 		scrollableItemContainer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(400,550));
-		contentPanel.add(scrollableItemContainer);
+		cartview.add(scrollableItemContainer);
 		
+		contentPanel.add(cartview);
 		
 		JPanel formPanel = new JPanel(new FlowLayout());
 		formPanel.setBackground(Color.LIGHT_GRAY);
@@ -136,6 +141,32 @@ public class CheckOutPage extends Page {
 		input.add(field);
 		
 		return input;
+	}
+	/**
+	 */
+	private JPanel createItemContainerHeader() {
+		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
+		
+		JLabel itemName = new JLabel("Name", SwingConstants.CENTER);
+		itemName.setBackground(Color.white);
+		itemName.setOpaque(true);
+		ItemContainerHeader.add(itemName);
+		
+		JLabel seller = new JLabel("Sold by", SwingConstants.CENTER);
+		seller.setBackground(Color.white);
+		seller.setOpaque(true);
+		ItemContainerHeader.add(seller);
+		
+		JLabel quantity = new JLabel("Quantity", SwingConstants.CENTER);
+		quantity.setBackground(Color.white);
+		quantity.setOpaque(true);
+		ItemContainerHeader.add(quantity);
+
+		
+		ItemContainerHeader.setOpaque(false);
+		ItemContainerHeader.setPreferredSize(new Dimension(300, 25));
+		
+		return ItemContainerHeader;
 	}
 	/**
 	 * 

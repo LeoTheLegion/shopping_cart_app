@@ -85,6 +85,7 @@ public class CartPage extends Page {
 		contentPanel.setBackground(Color.gray);
 		add(contentPanel,BorderLayout.CENTER);
 		
+		contentPanel.add(createItemContainerHeader());
 		
 		FlowLayout itemContainer_Layout = new FlowLayout();
 		itemContainerPanel =  new JPanel(itemContainer_Layout);
@@ -96,6 +97,34 @@ public class CartPage extends Page {
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
 		contentPanel.add(scrollableItemContainer);
 		
+	}
+	/**
+	 */
+	private JPanel createItemContainerHeader() {
+		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
+		
+		JLabel itemName = new JLabel("Name", SwingConstants.CENTER);
+		itemName.setBackground(Color.white);
+		itemName.setOpaque(true);
+		ItemContainerHeader.add(itemName);
+		
+		JLabel seller = new JLabel("Sold by", SwingConstants.CENTER);
+		seller.setBackground(Color.white);
+		seller.setOpaque(true);
+		ItemContainerHeader.add(seller);
+		
+		JLabel quantity = new JLabel("Quantity", SwingConstants.CENTER);
+		quantity.setBackground(Color.white);
+		quantity.setOpaque(true);
+		ItemContainerHeader.add(quantity);
+		
+		ItemContainerHeader.add(Box.createHorizontalStrut(30));
+		ItemContainerHeader.add(Box.createHorizontalStrut(30));
+		
+		ItemContainerHeader.setOpaque(false);
+		ItemContainerHeader.setPreferredSize(new Dimension(1100, 25));
+		
+		return ItemContainerHeader;
 	}
 	/**
 	 * 
