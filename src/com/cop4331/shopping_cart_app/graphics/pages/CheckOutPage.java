@@ -109,17 +109,35 @@ public class CheckOutPage extends Page {
 		
 		JPanel formPanel = new JPanel(new FlowLayout());
 		formPanel.setBackground(Color.LIGHT_GRAY);
-		formPanel.setPreferredSize(new Dimension(400,550));
+		formPanel.setPreferredSize(new Dimension(600,550));
 		contentPanel.add(formPanel);
 		
-		JPanel test = createFormInput("test",300, 50,0.3f);
-		formPanel.add(test);
+		JLabel shipping = new JLabel("Shipping Address", SwingConstants.CENTER);
+		shipping.setBackground(Color.WHITE);
+		shipping.setOpaque(true);
+		shipping.setPreferredSize(new Dimension(600, 50));
 		
-		JPanel test2 = createFormInput("test2",140, 50,0.5f);
-		formPanel.add(test2);
+		formPanel.add(shipping);
 		
-		JPanel test3 = createFormInput("test3",140, 50,0.5f);
-		formPanel.add(test3);
+		formPanel.add(createFormInput("Full name",600, 50,0.3f));
+		formPanel.add(createFormInput("Address",300, 50,0.3f));
+		formPanel.add(createFormInput("City",150, 50,0.3f));
+		formPanel.add(createFormInput("State / Province / Region",390, 50,0.5f));
+		formPanel.add(createFormInput("Postal code",190, 50,0.5f));
+		formPanel.add(createFormInput("Country/Region",450, 50,0.3f));
+		formPanel.add(createFormInput("Phone number",300, 50,0.3f));
+		
+		JLabel card = new JLabel("Payment Method", SwingConstants.CENTER);
+		card.setBackground(Color.WHITE);
+		card.setOpaque(true);
+		card.setPreferredSize(new Dimension(600, 50));
+		
+		formPanel.add(card);
+		
+		formPanel.add(createFormInput("Card number",600, 50,0.3f));
+		formPanel.add(createFormInput("Name on card",600, 50,0.3f));
+		formPanel.add(createFormInput("Expiration date",300, 50,0.3f));
+		
 	}
 	/**
 	 * @param labelWidthPercentage 
