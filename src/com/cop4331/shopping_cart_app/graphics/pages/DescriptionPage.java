@@ -4,6 +4,7 @@
 package com.cop4331.shopping_cart_app.graphics.pages;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -39,6 +40,8 @@ public class DescriptionPage extends Page implements IPopUp {
 		
 		itemName = new JLabel("NULL", SwingConstants.CENTER);	
 		itemName.setPreferredSize(new Dimension(400,100));
+		itemName.setOpaque(true);
+		itemName.setBackground(Color.white);
 		
 		Font itemTitle = new Font("serif", Font.BOLD, 28);
 		itemName.setFont(itemTitle);
@@ -47,10 +50,14 @@ public class DescriptionPage extends Page implements IPopUp {
 		
 		sellerName = new JLabel("NULL", SwingConstants.CENTER);
 		sellerName.setPreferredSize(new Dimension(400,100));
+		sellerName.setBackground(Color.white);
+		sellerName.setOpaque(true);
 		add(sellerName);
 		
 		itemDescription = new JLabel("NULL", SwingConstants.CENTER);
 		itemDescription.setPreferredSize(new Dimension(400,100));
+		itemDescription.setBackground(Color.white);
+		itemDescription.setOpaque(true);
 		add(itemDescription);
 		
 		

@@ -3,6 +3,7 @@
  */
 package com.cop4331.shopping_cart_app.graphics;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.HeadlessException;
 import java.awt.event.WindowEvent;
@@ -31,6 +32,7 @@ public class Window extends JFrame {
 		setLayout(null);  
 		setVisible(true);
 		
+		
 	}
 	/**
 	 * @param arg0
@@ -46,6 +48,7 @@ public class Window extends JFrame {
 		this.repaint();
 		
 		Page page = PageManager.getInstance().getPage(pageIndex);
+		page.setBackground(new Color(82f/255f,115f/255f,128f/255f));
 		System.out.println("Setting Page to " + page.getClass() );
 		page.load();
 		

@@ -36,7 +36,6 @@ public abstract class Page extends JPanel {
 	 * 
 	 */
 	protected void buildPage() {
-		
 	}
 	
 	protected Window getWindow() {

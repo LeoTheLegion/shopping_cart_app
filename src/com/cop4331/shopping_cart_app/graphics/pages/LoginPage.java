@@ -4,6 +4,8 @@
 package com.cop4331.shopping_cart_app.graphics.pages;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,11 +42,11 @@ public class LoginPage extends Page {
 		
 		
 		setBackground(Color.BLACK);
-		this.setLayout(new GridLayout(1,3));
+		this.setLayout(new FlowLayout());
 		
-		JPanel testpanel = new JPanel(new GridLayout(3,1));
-		
-		testpanel.setBackground(getBackground());
+		JPanel mainPanel = new JPanel(new GridLayout(3,1));
+		mainPanel.setPreferredSize(new Dimension(500,700));
+		mainPanel.setBackground(getBackground());
 		
 		JTextField userField = new JTextField("A user name", SwingConstants.CENTER);
 		JTextField passField = new JTextField("test", SwingConstants.CENTER);
@@ -81,14 +83,12 @@ public class LoginPage extends Page {
 		
 		});
 		
-		testpanel.add(userField);
-		testpanel.add(passField);
-		testpanel.add(loginBtn);
+		mainPanel.add(userField);
+		mainPanel.add(passField);
+		mainPanel.add(loginBtn);
 		
 		
-		add(new JPanel());
-		add(testpanel);
-		add(new JPanel());
+		add(mainPanel);
 	}
 	
 	

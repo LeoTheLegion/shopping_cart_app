@@ -4,10 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.Box;
@@ -23,6 +28,7 @@ import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
+import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 public class CartPage extends Page {
 
@@ -45,7 +51,7 @@ public class CartPage extends Page {
 	 */
 	private void BuildHeadPanel() {
 		JPanel headPanel = new JPanel(new FlowLayout());
-		headPanel.setBackground(Color.green);
+		headPanel.setBackground(new Color(43f/255f,105f/255f,128f/255f));
 		add(headPanel,BorderLayout.PAGE_START);
 		
 		headPanel.add(Box.createHorizontalStrut(30));// creates gap
@@ -83,6 +89,7 @@ public class CartPage extends Page {
 	private void BuildContentPanel() {
 		JPanel contentPanel = new JPanel(new FlowLayout());
 		contentPanel.setBackground(Color.gray);
+		contentPanel.setOpaque(false);
 		add(contentPanel,BorderLayout.CENTER);
 		
 		contentPanel.add(createItemContainerHeader());
@@ -157,7 +164,22 @@ public class CartPage extends Page {
 		JPanel itemDisplay = new JPanel(new GridLayout(1,2));
 		
 		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);
+		Font itemTitle =  itemName.getFont();
+		Map attributes = itemTitle.getAttributes();
+		attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+		itemName.setForeground (Color.blue);
+		itemName.setFont(itemTitle.deriveFont(attributes));
 		itemDisplay.add(itemName);
+		
+		itemName.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int popUpPageID = 4;
+				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);
+				d.setItemToDisplay(i);
+				
+				WindowManager.getInstance().createNewWindow(popUpPageID, 500, 700);
+			}
+		});
 		
 		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
 		itemDisplay.add(sellerName);

@@ -44,7 +44,7 @@ public class CheckOutPage extends Page {
 	 */
 	private void BuildHeadPanel() {
 		JPanel headPanel = new JPanel(new FlowLayout());
-		headPanel.setBackground(Color.green);
+		headPanel.setBackground(new Color(43f/255f,105f/255f,128f/255f));
 		add(headPanel,BorderLayout.PAGE_START);
 		
 		headPanel.add(Box.createHorizontalStrut(30));// creates gap
@@ -108,6 +108,7 @@ public class CheckOutPage extends Page {
 	private void BuildContentPanel() {
 		JPanel contentPanel = new JPanel(new FlowLayout());
 		contentPanel.setBackground(Color.gray);
+		contentPanel.setOpaque(false);
 		add(contentPanel,BorderLayout.CENTER);
 
 		JPanel cartview = new JPanel(new FlowLayout());
@@ -129,6 +130,7 @@ public class CheckOutPage extends Page {
 		
 		JPanel formPanel = new JPanel(new FlowLayout());
 		formPanel.setBackground(Color.LIGHT_GRAY);
+		formPanel.setOpaque(false);
 		formPanel.setPreferredSize(new Dimension(600,550));
 		contentPanel.add(formPanel);
 		
