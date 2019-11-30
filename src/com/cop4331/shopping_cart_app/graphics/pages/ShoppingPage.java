@@ -58,9 +58,24 @@ public class ShoppingPage extends Page {
 		headPanel.setBackground(Color.green);
 		add(headPanel,BorderLayout.PAGE_START);
 		
+		JButton LogOutBtn = new JButton();
+		LogOutBtn.setPreferredSize(new Dimension(125,75));
+		LogOutBtn.setText("Login Out");
+		headPanel.add(LogOutBtn);
+		
+		Page pageinQuestion = this;
+		
+		LogOutBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				getWindow().SetPage(0);
+			}
+		});
+		
+		headPanel.add(Box.createHorizontalStrut(30));// creates gap
 		
 		JTextField searchField = new JTextField("dawdawdw");
-		searchField.setPreferredSize(new Dimension(1000,50));
+		searchField.setPreferredSize(new Dimension(700,50));
 		headPanel.add(searchField);
 		
 		headPanel.add(Box.createHorizontalStrut(30));// creates gap
@@ -69,8 +84,6 @@ public class ShoppingPage extends Page {
 		cartBtn.setPreferredSize(new Dimension(125,75));
 		cartBtn.setText("cart");
 		headPanel.add(cartBtn);
-		
-		Page pageinQuestion = this;
 		
 		cartBtn.addActionListener(new ActionListener() {
 			@Override
