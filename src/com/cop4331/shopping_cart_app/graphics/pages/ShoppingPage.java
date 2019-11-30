@@ -21,6 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
@@ -33,6 +35,7 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 public class ShoppingPage extends Page {
 	
 	JPanel itemContainerPanel;
+	JTextField searchField;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -74,9 +77,36 @@ public class ShoppingPage extends Page {
 		
 		headPanel.add(Box.createHorizontalStrut(30));// creates gap
 		
-		JTextField searchField = new JTextField("dawdawdw");
+		searchField = new JTextField("");
 		searchField.setPreferredSize(new Dimension(700,50));
 		headPanel.add(searchField);
+		
+		searchField.getDocument().addDocumentListener(new DocumentListener() {
+
+				@Override
+				public void changedUpdate(DocumentEvent arg0) {
+					// TODO Auto-generated method stub
+					update();
+				}
+			
+				@Override
+				public void insertUpdate(DocumentEvent arg0) {
+					// TODO Auto-generated method stub
+					update();
+				}
+			
+				@Override
+				public void removeUpdate(DocumentEvent arg0) {
+					// TODO Auto-generated method stub
+					update();
+				}
+				
+				void update() {
+					getWindow().SetPage(1);///slow but works for now....
+					searchField.requestFocus();
+				}
+			}
+		);
 		
 		headPanel.add(Box.createHorizontalStrut(30));// creates gap
 		
@@ -152,9 +182,16 @@ public class ShoppingPage extends Page {
 		List<Item> itemsSearched = ItemDB.getFullInventory();
 		
 		for (int i = 0; i < itemsSearched.size(); i++) {
-			JPanel item = createItem(itemsSearched.get(i));
-			item.setPreferredSize(new Dimension(1100, 100));
-			itemContainerPanel.add(item);
+			Item item = itemsSearched.get(i);
+			if(item.getQuantity() <= 0)
+				continue;
+			if(!searchField.getText().isEmpty())
+				if(!item.getName().toLowerCase().contains(searchField.getText().toLowerCase()))
+					continue;
+			
+			JPanel itemDisplay = createItem(itemsSearched.get(i));
+			itemDisplay.setPreferredSize(new Dimension(1100, 100));
+			itemContainerPanel.add(itemDisplay);
 		}
 		
 		int totalHeight = ((FlowLayout) itemContainerPanel.getLayout()).getHgap() +(100 + ((FlowLayout) itemContainerPanel.getLayout()).getHgap()) * itemsSearched.size();
