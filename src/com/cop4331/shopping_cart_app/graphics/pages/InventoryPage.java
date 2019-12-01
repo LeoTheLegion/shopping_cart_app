@@ -188,7 +188,7 @@ public class InventoryPage extends Page {
 			}
 		});
 		
-		JLabel price = new JLabel(Double.toString(i.getPrice()), SwingConstants.CENTER);
+		JLabel price = new JLabel((i.getPrice()), SwingConstants.CENTER);
 		item.add(price);
 		
 		JTextField quantity = new JTextField(Integer.toString(i.getQuantity()), SwingConstants.CENTER);

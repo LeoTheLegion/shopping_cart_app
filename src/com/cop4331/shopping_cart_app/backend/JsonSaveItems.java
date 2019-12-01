@@ -21,7 +21,7 @@ public class JsonSaveItems implements ISave<Item> {
 			item.put("item_description", items.get(i).getDescription());
 			item.put("sellerID", Integer.toString(items.get(i).getSellerID()));
 			item.put("quantity", Integer.toString(items.get(i).getQuantity()));
-			item.put("price", Double.toString(items.get(i).getPrice()));
+			item.put("price", Double.parseDouble(items.get(i).getPrice()));
 			System.out.println("Saving item: " +item.toString());
 			item_list.add(item);
 		}

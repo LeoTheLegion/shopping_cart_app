@@ -1,5 +1,8 @@
 
 package com.cop4331.shopping_cart_app.backend;
+
+import java.text.DecimalFormat;
+
 /**
  *
  * @author Justin Ament
@@ -42,8 +45,9 @@ public class Item {
         return quantity;
     }
     
-    public double getPrice() { 
-    	return price;
+    public String getPrice() { 
+    	DecimalFormat form=new DecimalFormat("0.00");
+    	return form.format(price);
     }
     
     public void setQuantity(int q) {

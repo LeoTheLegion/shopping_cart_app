@@ -9,9 +9,7 @@ public class Tester {
 				
 		//ItemDB.save();
 		//ItemDB.addItem(new Item("New Item","Cool description", 3, 73, 6.9));
-		
 		AccountDB.init();
-		
 	}
 
 }
