@@ -6,7 +6,7 @@ public class Tester {
 		// TODO Auto-generated method stub
 
 		ItemDB.init();
-				
+
 		//ItemDB.save();
 		//ItemDB.addItem(new Item("New Item","Cool description", 3, 73, 6.9));
 		AccountDB.init();
