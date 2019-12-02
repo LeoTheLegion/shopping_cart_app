@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -154,12 +155,14 @@ public class CartPage extends Page {
 			JPanel itemPanel = createItem(itemID,cart.get(keyset[i]));
 			itemPanel.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(itemPanel);
+			
+			total_price+=(Double.parseDouble(ItemDB.getItem(itemID).getPrice())*cart.get(keyset[i]));
 		}
+		DecimalFormat form=new DecimalFormat("0.00");
 		JPanel getPrice=new JPanel();
-		Customer customerNow=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
-		//getPrice.add(new JLabel("Total"));
-		//getPrice.add(new JLabel(customerNow.getTotal()));
-		//itemContainerPanel.add(getPrice);
+		getPrice.add(new JLabel("Total Price: "));
+		getPrice.add(new JLabel("$"+form.format(total_price)));
+		itemContainerPanel.add(getPrice);
 		
 		FlowLayout itemContainer_Layout = (FlowLayout) itemContainerPanel.getLayout();
 		int totalHeight = itemContainer_Layout .getHgap() +(100 + itemContainer_Layout.getHgap()) * keyset.length;
