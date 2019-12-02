@@ -10,9 +10,9 @@ package com.cop4331.shopping_cart_app.backend;
  * @author Justin Ament
  */
 public class Account {
-    private  String username="";
-    private  String password="";
-    public  String acc_type="";
+    protected  String username="";
+    protected  String password="";
+    protected  String acc_type="";
     
     public Account(String username, String password, String acc_type) {
     	this.username=username;

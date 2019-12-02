@@ -10,17 +10,25 @@ import org.json.simple.JSONObject;
 public class JsonSaveAccounts implements ISave<Account> {
 	
 	@Override
-	public void save(String fileName, ArrayList<Account> acc) {
+	public void save(String fileName, ArrayList<Account> accountList) {
 		
-		JSONArray account_list=new JSONArray();
-		for(int i=0; i<acc.size(); i++) {
-			JSONObject account=new JSONObject();
-			account.put("username", acc.get(i).getUsername());
-			account.put("password", acc.get(i).getPassword());
-			account.put("acc_type", acc.get(i).getAccType());
-			System.out.println("Saving user: "+ account.toString());
+		//JSONArray account_list=new JSONArray();
+		for(int i=0; i<accountList.size(); i++) {
+			JSONObject json=new JSONObject();
 			
-			account_list.add(account);
+			Account account = accountList.get(i);
+			
+			json.put("username", account.getUsername());
+			json.put("password", account.getPassword());
+			json.put("acc_type", account.getAccType());
+			
+			if(account instanceof Customer) {
+				json.put("cart", "0:5,1:5,2:5,3:5");
+			}
+			
+			System.out.println("Saving user: "+ json.toString());
+			
+			//account_list.add(json);
 		}
 		PrintWriter writer=null;
 		try {
@@ -29,7 +37,7 @@ public class JsonSaveAccounts implements ISave<Account> {
 			e.getStackTrace();
 		}
 		
-		writer.write(account_list.toString());
+		//writer.write(account_list.toString());
 		writer.flush();
 		writer.close();
 	}

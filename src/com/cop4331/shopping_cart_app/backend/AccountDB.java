@@ -18,6 +18,7 @@ public class AccountDB {
 			load();
 		}else {
 			createInitialAccounts();
+			save();
 		}
     }
     
@@ -41,9 +42,9 @@ public class AccountDB {
     
     public static void createInitialAccounts() {
     	accounts=new ArrayList<Account>();
-    	accounts.add(new Account("michael", "1234", "customer"));
-    	accounts.add(new Account("justin", "1234", "seller"));
-    	save();
+    	accounts.add(new Customer("michael", "1234"));
+    	accounts.add(new Seller("justin", "1234"));
+    	
     }
     
     public static void save() {
@@ -52,7 +53,8 @@ public class AccountDB {
     }
     
     public static void load() {
-    	
+    	ILoad<Account> accountLoader = new JsonLoadAccounts();
+    	accounts = accountLoader.load(accounts);
     }
     
     private static boolean ifFileExists() {

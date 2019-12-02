@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 public class Seller extends Account {
 
-	public Seller(String username, String password, ArrayList<Item> inventory) {
-		
+	public Seller(String username, String password) {
+		this.username = username;
+		this.password = password;
 	}
+	
 }

@@ -4,8 +4,18 @@ import java.util.ArrayList;
 
 public class Customer extends Account {
 	
+	private ArrayList<Item> cart;
+	
 	public Customer(String username, String password, ArrayList<Item> cart) {
-		
+		this.username = username;
+		this.password = password;
+		this.cart = cart;
+	}
+
+	public Customer(String username, String password) {
+		// TODO Auto-generated constructor stub
+		this.username = username;
+		this.password = password;
 	}
 
 }
