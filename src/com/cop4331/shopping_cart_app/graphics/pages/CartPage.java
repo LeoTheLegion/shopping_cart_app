@@ -23,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.cop4331.shopping_cart_app.backend.AccountDB;
+import com.cop4331.shopping_cart_app.backend.Customer;
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
@@ -142,7 +144,7 @@ public class CartPage extends Page {
 		
 		itemContainerPanel.removeAll();
 		
-		HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
+		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 		Object[] keyset = cart.keySet().toArray();
 		for (int i = 0; i < keyset.length; i++) {
 			int itemID = (int) keyset[i];
@@ -193,7 +195,7 @@ public class CartPage extends Page {
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
+				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 				
 				if(cart.containsKey(itemID)) {
 					cart.put(itemID, cart.get(itemID) + 1 );
@@ -205,7 +207,7 @@ public class CartPage extends Page {
 				}
 
 				quantity.setText(Integer.toString(cart.get(itemID)));
-				
+				AccountDB.save();
 			}
 		});
 		
@@ -215,7 +217,7 @@ public class CartPage extends Page {
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
+				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 				
 				if(cart.containsKey(itemID)) {
 					
@@ -231,7 +233,7 @@ public class CartPage extends Page {
 					}
 						
 				}
-				
+				AccountDB.save();
 			}
 		});
 		

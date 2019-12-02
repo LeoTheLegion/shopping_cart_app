@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.cop4331.shopping_cart_app.backend.AccountDB;
+import com.cop4331.shopping_cart_app.backend.Customer;
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
@@ -73,7 +75,7 @@ public class CheckOutPage extends Page {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				HashMap<Integer,Integer> oldcart  = (HashMap<Integer, Integer>) Session.getCookie("cart");
+				HashMap<Integer,Integer> oldcart  = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 				Object[] keyset = oldcart.keySet().toArray();
 				for (int i = 0; i < keyset.length; i++) {
 					int itemID = (int) keyset[i];
@@ -93,9 +95,8 @@ public class CheckOutPage extends Page {
 				}
 				
 				
-				HashMap<Integer,Integer> cart = new HashMap<Integer,Integer>();//<itemid,quality>
-				
-				Session.createCookie("cart", cart);
+				((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart = new HashMap<Integer,Integer>();
+				AccountDB.save();
 				
 				getWindow().SetPage(1);
 				
@@ -217,7 +218,7 @@ public class CheckOutPage extends Page {
 		
 		itemContainerPanel.removeAll();
 		
-		HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
+		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 		Object[] keyset = cart.keySet().toArray();
 		for (int i = 0; i < keyset.length; i++) {
 			

@@ -27,6 +27,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.cop4331.shopping_cart_app.backend.AccountDB;
+import com.cop4331.shopping_cart_app.backend.Customer;
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.core.Authenticator;
@@ -234,7 +236,7 @@ public class ShoppingPage extends Page {
 		addToCartBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				HashMap<Integer,Integer> cart = (HashMap<Integer, Integer>) Session.getCookie("cart");
+				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 				
 				int itemID = ItemDB.getItemID(i);
 				
@@ -246,7 +248,8 @@ public class ShoppingPage extends Page {
 				else {
 					cart.put(itemID, 1)	;
 				}
-					
+				
+				AccountDB.save();
 			}	
 			;
 			

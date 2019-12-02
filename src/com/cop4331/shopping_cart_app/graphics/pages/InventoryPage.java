@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.core.Session;
@@ -156,6 +157,10 @@ public class InventoryPage extends Page {
 		List<Item> itemsSearched = ItemDB.getFullInventory();
 		
 		for (int i = 0; i < itemsSearched.size(); i++) {
+			System.out.println(AccountDB.CURRENTACCOUNT_ID);
+			if(itemsSearched.get(i).getSellerID() != AccountDB.CURRENTACCOUNT_ID)
+				continue;
+			
 			JPanel item = createItem(itemsSearched.get(i));
 			item.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(item);
