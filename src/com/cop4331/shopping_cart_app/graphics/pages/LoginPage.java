@@ -74,12 +74,14 @@ public class LoginPage extends Page {
 				if (accountID >= 0) {
 					Account a = AccountDB.getAccount(accountID);
 					
+					AccountDB.CURRENTACCOUNT_ID = accountID;
+					
 					if(a instanceof Customer)
 						getWindow().SetPage(1);
 					else
 						getWindow().SetPage(5);
 					
-					AccountDB.CURRENTACCOUNT_ID = accountID;
+					
 				}
 				
 //				if(pass.equals("s")) {//temp code

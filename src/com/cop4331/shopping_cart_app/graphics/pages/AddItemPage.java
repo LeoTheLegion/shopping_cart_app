@@ -19,6 +19,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
+import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.IPopUp;
@@ -35,7 +36,6 @@ public class AddItemPage extends Page implements IPopUp {
 	String name = "NULL";
     String item_description = "NULL";
     int quantity;
-    int sellerID; 
     float price;
     
     boolean error = false;
@@ -68,7 +68,7 @@ public class AddItemPage extends Page implements IPopUp {
 					return;
 				}
 				
-				ItemDB.addItem(new Item(name,item_description,sellerID,quantity,price));
+				ItemDB.addItem(new Item(name,item_description,AccountDB.CURRENTACCOUNT_ID,quantity,price));
 				ItemDB.save();
 				
 				WindowManager.getInstance().getMainWindow().SetPage(5);

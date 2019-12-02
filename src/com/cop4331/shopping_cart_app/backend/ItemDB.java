@@ -43,9 +43,9 @@ public class ItemDB{
 		addItem(new Item("Testing1", "Testing1", 1,1,1));
 		addItem(new Item("Testing2", "Testing2", 1,2,2));
 		
-		addItem(new Item("Banana", "Fresh banana", 0, 14, 0.70f));
-		addItem(new Item("Milk", "Whole milk", 0, 12, 2.40f));
-		addItem(new Item("Item", "test item", 0, 1, 1.0f));
+		addItem(new Item("Banana", "Fresh banana", 1, 14, 0.70f));
+		addItem(new Item("Milk", "Whole milk", 1, 12, 2.40f));
+		addItem(new Item("Item", "test item", 1, 1, 1.0f));
 	}
 
 	

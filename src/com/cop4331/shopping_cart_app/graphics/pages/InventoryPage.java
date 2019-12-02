@@ -157,7 +157,6 @@ public class InventoryPage extends Page {
 		List<Item> itemsSearched = ItemDB.getFullInventory();
 		
 		for (int i = 0; i < itemsSearched.size(); i++) {
-			System.out.println(AccountDB.CURRENTACCOUNT_ID);
 			if(itemsSearched.get(i).getSellerID() != AccountDB.CURRENTACCOUNT_ID)
 				continue;
 			
