@@ -19,8 +19,6 @@ import javax.swing.SwingConstants;
 import com.cop4331.shopping_cart_app.backend.Account;
 import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.Customer;
-import com.cop4331.shopping_cart_app.core.Authenticator;
-import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 

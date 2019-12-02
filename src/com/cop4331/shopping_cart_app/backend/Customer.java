@@ -6,8 +6,6 @@ import java.util.HashMap;
 
 import javax.swing.JPanel;
 
-import com.cop4331.shopping_cart_app.core.Session;
-
 
 public class Customer extends Account {
 	

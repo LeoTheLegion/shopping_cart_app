@@ -5,11 +5,9 @@ import java.util.List;
 
 import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
-import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.Window;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
-import com.cop4331.shopping_cart_app.graphics.pages.TestPage;
 import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 public class App {
@@ -21,8 +19,6 @@ public class App {
 		
 		ItemDB.init();
 		AccountDB.init();
-		
-		Session.createNewSession();
 		
 		PageManager.init();
 		WindowManager.init();
