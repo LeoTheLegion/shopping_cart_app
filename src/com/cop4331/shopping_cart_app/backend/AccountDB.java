@@ -54,7 +54,7 @@ public class AccountDB {
     
     public static void load() {
     	ILoad<Account> accountLoader = new JsonLoadAccounts();
-    	accounts = accountLoader.load(accounts);
+    	accounts = accountLoader.load(fileName);
     }
     
     private static boolean ifFileExists() {

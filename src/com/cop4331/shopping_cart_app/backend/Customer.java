@@ -6,10 +6,10 @@ public class Customer extends Account {
 	
 	private ArrayList<Item> cart;
 	
-	public Customer(String username, String password, ArrayList<Item> cart) {
+	public Customer(String username, String password, String cart) {
 		this.username = username;
 		this.password = password;
-		this.cart = cart;
+		
 	}
 
 	public Customer(String username, String password) {
