@@ -23,7 +23,7 @@ public class JsonSaveAccounts implements ISave<Account> {
 			jsonAcc.put("acc_type", account.getAccType());
 			
 			if(account instanceof Customer) {
-				jsonAcc.put("cart", "0:5,1:5,2:5,3:5");
+				jsonAcc.put("cart", ((Customer) account).cartToString());
 			}
 			
 			System.out.println("Saving user: "+ jsonAcc.toString());

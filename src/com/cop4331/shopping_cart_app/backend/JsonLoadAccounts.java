@@ -30,15 +30,13 @@ public class JsonLoadAccounts implements ILoad<Account> {
 				String password=(String) ja.get("password");
 				String cart=(String) ja.get("cart");
 				
-				double price=Double.parseDouble(ja.get("price").toString());
-				int sellerID=Integer.parseInt((String) ja.get("sellerID"));
-				
 				String acc_type=(String) ja.get("acc_type");
 				if(acc_type=="0")
 					li.add(new Customer(username, password,cart));
 				else 
 					li.add(new Seller(username, password));
 				
+				System.out.println("Loading Account :" + username);
 			}
 			
 		} catch (FileNotFoundException e) {

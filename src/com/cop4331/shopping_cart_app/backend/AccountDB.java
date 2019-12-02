@@ -42,7 +42,7 @@ public class AccountDB {
     
     public static void createInitialAccounts() {
     	accounts=new ArrayList<Account>();
-    	accounts.add(new Customer("michael", "1234"));
+    	accounts.add(new Customer("michael", "1234","0:5,1:5,2:5,3:5"));
     	accounts.add(new Seller("justin", "1234"));
     	
     }
