@@ -37,9 +37,9 @@ public class JsonLoadAccounts implements ILoad<Account> {
 					System.out.println("Loading Customer :" + username);
 				}
 				else {
-					double profit=Double.parseDouble(ja.get("profit").toString());
+					double revenue=Double.parseDouble(ja.get("revenue").toString());
 					double cost=Double.parseDouble(ja.get("cost").toString());
-					li.add(new Seller(username, password, profit, cost));
+					li.add(new Seller(username, password, revenue, cost));
 					System.out.println("Loading Seller :" + username);
 				}
 					

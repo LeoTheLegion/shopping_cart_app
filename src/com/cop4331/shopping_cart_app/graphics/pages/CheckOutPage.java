@@ -95,9 +95,9 @@ public class CheckOutPage extends Page {
 					}
 					Seller currSeller=(Seller) AccountDB.getAccount(ItemDB.getItem(itemID).getSellerID());
 					double cost=qual*(Double.parseDouble(ItemDB.getItem(itemID).getInvPrice()));
-					double profit=qual*(Double.parseDouble(ItemDB.getItem(itemID).getPrice()));
+					double revenue=qual*(Double.parseDouble(ItemDB.getItem(itemID).getPrice()));
 					
-					currSeller.addProfit(profit);
+					currSeller.addRev(revenue);
 					currSeller.addCost(cost);
 					
 					ItemDB.setQuantity(itemID, new_quantity);

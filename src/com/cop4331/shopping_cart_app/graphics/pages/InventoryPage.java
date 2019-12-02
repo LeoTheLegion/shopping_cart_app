@@ -72,7 +72,7 @@ public class InventoryPage extends Page {
 		
 		JButton LogOutBtn = new JButton();
 		LogOutBtn.setPreferredSize(new Dimension(125,75));
-		LogOutBtn.setText("Login Out");
+		LogOutBtn.setText("Logout");
 		headPanel.add(LogOutBtn);
 		
 		LogOutBtn.addActionListener(new ActionListener() {
@@ -175,7 +175,7 @@ public class InventoryPage extends Page {
 			Seller currAcc=((Seller) AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID));
 			JPanel info=new JPanel();
 			JLabel getProf=new JLabel("Total profit: $"+(currAcc.getProfit()));
-			JLabel getRev=new JLabel("Total Revenue: $"+(currAcc.getRev()));
+			JLabel getRev=new JLabel("Total Revenue: $"+(currAcc.getRevenue()));
 			JLabel getCosts=new JLabel("Total Costs: $"+(currAcc.getCost()));
 			info.add(getCosts);
 			info.add(getRev);
