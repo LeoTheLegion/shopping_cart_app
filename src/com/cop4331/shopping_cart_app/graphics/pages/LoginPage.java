@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -48,7 +49,7 @@ public class LoginPage extends Page {
 		mainPanel.setBackground(getBackground());
 		
 		JTextField userField = new JTextField("michael", SwingConstants.CENTER);
-		JTextField passField = new JTextField("1234", SwingConstants.CENTER);
+		JPasswordField passField = new JPasswordField("1234", SwingConstants.CENTER);
 		JButton loginBtn = new JButton();
 		
 		loginBtn.setText("Login in");
