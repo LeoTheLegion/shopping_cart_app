@@ -22,8 +22,15 @@ public class AccountDB {
 		}
     }
     
+    //Returns true if the account is in the database, returns false if not
+    //use getAccount method next
     public static boolean verify(String username, String password) {
-    	return true;
+    	for(int i=0; i<accounts.size(); i++) {
+    		if(accounts.get(i).getUsername()==username && accounts.get(i).getPassword()==password) {
+    			return true;
+    		}
+    	}
+    	return false;
     }
     
     protected static Account getAccByUsername(String username) {
@@ -36,8 +43,16 @@ public class AccountDB {
     	return new Account();
     }
     
+    
+    //Returns an empty account if the account is not found, else returns the count if it is found
+    //Method to be called after verify methodS
     public Account getAccount(String username, String password) {
-    	return null;
+    	for(int i=0; i<accounts.size(); i++) {
+    		if(accounts.get(i).getUsername()==username && accounts.get(i).getPassword()==password) {
+    			return accounts.get(i);
+    		}
+    	}
+    	return new Account();
     }
     
     public static void createInitialAccounts() {
