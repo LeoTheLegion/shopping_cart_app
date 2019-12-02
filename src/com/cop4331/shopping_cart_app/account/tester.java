@@ -10,7 +10,6 @@ public class tester {
 		AccountDB.init();
 		ItemDB.init();
 		
-		System.out.println(((Customer) AccountDB.getAccount(0)).getTotal());
 	}
 
 }

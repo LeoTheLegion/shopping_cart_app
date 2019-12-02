@@ -211,7 +211,8 @@ public class CartPage extends Page {
 				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 				
 				if(cart.containsKey(itemID)) {
-					cart.put(itemID, cart.get(itemID) + 1 );
+					if(cart.get(itemID)<i.getQuantity())
+						cart.put(itemID, cart.get(itemID) + 1 );
 					
 				}
 				else {

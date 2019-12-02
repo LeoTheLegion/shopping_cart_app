@@ -53,21 +53,5 @@ public class Customer extends Account {
 		this.password = password;
 	}
 	
-	//Method still not working properly
-	public String getTotal() {
-		double price=0;
-		for(int i=0; i<cart.size(); i++) {
-				try {
-				Item a=ItemDB.getItem(cart.get(i));
-				System.out.println("Item price: "+a.getPrice());
-				price=price+(Double.parseDouble(a.getPrice())*cart.get(i));
-				} catch(NullPointerException e) {
-					System.out.println("Null");
-				}
-		}
-    	DecimalFormat form=new DecimalFormat("0.00");
-    	System.out.println("Price for cart="+form.format(price));
-    	return form.format(price);
-	}
 
 }

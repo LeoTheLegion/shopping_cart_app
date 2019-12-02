@@ -239,6 +239,7 @@ public class ShoppingPage extends Page {
 		addToCartBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
 				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 				
 				int itemID = ItemDB.getItemID(i);
@@ -246,8 +247,10 @@ public class ShoppingPage extends Page {
 				
 				
 				if(cart.containsKey(itemID)) {
-					cart.put(itemID, cart.get(itemID) + 1 );
+					if(cart.get(itemID)<i.getQuantity())
+						cart.put(itemID, cart.get(itemID) + 1 );
 				}
+				
 				else {
 					cart.put(itemID, 1)	;
 				}
