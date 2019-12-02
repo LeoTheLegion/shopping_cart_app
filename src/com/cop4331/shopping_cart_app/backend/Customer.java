@@ -18,17 +18,20 @@ public class Customer extends Account {
 		this.password = password;
 		this.cart = new HashMap<Integer,Integer>();
 		
-		String[] entry = cartStr.split(",");
-		
-		for (int i = 0; i < entry.length; i++) {
-			String[] l = entry[i].split(":");
+		if(!cartStr.isEmpty()) {
+			String[] entry = cartStr.split(",");
 			
-			int itemID = Integer.parseInt(l[0]);
-			int qual = Integer.parseInt(l[1]);
-			
-			cart.put(itemID, qual);
-			
+			for (int i = 0; i < entry.length; i++) {
+				String[] l = entry[i].split(":");
+				
+				int itemID = Integer.parseInt(l[0]);
+				int qual = Integer.parseInt(l[1]);
+				
+				cart.put(itemID, qual);
+				
+			}
 		}
+		
 		
 	}
 	
