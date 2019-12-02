@@ -26,13 +26,13 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import com.cop4331.shopping_cart_app.backend.AccountDB;
-import com.cop4331.shopping_cart_app.backend.Customer;
-import com.cop4331.shopping_cart_app.backend.Item;
-import com.cop4331.shopping_cart_app.backend.ItemDB;
+import com.cop4331.shopping_cart_app.account.Customer;
+import com.cop4331.shopping_cart_app.databases.AccountDB;
+import com.cop4331.shopping_cart_app.databases.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
+import com.cop4331.shopping_cart_app.item.Item;
 
 public class ShoppingPage extends Page {
 	
@@ -65,7 +65,7 @@ public class ShoppingPage extends Page {
 		
 		JButton LogOutBtn = new JButton();
 		LogOutBtn.setPreferredSize(new Dimension(125,75));
-		LogOutBtn.setText("Login Out");
+		LogOutBtn.setText("Logout");
 		headPanel.add(LogOutBtn);
 		
 		Page pageinQuestion = this;
@@ -114,7 +114,7 @@ public class ShoppingPage extends Page {
 		
 		JButton cartBtn = new JButton();
 		cartBtn.setPreferredSize(new Dimension(125,75));
-		cartBtn.setText("cart");
+		cartBtn.setText("Cart");
 		headPanel.add(cartBtn);
 		
 		cartBtn.addActionListener(new ActionListener() {

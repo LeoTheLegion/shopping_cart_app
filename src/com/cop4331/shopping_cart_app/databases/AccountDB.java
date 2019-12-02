@@ -1,7 +1,15 @@
-package com.cop4331.shopping_cart_app.backend;
+package com.cop4331.shopping_cart_app.databases;
 
 import java.io.File;
 import java.util.ArrayList;
+
+import com.cop4331.shopping_cart_app.account.Account;
+import com.cop4331.shopping_cart_app.account.Customer;
+import com.cop4331.shopping_cart_app.account.JsonLoadAccounts;
+import com.cop4331.shopping_cart_app.account.JsonSaveAccounts;
+import com.cop4331.shopping_cart_app.account.Seller;
+import com.cop4331.shopping_cart_app.filemanager.ILoad;
+import com.cop4331.shopping_cart_app.filemanager.ISave;
 
 /**
  *
@@ -71,8 +79,12 @@ public class AccountDB {
     
     public static void createInitialAccounts() {
     	accounts=new ArrayList<Account>();
-    	accounts.add(new Customer("michael", "1234","0:5,1:5,2:5,3:5"));
+    	accounts.add(new Customer("michael", "1234",""));
     	accounts.add(new Seller("justin", "1234"));
+    	accounts.add(new Seller("HP", "1234"));
+    	accounts.add(new Seller("Dell", "1234"));
+    	accounts.add(new Seller("Western Digital", "1234"));
+    	accounts.add(new Seller("Corsair", "1234"));
     	
     }
     

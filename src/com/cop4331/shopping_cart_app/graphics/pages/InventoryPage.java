@@ -28,12 +28,12 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import com.cop4331.shopping_cart_app.backend.AccountDB;
-import com.cop4331.shopping_cart_app.backend.Item;
-import com.cop4331.shopping_cart_app.backend.ItemDB;
+import com.cop4331.shopping_cart_app.databases.AccountDB;
+import com.cop4331.shopping_cart_app.databases.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
+import com.cop4331.shopping_cart_app.item.Item;
 
 /**
  * @author mmena2017
@@ -195,7 +195,7 @@ public class InventoryPage extends Page {
 			}
 		});
 		
-		JLabel price = new JLabel((i.getPrice()), SwingConstants.CENTER);
+		JLabel price = new JLabel("$"+(i.getPrice()), SwingConstants.CENTER);
 		item.add(price);
 		
 		JTextField quantity = new JTextField(Integer.toString(i.getQuantity()), SwingConstants.CENTER);

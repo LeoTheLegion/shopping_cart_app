@@ -11,10 +11,10 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import com.cop4331.shopping_cart_app.backend.AccountDB;
-import com.cop4331.shopping_cart_app.backend.Item;
+import com.cop4331.shopping_cart_app.databases.AccountDB;
 import com.cop4331.shopping_cart_app.graphics.IPopUp;
 import com.cop4331.shopping_cart_app.graphics.Page;
+import com.cop4331.shopping_cart_app.item.Item;
 
 /**
  * @author mmena2017

@@ -18,12 +18,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 
-import com.cop4331.shopping_cart_app.backend.AccountDB;
-import com.cop4331.shopping_cart_app.backend.Item;
-import com.cop4331.shopping_cart_app.backend.ItemDB;
+import com.cop4331.shopping_cart_app.databases.AccountDB;
+import com.cop4331.shopping_cart_app.databases.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.IPopUp;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
+import com.cop4331.shopping_cart_app.item.Item;
 
 /**
  * @author mmena2017

@@ -1,5 +1,5 @@
 
-package com.cop4331.shopping_cart_app.backend;
+package com.cop4331.shopping_cart_app.item;
 
 import java.text.DecimalFormat;
 

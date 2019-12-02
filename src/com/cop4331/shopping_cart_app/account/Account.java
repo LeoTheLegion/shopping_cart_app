@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cop4331.shopping_cart_app.backend;
+package com.cop4331.shopping_cart_app.account;
 
 /**
  *

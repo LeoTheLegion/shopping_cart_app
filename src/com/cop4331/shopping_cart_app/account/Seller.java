@@ -1,4 +1,4 @@
-package com.cop4331.shopping_cart_app.backend;
+package com.cop4331.shopping_cart_app.account;
 
 public class Seller extends Account {
 

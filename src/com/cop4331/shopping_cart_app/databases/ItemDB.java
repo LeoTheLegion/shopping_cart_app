@@ -1,11 +1,17 @@
 
-package com.cop4331.shopping_cart_app.backend;
+package com.cop4331.shopping_cart_app.databases;
 
 
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.cop4331.shopping_cart_app.filemanager.ILoad;
+import com.cop4331.shopping_cart_app.filemanager.ISave;
+import com.cop4331.shopping_cart_app.item.Item;
+import com.cop4331.shopping_cart_app.item.JsonLoadItems;
+import com.cop4331.shopping_cart_app.item.JsonSaveItems;
 
 
 
@@ -35,18 +41,13 @@ public class ItemDB{
 	private static void buildInitialDB() {
 		items = new ArrayList<Item>();
 		
-		addItem(new Item("Testing1", "Testing1", 1,1,1));
-		addItem(new Item("Testing2", "Testing2", 1,2,2));
-		
-		addItem(new Item("Banana", "Fresh banana", 1, 14, 0.70f));
-		addItem(new Item("Milk", "Whole milk", 1, 12, 2.40f));
-		addItem(new Item("Item", "test item", 1, 1, 1.0f));
+		addItem(new Item("Justins Item", "Justins Item to sell", 1,0,15));
 	}
 
 	
 	 //updates the quantity of a certain item
     public static void setQuantity(int itemID, int new_quantity) {
-    	items.get(itemID).quantity=new_quantity;
+    	items.get(itemID).setQuantity(new_quantity);
     }
     
     //gets all items from a seller

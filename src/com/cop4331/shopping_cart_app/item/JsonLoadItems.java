@@ -1,4 +1,4 @@
-package com.cop4331.shopping_cart_app.backend;
+package com.cop4331.shopping_cart_app.item;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import org.json.simple.*;
 import org.json.simple.parser.*;
+
+import com.cop4331.shopping_cart_app.filemanager.ILoad;
 
 public class JsonLoadItems implements ILoad<Item> {
 

@@ -22,13 +22,13 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
-import com.cop4331.shopping_cart_app.backend.AccountDB;
-import com.cop4331.shopping_cart_app.backend.Customer;
-import com.cop4331.shopping_cart_app.backend.Item;
-import com.cop4331.shopping_cart_app.backend.ItemDB;
+import com.cop4331.shopping_cart_app.account.Customer;
+import com.cop4331.shopping_cart_app.databases.AccountDB;
+import com.cop4331.shopping_cart_app.databases.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.Page;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
+import com.cop4331.shopping_cart_app.item.Item;
 
 public class CartPage extends Page {
 
@@ -148,12 +148,18 @@ public class CartPage extends Page {
 		
 		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 		Object[] keyset = cart.keySet().toArray();
+		double total_price=0;
 		for (int i = 0; i < keyset.length; i++) {
 			int itemID = (int) keyset[i];
 			JPanel itemPanel = createItem(itemID,cart.get(keyset[i]));
 			itemPanel.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(itemPanel);
 		}
+		JPanel getPrice=new JPanel();
+		Customer customerNow=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
+		//getPrice.add(new JLabel("Total"));
+		//getPrice.add(new JLabel(customerNow.getTotal()));
+		//itemContainerPanel.add(getPrice);
 		
 		FlowLayout itemContainer_Layout = (FlowLayout) itemContainerPanel.getLayout();
 		int totalHeight = itemContainer_Layout .getHgap() +(100 + itemContainer_Layout.getHgap()) * keyset.length;
