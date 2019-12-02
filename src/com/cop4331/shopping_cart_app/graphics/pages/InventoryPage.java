@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -41,6 +41,10 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
  */
 public class InventoryPage extends Page {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel itemContainerPanel;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
@@ -69,8 +73,6 @@ public class InventoryPage extends Page {
 		LogOutBtn.setPreferredSize(new Dimension(125,75));
 		LogOutBtn.setText("Login Out");
 		headPanel.add(LogOutBtn);
-		
-		Page pageinQuestion = this;
 		
 		LogOutBtn.addActionListener(new ActionListener() {
 			@Override
@@ -117,8 +119,8 @@ public class InventoryPage extends Page {
 		BuildItemContainer();
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
-		scrollableItemContainer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
 		contentPanel.add(scrollableItemContainer);
 	}
@@ -170,6 +172,7 @@ public class InventoryPage extends Page {
 	/**
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(Item i) {
 		JPanel item = new JPanel(new GridLayout(1,2));
 		
@@ -182,6 +185,7 @@ public class InventoryPage extends Page {
 		item.add(itemName);
 		
 		itemName.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				int popUpPageID = 4;
 				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);

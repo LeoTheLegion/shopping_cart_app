@@ -5,13 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
 public class JsonLoadItems implements ILoad<Item> {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public ArrayList<Item> load(String fileName) {
 		

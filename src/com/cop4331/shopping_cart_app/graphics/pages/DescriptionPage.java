@@ -3,23 +3,18 @@
  */
 package com.cop4331.shopping_cart_app.graphics.pages;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.Item;
-import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.IPopUp;
 import com.cop4331.shopping_cart_app.graphics.Page;
-import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 /**
  * @author mmena2017
@@ -27,6 +22,10 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
  */
 public class DescriptionPage extends Page implements IPopUp {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Item item;
 	JLabel itemName,sellerName,itemDescription;
 	/* (non-Javadoc)

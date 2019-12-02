@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -20,7 +19,6 @@ import com.cop4331.shopping_cart_app.backend.Account;
 import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.Customer;
 import com.cop4331.shopping_cart_app.graphics.Page;
-import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 
 /**
  * @author mmena2017
@@ -55,8 +53,6 @@ public class LoginPage extends Page {
 		
 		loginBtn.setText("Login in");
 		
-		Page pageinQuestion = this;
-		
 		loginBtn.addActionListener(new ActionListener() {
 
 			@Override
@@ -81,19 +77,6 @@ public class LoginPage extends Page {
 					
 					
 				}
-				
-//				if(pass.equals("s")) {//temp code
-//					getWindow().SetPage(5);
-//					return;
-//				}
-//				
-//				if(Authenticator.Auth(user, pass)) {
-//					Session.createCookie("username", user);
-//					Session.createCookie("password", pass);
-//					
-//					getWindow().SetPage(1);
-//				}
-				
 				
 			}
 		

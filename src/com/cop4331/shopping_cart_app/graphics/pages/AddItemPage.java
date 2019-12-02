@@ -3,7 +3,6 @@
  */
 package com.cop4331.shopping_cart_app.graphics.pages;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -24,7 +23,6 @@ import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.IPopUp;
 import com.cop4331.shopping_cart_app.graphics.Page;
-import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 /**
@@ -33,6 +31,10 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
  */
 public class AddItemPage extends Page implements IPopUp {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String name = "NULL";
     String item_description = "NULL";
     int quantity;

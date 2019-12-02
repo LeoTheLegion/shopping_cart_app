@@ -21,9 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -37,6 +36,10 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 public class ShoppingPage extends Page {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel itemContainerPanel;
 	JTextField searchField;
 	/* (non-Javadoc)
@@ -139,8 +142,8 @@ public class ShoppingPage extends Page {
 		BuildItemContainer();
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
-		scrollableItemContainer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
 		contentPanel.add(scrollableItemContainer);
 		
@@ -201,6 +204,7 @@ public class ShoppingPage extends Page {
 	/**
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(Item i) {
 		JPanel item = new JPanel(new GridLayout(1,2));
 		
@@ -213,6 +217,7 @@ public class ShoppingPage extends Page {
 		item.add(itemName);
 		
 		itemName.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				int popUpPageID = 4;
 				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);

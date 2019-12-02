@@ -3,13 +3,7 @@
  */
 package com.cop4331.shopping_cart_app.graphics;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 /**

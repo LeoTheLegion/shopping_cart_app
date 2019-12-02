@@ -3,12 +3,17 @@
  */
 package com.cop4331.shopping_cart_app.graphics.pagemanager;
 
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.cop4331.shopping_cart_app.graphics.Page;
-import com.cop4331.shopping_cart_app.graphics.pages.*;
+import com.cop4331.shopping_cart_app.graphics.pages.AddItemPage;
+import com.cop4331.shopping_cart_app.graphics.pages.CartPage;
+import com.cop4331.shopping_cart_app.graphics.pages.CheckOutPage;
+import com.cop4331.shopping_cart_app.graphics.pages.DescriptionPage;
+import com.cop4331.shopping_cart_app.graphics.pages.InventoryPage;
+import com.cop4331.shopping_cart_app.graphics.pages.LoginPage;
+import com.cop4331.shopping_cart_app.graphics.pages.ShoppingPage;
 
 /**
  * @author mmena2017

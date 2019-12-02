@@ -12,7 +12,6 @@ import javax.swing.WindowConstants;
 
 import com.cop4331.shopping_cart_app.App;
 import com.cop4331.shopping_cart_app.graphics.Window;
-import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 
 /**
  * @author mmena2017

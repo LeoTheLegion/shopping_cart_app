@@ -4,13 +4,11 @@
 package com.cop4331.shopping_cart_app.graphics;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.HeadlessException;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
-import com.cop4331.shopping_cart_app.App;
 import com.cop4331.shopping_cart_app.graphics.pagemanager.PageManager;
 
 /**

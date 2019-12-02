@@ -3,14 +3,9 @@ package com.cop4331.shopping_cart_app.backend;
 
 
 
-import java.util.*;
 import java.io.File;
-import java.io.FileNotFoundException; 
-import java.io.PrintWriter;
-
-import org.json.*;
-
-import com.cop4331.shopping_cart_app.backend.Item;
+import java.util.ArrayList;
+import java.util.List;
 
 
 

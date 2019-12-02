@@ -4,11 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.simple.*;
 
 public class JsonSaveAccounts implements ISave<Account> {
 	
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public void save(String fileName, ArrayList<Account> accountList) {
 		

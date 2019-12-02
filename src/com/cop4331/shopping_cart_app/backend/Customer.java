@@ -1,10 +1,6 @@
 package com.cop4331.shopping_cart_app.backend;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.swing.JPanel;
 
 
 public class Customer extends Account {

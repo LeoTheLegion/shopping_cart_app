@@ -13,14 +13,13 @@ import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import com.cop4331.shopping_cart_app.backend.AccountDB;
@@ -33,6 +32,10 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 public class CartPage extends Page {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPanel itemContainerPanel;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
@@ -100,8 +103,8 @@ public class CartPage extends Page {
 		itemContainerPanel.setBackground(Color.black);
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
-		scrollableItemContainer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollableItemContainer.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
 		contentPanel.add(scrollableItemContainer);
 		
@@ -160,6 +163,7 @@ public class CartPage extends Page {
 	 * @param q 
 	 * @return
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(int itemID,int qual) {
 		Item i = ItemDB.getItem(itemID);
 		JPanel itemDisplay = new JPanel(new GridLayout(1,2));
@@ -173,6 +177,7 @@ public class CartPage extends Page {
 		itemDisplay.add(itemName);
 		
 		itemName.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent e) {
 				int popUpPageID = 4;
 				DescriptionPage d = (DescriptionPage) PageManager.getInstance().getPage(popUpPageID);
