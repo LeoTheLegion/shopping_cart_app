@@ -183,7 +183,7 @@ public class CartPage extends Page {
 			}
 		});
 		
-		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
+		JLabel sellerName = new JLabel(AccountDB.getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
 		itemDisplay.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(qual), SwingConstants.CENTER);

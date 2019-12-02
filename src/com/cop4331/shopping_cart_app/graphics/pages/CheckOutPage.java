@@ -242,7 +242,7 @@ public class CheckOutPage extends Page {
 		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);
 		item.add(itemName);
 		
-		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
+		JLabel sellerName = new JLabel(AccountDB.getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
 		item.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(qual), SwingConstants.CENTER);

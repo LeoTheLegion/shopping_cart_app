@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import com.cop4331.shopping_cart_app.backend.AccountDB;
 import com.cop4331.shopping_cart_app.backend.Item;
 import com.cop4331.shopping_cart_app.backend.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.IPopUp;
@@ -73,7 +74,7 @@ public class DescriptionPage extends Page implements IPopUp {
 		super.load();
 		
 		itemName.setText(item.getName()); 
-		sellerName.setText("Sold by "+ Integer.toString(item.getSellerID())); 
+		sellerName.setText("Sold by "+ AccountDB.getAccount(item.getSellerID()).getUsername()); 
 		itemDescription.setText(item.getDescription()); 
 	}
 	

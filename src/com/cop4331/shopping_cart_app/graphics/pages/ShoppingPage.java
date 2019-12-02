@@ -224,7 +224,7 @@ public class ShoppingPage extends Page {
 			}
 		});
 		
-		JLabel sellerName = new JLabel(Integer.toString(i.getSellerID()), SwingConstants.CENTER);
+		JLabel sellerName = new JLabel(AccountDB.getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
 		item.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(i.getQuantity()), SwingConstants.CENTER);
