@@ -16,6 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.cop4331.shopping_cart_app.backend.Account;
+import com.cop4331.shopping_cart_app.backend.AccountDB;
+import com.cop4331.shopping_cart_app.backend.Customer;
 import com.cop4331.shopping_cart_app.core.Authenticator;
 import com.cop4331.shopping_cart_app.core.Session;
 import com.cop4331.shopping_cart_app.graphics.Page;
@@ -48,8 +51,8 @@ public class LoginPage extends Page {
 		mainPanel.setPreferredSize(new Dimension(500,700));
 		mainPanel.setBackground(getBackground());
 		
-		JTextField userField = new JTextField("A user name", SwingConstants.CENTER);
-		JTextField passField = new JTextField("test", SwingConstants.CENTER);
+		JTextField userField = new JTextField("michael", SwingConstants.CENTER);
+		JTextField passField = new JTextField("1234", SwingConstants.CENTER);
 		JButton loginBtn = new JButton();
 		
 		loginBtn.setText("Login in");
@@ -66,17 +69,30 @@ public class LoginPage extends Page {
 				String user = userField.getText();
 				String pass = passField.getText();
 				
-				if(pass.equals("s")) {//temp code
-					getWindow().SetPage(5);
-					return;
+				int accountID = AccountDB.getAccountID(user, pass);
+				
+				if (accountID >= 0) {
+					Account a = AccountDB.getAccount(accountID);
+					
+					if(a instanceof Customer)
+						getWindow().SetPage(1);
+					else
+						getWindow().SetPage(5);
+					
+					AccountDB.CURRENTACCOUNT_ID = accountID;
 				}
 				
-				if(Authenticator.Auth(user, pass)) {
-					Session.createCookie("username", user);
-					Session.createCookie("password", pass);
-					
-					getWindow().SetPage(1);
-				}
+//				if(pass.equals("s")) {//temp code
+//					getWindow().SetPage(5);
+//					return;
+//				}
+//				
+//				if(Authenticator.Auth(user, pass)) {
+//					Session.createCookie("username", user);
+//					Session.createCookie("password", pass);
+//					
+//					getWindow().SetPage(1);
+//				}
 				
 				
 			}

@@ -11,7 +11,7 @@ import com.cop4331.shopping_cart_app.core.Session;
 
 public class Customer extends Account {
 	
-	private HashMap<Integer,Integer> cart;
+	public HashMap<Integer,Integer> cart;
 	
 	public Customer(String username, String password, String cartStr) {
 		this.username = username;

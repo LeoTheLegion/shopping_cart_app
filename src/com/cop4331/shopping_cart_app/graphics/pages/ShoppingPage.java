@@ -49,10 +49,6 @@ public class ShoppingPage extends Page {
 		setBackground(Color.BLACK);
 		this.setLayout(new BorderLayout());
 		
-		HashMap<Integer,Integer> cart = new HashMap<Integer,Integer>();//<itemid,quality>
-		
-		Session.createCookie("cart", cart);
-		
 		BuildHeadPanel();
 		BuildContentPanel();
 	}

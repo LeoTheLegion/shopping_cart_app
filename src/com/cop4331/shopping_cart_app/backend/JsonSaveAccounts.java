@@ -20,10 +20,14 @@ public class JsonSaveAccounts implements ISave<Account> {
 			
 			jsonAcc.put("username", account.getUsername());
 			jsonAcc.put("password", account.getPassword());
-			jsonAcc.put("acc_type", account.getAccType());
+			
 			
 			if(account instanceof Customer) {
+				jsonAcc.put("acc_type", "0");
 				jsonAcc.put("cart", ((Customer) account).cartToString());
+			}
+			else {
+				jsonAcc.put("acc_type", "1");
 			}
 			
 			System.out.println("Saving user: "+ jsonAcc.toString());

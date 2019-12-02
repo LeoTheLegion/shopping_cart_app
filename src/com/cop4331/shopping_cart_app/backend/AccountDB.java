@@ -8,7 +8,7 @@ import java.util.*;
  * @author Justin Ament
  */
 public class AccountDB {
-    
+    public static int CURRENTACCOUNT_ID = -1;
     private static ArrayList<Account> accounts;
     private static String fileName="Accounts.json";
     
@@ -36,7 +36,7 @@ public class AccountDB {
     protected static Account getAccByUsername(String username) {
     	
     	for(int i=0; i<accounts.size(); i++) {
-    		if(accounts.get(i).getUsername()==username) {
+    		if(accounts.get(i).getUsername().equals(username)) {
     			return accounts.get(i);
     		}
     	}
@@ -46,13 +46,27 @@ public class AccountDB {
     
     //Returns an empty account if the account is not found, else returns the count if it is found
     //Method to be called after verify methodS
-    public Account getAccount(String username, String password) {
+    public static Account getAccount(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
     		if(accounts.get(i).getUsername()==username && accounts.get(i).getPassword()==password) {
     			return accounts.get(i);
     		}
     	}
     	return new Account();
+    }
+    
+    public static int getAccountID(String username, String password) {
+    	for(int i=0; i<accounts.size(); i++) {
+    		Account a = accounts.get(i);
+    		if(a.getUsername().equals(username) && a.getPassword().equals(password)) {
+    			return i;
+    		}
+    	}
+    	return -1;
+    }
+    
+    public static Account getAccount(int id) {
+    	return accounts.get(id);
     }
     
     public static void createInitialAccounts() {
