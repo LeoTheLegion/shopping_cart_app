@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import com.cop4331.shopping_cart_app.account.Seller;
 import com.cop4331.shopping_cart_app.databases.AccountDB;
 import com.cop4331.shopping_cart_app.databases.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.Page;
@@ -137,6 +138,11 @@ public class InventoryPage extends Page {
 		Price.setOpaque(true);
 		ItemContainerHeader.add(Price);
 		
+		JLabel invPrice = new JLabel("Invoice Price", SwingConstants.CENTER);
+		invPrice.setBackground(Color.white);
+		invPrice.setOpaque(true);
+		ItemContainerHeader.add(invPrice);
+		
 		JLabel quantity = new JLabel("Quantity", SwingConstants.CENTER);
 		quantity.setBackground(Color.white);
 		quantity.setOpaque(true);
@@ -156,14 +162,25 @@ public class InventoryPage extends Page {
 		itemContainerPanel.removeAll();
 		
 		List<Item> itemsSearched = ItemDB.getFullInventory();
-		
+		double total_rev=0;
 		for (int i = 0; i < itemsSearched.size(); i++) {
 			if(itemsSearched.get(i).getSellerID() != AccountDB.CURRENTACCOUNT_ID)
 				continue;
-			
 			JPanel item = createItem(itemsSearched.get(i));
 			item.setPreferredSize(new Dimension(1100, 100));
-			itemContainerPanel.add(item);
+			itemContainerPanel.add(item);			
+		}
+		
+		if(AccountDB.CURRENTACCOUNT_ID!=-1) {
+			Seller currAcc=((Seller) AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID));
+			JPanel info=new JPanel();
+			JLabel getProf=new JLabel("Total profit: $"+(currAcc.getProfit()));
+			JLabel getRev=new JLabel("Total Revenue: $"+(currAcc.getRev()));
+			JLabel getCosts=new JLabel("Total Costs: $"+(currAcc.getCost()));
+			info.add(getCosts);
+			info.add(getRev);
+			info.add(getProf);
+			itemContainerPanel.add(info);
 		}
 		
 		int totalHeight = ((FlowLayout) itemContainerPanel.getLayout()).getHgap() +(100 + ((FlowLayout) itemContainerPanel.getLayout()).getHgap()) * itemsSearched.size();
@@ -197,6 +214,9 @@ public class InventoryPage extends Page {
 		
 		JLabel price = new JLabel("$"+(i.getPrice()), SwingConstants.CENTER);
 		item.add(price);
+		
+		JLabel invPrice=new JLabel("$"+(i.getInvPrice()), SwingConstants.CENTER);
+		item.add(invPrice);
 		
 		JTextField quantity = new JTextField(Integer.toString(i.getQuantity()), SwingConstants.CENTER);
 		item.add(quantity);

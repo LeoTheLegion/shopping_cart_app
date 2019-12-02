@@ -80,11 +80,11 @@ public class AccountDB {
     public static void createInitialAccounts() {
     	accounts=new ArrayList<Account>();
     	accounts.add(new Customer("michael", "1234",""));
-    	accounts.add(new Seller("justin", "1234"));
-    	accounts.add(new Seller("HP", "1234"));
-    	accounts.add(new Seller("Dell", "1234"));
-    	accounts.add(new Seller("Western Digital", "1234"));
-    	accounts.add(new Seller("Corsair", "1234"));
+    	accounts.add(new Seller("justin", "1234",0,0));
+    	accounts.add(new Seller("HP", "1234",0,0));
+    	accounts.add(new Seller("Dell", "1234",0,0));
+    	accounts.add(new Seller("Western Digital", "1234",0,0));
+    	accounts.add(new Seller("Corsair", "1234",0,0));
     	
     }
     

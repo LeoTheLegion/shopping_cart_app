@@ -29,6 +29,8 @@ public class JsonSaveAccounts implements ISave<Account> {
 				jsonAcc.put("cart", ((Customer) account).cartToString());
 			}
 			else {
+				jsonAcc.put("profit", ((Seller) account).getProfit());
+				jsonAcc.put("cost", ((Seller) account).getCost());
 				jsonAcc.put("acc_type", "1");
 			}
 			

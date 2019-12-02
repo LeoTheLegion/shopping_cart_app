@@ -41,7 +41,7 @@ public class ItemDB{
 	private static void buildInitialDB() {
 		items = new ArrayList<Item>();
 		
-		addItem(new Item("Justins Item", "Justins Item to sell", 1,0,15));
+		addItem(new Item("Justins Item", "Justins Item to sell", 1,0,15,8));
 	}
 
 	

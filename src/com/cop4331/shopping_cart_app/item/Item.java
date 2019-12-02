@@ -14,14 +14,16 @@ public class Item {
     int quantity=0;
     private  int sellerID=-1; 
     private  double price=0;
+	private double invPrice=0;
     
     //name, description, quantity, price
-    public Item(String name, String item_description, int sellerID, int quantity, double price) {
+    public Item(String name, String item_description, int sellerID, int quantity, double price, double invPrice) {
         this.name=name;
         this.item_description=item_description;
         this.sellerID=sellerID;
         this.quantity=quantity;
         this.price=price;
+        this.invPrice=invPrice;
     }
     
     //Item doesn't exist
@@ -48,6 +50,11 @@ public class Item {
     public String getPrice() { 
     	DecimalFormat form=new DecimalFormat("0.00");
     	return form.format(price);
+    }
+    
+    public String getInvPrice() {
+    	DecimalFormat form=new DecimalFormat("0.00");
+    	return form.format(this.invPrice);
     }
     
     public void setQuantity(int q) {

@@ -32,8 +32,9 @@ public class JsonLoadItems implements ILoad<Item> {
 				int quantity= Integer.parseInt((String) ja.get("quantity"));
 				double price=Double.parseDouble(ja.get("price").toString());
 				int sellerID=Integer.parseInt((String) ja.get("sellerID"));
+				double invPrice=Double.parseDouble(ja.get("invPrice").toString());
 				
-				li.add(new Item(name, item_description, sellerID, quantity, price));
+				li.add(new Item(name, item_description, sellerID, quantity, price, invPrice));
 				System.out.println("Loading Item :"+li.get(i).print());
 			}
 			

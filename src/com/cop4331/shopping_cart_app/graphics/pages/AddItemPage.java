@@ -39,6 +39,7 @@ public class AddItemPage extends Page implements IPopUp {
     String item_description = "NULL";
     int quantity;
     float price;
+    float invPrice;
     
     boolean error = false;
 	
@@ -57,6 +58,7 @@ public class AddItemPage extends Page implements IPopUp {
 		add(createDescriptionInput());
 		add(createQualtityInput());
 		add(createPriceInput());
+		add(createInvPriceInput());
 		
 		JButton addNewItemBtn = new JButton();
 		addNewItemBtn.setPreferredSize(new Dimension(125,75));
@@ -70,7 +72,7 @@ public class AddItemPage extends Page implements IPopUp {
 					return;
 				}
 				
-				ItemDB.addItem(new Item(name,item_description,AccountDB.CURRENTACCOUNT_ID,quantity,price));
+				ItemDB.addItem(new Item(name,item_description,AccountDB.CURRENTACCOUNT_ID,quantity,price, invPrice));
 				ItemDB.save();
 				
 				WindowManager.getInstance().getMainWindow().SetPage(5);
@@ -240,6 +242,54 @@ public class AddItemPage extends Page implements IPopUp {
 						
 						try {
 							price = Float.parseFloat(str);
+							error = false;
+						} catch (NumberFormatException e1) {
+							// TODO Auto-generated catch block
+							//e1.printStackTrace();
+							error = true;
+						}
+					} catch (BadLocationException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					
+				}
+			}
+		);
+	}
+	
+	/**
+	 * @return
+	 */
+	private JPanel createInvPriceInput() {
+		return createFormInput("Invoice Price", 400, 100, 0.25f, new DocumentListener() {
+
+				@Override
+				public void changedUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					update(e);
+				}
+				
+				@Override
+				public void insertUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					update(e);
+				}
+				
+				@Override
+				public void removeUpdate(DocumentEvent e) {
+					// TODO Auto-generated method stub
+					update(e);
+				}
+				
+				void update(DocumentEvent e) {
+					int l = e.getDocument().getLength();
+					try {
+						String str = e.getDocument().getText(0,l);
+						
+						try {
+							invPrice = Float.parseFloat(str);
 							error = false;
 						} catch (NumberFormatException e1) {
 							// TODO Auto-generated catch block

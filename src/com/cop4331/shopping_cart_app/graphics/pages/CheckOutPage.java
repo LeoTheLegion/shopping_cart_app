@@ -20,6 +20,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 import com.cop4331.shopping_cart_app.account.Customer;
+import com.cop4331.shopping_cart_app.account.Seller;
 import com.cop4331.shopping_cart_app.databases.AccountDB;
 import com.cop4331.shopping_cart_app.databases.ItemDB;
 import com.cop4331.shopping_cart_app.graphics.Page;
@@ -92,7 +93,12 @@ public class CheckOutPage extends Page {
 						new_quantity = 0;
 						System.err.println("the new quantity is negative... how?");
 					}
-						
+					Seller currSeller=(Seller) AccountDB.getAccount(ItemDB.getItem(itemID).getSellerID());
+					double cost=qual*(Double.parseDouble(ItemDB.getItem(itemID).getInvPrice()));
+					double profit=qual*(Double.parseDouble(ItemDB.getItem(itemID).getPrice()));
+					
+					currSeller.addProfit(profit);
+					currSeller.addCost(cost);
 					
 					ItemDB.setQuantity(itemID, new_quantity);
 					ItemDB.save();
