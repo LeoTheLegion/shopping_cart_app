@@ -40,7 +40,7 @@ public class ItemDB{
 	}
 	
 	/**
-	 * @return
+	 * @returns INSTANCE
 	 */
 	public static ItemDB getInstance() {
 		if(INSTANCE == null) {
@@ -53,35 +53,33 @@ public class ItemDB{
 	}
 	
 	/**
-	 * 
+	 * Forces creates INSTANCE
 	 */
 	public static void init() {
 		getInstance();
 	}
 
 	/**
-	 * 
+	 * build prefab DB
 	 */
 	private void buildInitialDB() {
 		items = new ArrayList<Item>();
 		
 		addItem(new Item("Justins Item", "Justins Item to sell", 1,0,15,8));
 	}
-
 	
-	 //updates the quantity of a certain item
     /**
      * @param itemID
      * @param new_quantity
+     * updates the quantity of a certain item
      */
     public void setQuantity(int itemID, int new_quantity) {
     	items.get(itemID).setQuantity(new_quantity);
     }
     
-    //gets all items from a seller
     /**
      * @param id
-     * @return
+     * @returns items from a seller
      */
     public List<Item> getItemBySeller(int id) {
     	List<Item> seller_items=new ArrayList<Item>();
@@ -90,10 +88,8 @@ public class ItemDB{
     	}
     	return seller_items;
     }
-    
-    //returns full item list, eventually change to sample list of items
     /**
-     * @return
+     * @returns item list
      */
     public List<Item> getFullInventory() {
     	return items;
@@ -101,7 +97,7 @@ public class ItemDB{
     
     /**
      * @param itemID
-     * @return
+     * @returns item
      */
     public Item getItem(int itemID) {
     	return items.get(itemID);
@@ -109,7 +105,7 @@ public class ItemDB{
     
     /**
      * @param a
-     * @return
+     * @return itemID
      */
     public int getItemID(Item a) {
     	int value=-1;
@@ -121,6 +117,7 @@ public class ItemDB{
     
     /**
      * @param a
+     * adds item to DB
      */
     public void addItem(Item a) {
     	items.add(a);
@@ -129,7 +126,7 @@ public class ItemDB{
 	
 	
 	/**
-	 * @return
+	 * @returns true if file exists
 	 */
 	private boolean ifFileExists() {
 		return new File(fileName).exists();
@@ -137,7 +134,7 @@ public class ItemDB{
 	 
 	
 	/**
-	 * 
+	 * loads DB
 	 */
 	void load() {
 		System.out.println("LOADING ITEMS");
@@ -147,7 +144,7 @@ public class ItemDB{
 	}
 	
 	/**
-	 * 
+	 * save DB
 	 */
 	public void save() {
 		System.out.println("SAVING ITEMS");

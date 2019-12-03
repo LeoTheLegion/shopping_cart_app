@@ -14,6 +14,8 @@ public class JsonLoadItems implements ILoad<Item> {
 
 	/* (non-Javadoc)
 	 * @see com.cop4331.shopping_cart_app.filemanager.ILoad#load(java.lang.String)
+	 * 
+	 * Load items via JSON
 	 */
 	@SuppressWarnings("deprecation")
 	@Override

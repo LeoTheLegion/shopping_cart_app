@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public interface ILoad<E> {
 	/**
+	 * Adapter
 	 * @param fileName
-	 * @return
+	 * @returns Col
 	 */
 	ArrayList<E> load(String fileName);
 }

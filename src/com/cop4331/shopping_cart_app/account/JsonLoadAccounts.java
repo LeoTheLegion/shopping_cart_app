@@ -14,6 +14,9 @@ public class JsonLoadAccounts implements ILoad<Account> {
 
 	/* (non-Javadoc)
 	 * @see com.cop4331.shopping_cart_app.filemanager.ILoad#load(java.lang.String)
+	 * 
+	 * 
+	 * loads Acccount via Json
 	 */
 	@SuppressWarnings("deprecation")
 	@Override

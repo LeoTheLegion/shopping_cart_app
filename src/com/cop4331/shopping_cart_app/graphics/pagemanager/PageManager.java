@@ -43,14 +43,14 @@ public class PageManager {
 	}
 	
 	/**
-	 * 
+	 * forces creates INSTANCE
 	 */
 	public static void init() {
 		getInstance();
 	}
 	
 	/**
-	 * @return
+	 * @returns INSTANCE
 	 */
 	public static PageManager getInstance() {
 		if(INSTANCE == null) {
@@ -63,6 +63,7 @@ public class PageManager {
 	}
 	/**
 	 * @param p
+	 * loads pages into list. 
 	 */
 	private void LoadPage(Page p) {
 		System.out.println("Building Page " + p.getClass() + ". Assigning to pageIndex:" + pages.size() );
@@ -71,7 +72,7 @@ public class PageManager {
 
 	/**
 	 * @param pageIndex
-	 * @return
+	 * @returns page
 	 */
 	public Page getPage(int pageIndex) {
 		// TODO Auto-generated method stub
@@ -84,7 +85,7 @@ public class PageManager {
 
 	/**
 	 * @param page
-	 * @return
+	 * @return pageID
 	 */
 	public int getPageIndex(Page page) {
 		for (int i = 0; i < pages.size(); i++) {

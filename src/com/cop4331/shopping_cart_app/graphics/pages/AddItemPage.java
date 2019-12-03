@@ -84,7 +84,7 @@ public class AddItemPage extends Page implements IPopUp {
 	}
 
 	/**
-	 * @return
+	 * @returns nameInput
 	 */
 	private JPanel createNameInput() {
 		return createFormInput("Name", 400, 100, 0.25f, new DocumentListener() {
@@ -125,7 +125,7 @@ public class AddItemPage extends Page implements IPopUp {
 	}
 	
 	/**
-	 * @return
+	 * @returns DescriptionInput
 	 */
 	private JPanel createDescriptionInput() {
 		return createFormInput("Description", 400, 100, 0.25f, new DocumentListener() {
@@ -165,7 +165,7 @@ public class AddItemPage extends Page implements IPopUp {
 		);
 	}
 	/**
-	 * @return
+	 * @return QualtityInput
 	 */
 	private JPanel createQualtityInput() {
 		return createFormInput("Qualtity", 200, 100, 0.25f, new DocumentListener() {
@@ -212,7 +212,7 @@ public class AddItemPage extends Page implements IPopUp {
 		);
 	}
 	/**
-	 * @return
+	 * @return PriceInput
 	 */
 	private JPanel createPriceInput() {
 		return createFormInput("Price", 200, 100, 0.25f, new DocumentListener() {
@@ -260,7 +260,7 @@ public class AddItemPage extends Page implements IPopUp {
 	}
 	
 	/**
-	 * @return
+	 * @returns InvPriceInput
 	 */
 	private JPanel createInvPriceInput() {
 		return createFormInput("Invoice Price", 400, 100, 0.25f, new DocumentListener() {
@@ -320,7 +320,7 @@ public class AddItemPage extends Page implements IPopUp {
 	 * @param height
 	 * @param labelWidthPercentage
 	 * @param documentListener
-	 * @return
+	 * @returns FormInput
 	 */
 	private JPanel createFormInput(String text, int width, int height, float labelWidthPercentage, DocumentListener documentListener) {
 		JPanel input = new JPanel(new FlowLayout());

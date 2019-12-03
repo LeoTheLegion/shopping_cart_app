@@ -20,7 +20,7 @@ public class Seller extends Account {
 	}
 	
 	/**
-	 * @return
+	 * @returns Revenue
 	 */
 	public String getRevenue() {
 		DecimalFormat form=new DecimalFormat("0.00");
@@ -29,7 +29,7 @@ public class Seller extends Account {
 	
 	
 	/**
-	 * @return
+	 * @returns cost
 	 */
 	public String getCost() {
 		DecimalFormat form=new DecimalFormat("0.00");
@@ -37,7 +37,7 @@ public class Seller extends Account {
 	}
 
 	/**
-	 * @return
+	 * @returns Profit
 	 */
 	public String getProfit() {
 		// TODO Auto-generated method stub
@@ -47,6 +47,7 @@ public class Seller extends Account {
 
 	/**
 	 * @param revenue
+	 * adds to revenue
 	 */
 	public void addRev(double revenue) {
 		// TODO Auto-generated method stub
@@ -55,6 +56,7 @@ public class Seller extends Account {
 	
 	/**
 	 * @param cost
+	 * adds to cost
 	 */
 	public void addCost(double cost) {
 		this.cost+=cost;

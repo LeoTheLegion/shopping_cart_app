@@ -11,12 +11,11 @@ import java.text.DecimalFormat;
 public class Item {
     private  String name="";
     private  String item_description="";
-    int quantity=0;
+    private int quantity=0;
     private  int sellerID=-1; 
     private  double price=0;
 	private double invPrice=0;
-    
-    //name, description, quantity, price
+	
     /**
      * @param name
      * @param item_description
@@ -43,35 +42,35 @@ public class Item {
     }
     
     /**
-     * @return
+     * @returns Name
      */
     public String getName() {
         return name;
     }
     
     /**
-     * @return
+     * @return Description
      */
     public String getDescription() {
         return item_description;
     }
     
     /**
-     * @return
+     * @return SellerID
      */
     public int getSellerID() {
         return sellerID;
     }
     
     /**
-     * @return
+     * @return Quantity
      */
     public int getQuantity() {
         return quantity;
     }
     
     /**
-     * @return
+     * @return Price
      */
     public String getPrice() { 
     	DecimalFormat form=new DecimalFormat("0.00");
@@ -79,7 +78,7 @@ public class Item {
     }
     
     /**
-     * @return
+     * @return InvPrice
      */
     public String getInvPrice() {
     	DecimalFormat form=new DecimalFormat("0.00");
@@ -88,14 +87,13 @@ public class Item {
     
     /**
      * @param q
+     * sets Quantity to q
      */
     public void setQuantity(int q) {
     	this.quantity = q;
     }
-    
-    //used for testing purposes
     /**
-     * @return
+     * @returns item toString
      */
     public String print() {
     	return name+" "+ item_description + " " + Integer.toString(quantity) + " " + Double.toString(price);

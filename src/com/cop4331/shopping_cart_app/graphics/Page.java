@@ -27,20 +27,20 @@ public abstract class Page extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * build pages
 	 */
 	protected void buildPage() {
 	}
 	
 	/**
-	 * @return
+	 * @returns the window the page lives on
 	 */
 	protected Window getWindow() {
 		return (Window) SwingUtilities.getWindowAncestor(this);
 	}
 
 	/**
-	 * 
+	 * called everytime a page is loaded
 	 */
 	protected void load() {
 		System.out.println("Loading Page "+this.getClass().getName());

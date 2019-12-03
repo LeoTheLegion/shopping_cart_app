@@ -62,7 +62,7 @@ public class InventoryPage extends Page {
 		BuildContentPanel();
 	}
 	/**
-	 * 
+	 * builds header
 	 */
 	private void BuildHeadPanel() {
 		JPanel headPanel = new JPanel(new FlowLayout());
@@ -105,7 +105,7 @@ public class InventoryPage extends Page {
 		
 	}
 	/**
-	 * 
+	 * builds body
 	 */
 	private void BuildContentPanel() {
 		JPanel contentPanel = new JPanel(new FlowLayout());
@@ -138,7 +138,7 @@ public class InventoryPage extends Page {
 		contentPanel.add(info);
 	}
 	/**
-	 * @return
+	 * @returns Item Container Header
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -170,7 +170,7 @@ public class InventoryPage extends Page {
 		return ItemContainerHeader;
 	}
 	/**
-	 * 
+	 * Build Item Container
 	 */
 	private void BuildItemContainer() {
 		
@@ -191,7 +191,7 @@ public class InventoryPage extends Page {
 	}
 	/**
 	 * @param i
-	 * @return
+	 * @return item display
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(Item i) {

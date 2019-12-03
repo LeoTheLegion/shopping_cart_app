@@ -49,7 +49,7 @@ public class CheckOutPage extends Page {
 		BuildContentPanel();
 	}
 	/**
-	 * 
+	 * builds header
 	 */
 	private void BuildHeadPanel() {
 		JPanel headPanel = new JPanel(new FlowLayout());
@@ -116,7 +116,7 @@ public class CheckOutPage extends Page {
 		});
 	}
 	/**
-	 * 
+	 * builds body
 	 */
 	private void BuildContentPanel() {
 		JPanel contentPanel = new JPanel(new FlowLayout());
@@ -186,7 +186,7 @@ public class CheckOutPage extends Page {
 	 * @param width
 	 * @param height
 	 * @param labelWidthPercentage
-	 * @return
+	 * @returns FormInput
 	 */
 	private JPanel createFormInput(String text, int width, int height, float labelWidthPercentage) {
 		JPanel input = new JPanel(new FlowLayout());
@@ -204,7 +204,7 @@ public class CheckOutPage extends Page {
 		return input;
 	}
 	/**
-	 * @return
+	 * @returns Item Container Header
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -231,7 +231,7 @@ public class CheckOutPage extends Page {
 		return ItemContainerHeader;
 	}
 	/**
-	 * 
+	 * Builds Item Container
 	 */
 	private void BuildItemContainer() {
 		
@@ -257,7 +257,7 @@ public class CheckOutPage extends Page {
 	/**
 	 * @param i
 	 * @param qual
-	 * @return
+	 * @returns item display
 	 */
 	private JPanel createItem(Item i,int qual) {
 		JPanel item = new JPanel(new GridLayout(1,2));
@@ -284,7 +284,7 @@ public class CheckOutPage extends Page {
 		updatePriceDisplay();
 	}
 	/**
-	 * 
+	 * updates PriceDisplay
 	 */
 	private void updatePriceDisplay() {
 		priceDisplay.setText("$"+((Customer)AccountDB.getInstance().getCurrentAccount()).getTotalPrice());

@@ -12,6 +12,7 @@ public class JsonSaveItems implements ISave<Item> {
 
 	/* (non-Javadoc)
 	 * @see com.cop4331.shopping_cart_app.filemanager.ISave#save(java.lang.String, java.util.ArrayList)
+	 * saves items via JSON
 	 */
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Override

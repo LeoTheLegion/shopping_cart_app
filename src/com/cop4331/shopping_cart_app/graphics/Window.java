@@ -43,6 +43,7 @@ public class Window extends JFrame {
 	
 	/**
 	 * @param pageIndex
+	 * changes the page
 	 */
 	public void SetPage(int pageIndex) {
 		this.getContentPane().removeAll();
@@ -63,7 +64,7 @@ public class Window extends JFrame {
 		this.setVisible(true);
 	}
 	/**
-	 * 
+	 * when the window is closed
 	 */
 	public void close() {
 		// TODO Auto-generated method stub

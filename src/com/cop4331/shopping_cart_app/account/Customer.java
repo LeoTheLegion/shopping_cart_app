@@ -10,7 +10,15 @@ import com.cop4331.shopping_cart_app.item.Item;
 public class Customer extends Account {
 	
 	public HashMap<Integer,Integer> cart;
-	
+	/**
+	 * @param username
+	 * @param password
+	 */
+	public Customer(String username, String password) {
+		// TODO Auto-generated constructor stub
+		this.username = username;
+		this.password = password;
+	}
 	/**
 	 * @param username
 	 * @param password
@@ -35,7 +43,7 @@ public class Customer extends Account {
 	}
 	
 	/**
-	 * @return
+	 * @returns cart as a string format
 	 */
 	public String cartToString() {
 		String str = "";
@@ -55,7 +63,7 @@ public class Customer extends Account {
 	}
 
 	/**
-	 * @return
+	 * @returns total price
 	 */
 	public String getTotalPrice() {
 		double total_price=0;
@@ -66,16 +74,6 @@ public class Customer extends Account {
 		}
 		DecimalFormat form=new DecimalFormat("0.00");
 		return form.format(total_price);
-	}
-	
-	/**
-	 * @param username
-	 * @param password
-	 */
-	public Customer(String username, String password) {
-		// TODO Auto-generated constructor stub
-		this.username = username;
-		this.password = password;
 	}
 	
 

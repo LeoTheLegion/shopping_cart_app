@@ -34,7 +34,7 @@ public class WindowManager {
 	
 	
 	/**
-	 * @return
+	 * @returns INSTANCE
 	 */
 	public static WindowManager getInstance() {
 		if(INSTANCE == null) {
@@ -47,7 +47,7 @@ public class WindowManager {
 	}
 	
 	/**
-	 * 
+	 * force creates INSTANCE
 	 */
 	public static void init() {
 		getInstance();
@@ -56,6 +56,7 @@ public class WindowManager {
 
 	/**
 	 * @param pageIndex
+	 * create a new window with page attached
 	 */
 	public void createNewWindow(int pageIndex) {
 		createNewWindow(pageIndex,App.WINDOW_WIDTH,App.WINDOW_HEIGHT);
@@ -65,6 +66,7 @@ public class WindowManager {
 	 * @param pageIndex
 	 * @param width
 	 * @param height
+	 * create a new window with page attached
 	 */
 	public void createNewWindow(int pageIndex,int width,int height) {
 		// TODO Auto-generated method stub
@@ -89,7 +91,7 @@ public class WindowManager {
 		windows.add(w);
 	}
 	/**
-	 * @return
+	 * @returns main window
 	 */
 	public Window getMainWindow() {
 		return windows.get(0);
@@ -97,7 +99,7 @@ public class WindowManager {
 
 
 	/**
-	 * @return
+	 * @returns the number of items
 	 */
 	public int count() {
 		// TODO Auto-generated method stub

@@ -36,7 +36,7 @@ public class AccountDB {
     }
     
     /**
-     * @return
+     * @returns INSTANCE
      */
     public static AccountDB getInstance() {
 		if(INSTANCE == null) {
@@ -49,7 +49,7 @@ public class AccountDB {
 	}
     
     /**
-     * 
+     * forces creates the INSTANCE
      */
     public static void init() {
     	getInstance();
@@ -60,7 +60,7 @@ public class AccountDB {
     /**
      * @param username
      * @param password
-     * @return
+     * @returns true if the account is in the database, returns false if not use getAccount method next
      */
     public boolean verify(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
@@ -73,7 +73,7 @@ public class AccountDB {
     
     /**
      * @param username
-     * @return
+     * @returns account
      */
     protected Account getAccByUsername(String username) {
     	
@@ -91,7 +91,8 @@ public class AccountDB {
     /**
      * @param username
      * @param password
-     * @return
+     * @returns an empty account if the account is not found, else returns the count if it is found 
+     * Method to be called after verify methodS
      */
     public Account getAccount(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
@@ -105,7 +106,7 @@ public class AccountDB {
     /**
      * @param username
      * @param password
-     * @return
+     * @return accountID
      */
     public int getAccountID(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
@@ -119,14 +120,14 @@ public class AccountDB {
     
     /**
      * @param id
-     * @return
+     * @returns account
      */
     public Account getAccount(int id) {
     	return accounts.get(id);
     }
     
     /**
-     * 
+     * builds a prefab DB
      */
     private void createInitialAccounts() {
     	accounts=new ArrayList<Account>();
@@ -140,7 +141,7 @@ public class AccountDB {
     }
     
     /**
-     * 
+     * saves DB
      */
     public void save() {
     	ISave<Account> accountSaver=new JsonSaveAccounts();
@@ -148,7 +149,7 @@ public class AccountDB {
     }
     
     /**
-     * 
+     * Loads DB
      */
     public void load() {
     	ILoad<Account> accountLoader = new JsonLoadAccounts();
@@ -163,7 +164,7 @@ public class AccountDB {
 	}
     
     /**
-     * @return
+     * @returns currentAccount
      */
     public Account getCurrentAccount() {
     	return accounts.get(currentAccount_ID);

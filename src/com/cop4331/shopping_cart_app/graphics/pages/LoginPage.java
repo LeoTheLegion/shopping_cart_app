@@ -100,14 +100,8 @@ public class LoginPage extends Page {
 		mainPanel.add(userField);
 		mainPanel.add(passField);
 		mainPanel.add(loginBtn);
-		
-		
-		
-		
 		add(mainPanel);
 	}
-	
-	
 	
 
 }

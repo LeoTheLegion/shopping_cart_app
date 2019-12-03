@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public interface ISave<E> {
 	/**
+	 * Adapter
 	 * @param fileName
 	 * @param items
 	 */

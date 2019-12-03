@@ -30,14 +30,14 @@ public class Account {
     }
     
     /**
-     * @return
+     * @returns username
      */
     public String getUsername() {
     	return this.username;
     }
     
     /**
-     * @return
+     * @returns password
      */
     public String getPassword() {
     	return this.password;

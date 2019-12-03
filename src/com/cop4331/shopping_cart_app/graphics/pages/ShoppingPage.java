@@ -57,7 +57,7 @@ public class ShoppingPage extends Page {
 		BuildContentPanel();
 	}
 	/**
-	 * 
+	 * builds header
 	 */
 	private void BuildHeadPanel() {
 		JPanel headPanel = new JPanel(new FlowLayout());
@@ -127,7 +127,7 @@ public class ShoppingPage extends Page {
 
 	}
 	/**
-	 * 
+	 * builds body
 	 */
 	private void BuildContentPanel() {
 		JPanel contentPanel = new JPanel(new FlowLayout());
@@ -151,7 +151,7 @@ public class ShoppingPage extends Page {
 		
 	}
 	/**
-	 * @return
+	 * @return Item Container Header
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -180,7 +180,7 @@ public class ShoppingPage extends Page {
 		return ItemContainerHeader;
 	}
 	/**
-	 * 
+	 * Builds Item Container
 	 */
 	private void BuildItemContainer() {
 		
@@ -206,7 +206,7 @@ public class ShoppingPage extends Page {
 	}
 	/**
 	 * @param i
-	 * @return
+	 * @return item display
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(Item i) {
@@ -281,10 +281,7 @@ public class ShoppingPage extends Page {
 		
 	}
 	/**
-	 * 
-	 */
-	/**
-	 * 
+	 * updates Cart Number
 	 */
 	private void updateCartNumber() {
 		if(AccountDB.getInstance().currentAccount_ID !=-1) {

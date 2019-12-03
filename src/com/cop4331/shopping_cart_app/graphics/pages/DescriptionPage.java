@@ -78,6 +78,7 @@ public class DescriptionPage extends Page implements IPopUp {
 	
 	/**
 	 * @param i
+	 * sets Item To Display 
 	 */
 	public void setItemToDisplay(Item i) {
 		this.item = i;

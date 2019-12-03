@@ -57,7 +57,7 @@ public class CartPage extends Page {
 		//JPanel itemContainerPanel
 	}
 	/**
-	 * 
+	 * builds header
 	 */
 	private void BuildHeadPanel() {
 		JPanel headPanel = new JPanel(new FlowLayout());
@@ -94,7 +94,7 @@ public class CartPage extends Page {
 		});
 	}
 	/**
-	 * 
+	 * builds body
 	 */
 	private void BuildContentPanel() {
 		JPanel contentPanel = new JPanel(new FlowLayout());
@@ -119,7 +119,7 @@ public class CartPage extends Page {
 		//add the profit here
 	}
 	/**
-	 * @return
+	 * @returns ItemContainerHeader
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -156,7 +156,7 @@ public class CartPage extends Page {
 		return ItemContainerHeader;
 	}
 	/**
-	 * 
+	 * Builds Item Container 
 	 */
 	private void BuildItemContainer() {
 		
@@ -181,7 +181,7 @@ public class CartPage extends Page {
 	/**
 	 * @param itemID
 	 * @param qual
-	 * @return
+	 * @returns item display
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(int itemID,int qual) {
@@ -280,7 +280,7 @@ public class CartPage extends Page {
 		updatePriceDisplay();
 	}
 	/**
-	 * 
+	 * updates Price Display 
 	 */
 	private void updatePriceDisplay() {
 		priceDisplay.setText("$"+((Customer)AccountDB.getInstance().getCurrentAccount()).getTotalPrice());
