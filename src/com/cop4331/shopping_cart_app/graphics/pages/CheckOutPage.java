@@ -34,6 +34,7 @@ public class CheckOutPage extends Page {
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel itemContainerPanel;
+	JLabel priceDisplay;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -135,8 +136,15 @@ public class CheckOutPage extends Page {
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
 		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollableItemContainer.setPreferredSize(new Dimension(400,550));
+		scrollableItemContainer.setPreferredSize(new Dimension(400,520));
 		cartview.add(scrollableItemContainer);
+		
+		JPanel getPrice=new JPanel();
+		getPrice.add(new JLabel("Total Price: "));
+		priceDisplay = new JLabel();
+		getPrice.add(priceDisplay);
+		cartview.add(getPrice);
+		
 		
 		contentPanel.add(cartview);
 		
@@ -238,12 +246,7 @@ public class CheckOutPage extends Page {
 			itemPanel.setPreferredSize(new Dimension(300, 100));
 			itemContainerPanel.add(itemPanel);
 			}
-		JPanel getPrice=new JPanel();
-		System.out.println("Current Account "+AccountDB.CURRENTACCOUNT_ID);
-		Customer currAcc=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
-		getPrice.add(new JLabel("Total Price: "));
-		getPrice.add(new JLabel("$"+currAcc.getTotalPrice()));
-		itemContainerPanel.add(getPrice);
+		
 		
 		FlowLayout itemContainer_Layout = (FlowLayout) itemContainerPanel.getLayout();
 		int totalHeight = itemContainer_Layout .getHgap() +(100 + itemContainer_Layout.getHgap()) * keyset.length;
@@ -276,6 +279,9 @@ public class CheckOutPage extends Page {
 		// TODO Auto-generated method stub
 		super.load();
 		BuildItemContainer();
+		updatePriceDisplay();
 	}
-	
+	private void updatePriceDisplay() {
+		priceDisplay.setText("$"+((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).getTotalPrice());
+	}
 }

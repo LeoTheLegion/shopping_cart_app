@@ -42,6 +42,7 @@ public class ShoppingPage extends Page {
 	private static final long serialVersionUID = 1L;
 	JPanel itemContainerPanel;
 	JTextField searchField;
+	JButton cartBtn;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -112,19 +113,10 @@ public class ShoppingPage extends Page {
 		
 		headPanel.add(Box.createHorizontalStrut(30));// creates gap
 		
-		JButton cartBtn = new JButton();
+		cartBtn = new JButton();
 		cartBtn.setPreferredSize(new Dimension(125,75));
-		cartBtn.setText("Cart");
+		cartBtn.setText("Cart(0)");
 		headPanel.add(cartBtn);
-		System.out.println(AccountDB.CURRENTACCOUNT_ID);
-		
-		
-		//CURRENTACCOUNT_ID is set to -1 still
-		if(AccountDB.CURRENTACCOUNT_ID!=-1) {
-			Customer currAcc=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
-			JLabel cartPrice = new JLabel(currAcc.getTotalPrice(), SwingConstants.CENTER);
-			headPanel.add(cartPrice);
-		}
 		
 		cartBtn.addActionListener(new ActionListener() {
 			@Override
@@ -246,6 +238,8 @@ public class ShoppingPage extends Page {
 		JButton addToCartBtn = new JButton("Add To Cart ( $" + i.getPrice()+ " )");
 		item.add(addToCartBtn);
 		
+		ShoppingPage page = this;
+		
 		addToCartBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -266,8 +260,10 @@ public class ShoppingPage extends Page {
 				}
 				
 				AccountDB.save();
-			}	
-			;
+				
+				page.updateCartNumber();
+				
+			};
 			
 		});
 		
@@ -282,6 +278,18 @@ public class ShoppingPage extends Page {
 		// TODO Auto-generated method stub
 		super.load();
 		BuildItemContainer();
+		updateCartNumber();
+		
+	}
+	/**
+	 * 
+	 */
+	private void updateCartNumber() {
+		if(AccountDB.CURRENTACCOUNT_ID !=-1) {
+			Customer currAcc=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
+			int cartSize = currAcc.cart.size();
+			cartBtn.setText("Cart("+ cartSize +")");
+		}
 	}
 
 }

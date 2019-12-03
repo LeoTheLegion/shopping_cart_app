@@ -47,6 +47,7 @@ public class InventoryPage extends Page {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel itemContainerPanel;
+	JLabel getProf,getRev,getCosts;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -123,8 +124,18 @@ public class InventoryPage extends Page {
 		scrollableItemContainer.getVerticalScrollBar().setUnitIncrement(13);
 		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
+		scrollableItemContainer.setPreferredSize(new Dimension(1200,520));
 		contentPanel.add(scrollableItemContainer);
+		
+		JPanel info=new JPanel();
+		getProf=new JLabel();
+		getRev=new JLabel();
+		getCosts=new JLabel();
+		info.add(getCosts);
+		info.add(getRev);
+		info.add(getProf);
+		
+		contentPanel.add(info);
 	}
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -170,18 +181,6 @@ public class InventoryPage extends Page {
 			JPanel item = createItem(itemsSearched.get(i));
 			item.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(item);			
-		}
-		
-		if(AccountDB.CURRENTACCOUNT_ID!=-1) {
-			Seller currAcc=((Seller) AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID));
-			JPanel info=new JPanel();
-			JLabel getProf=new JLabel("Total profit: $"+(currAcc.getProfit()));
-			JLabel getRev=new JLabel("Total Revenue: $"+(currAcc.getRevenue()));
-			JLabel getCosts=new JLabel("Total Costs: $"+(currAcc.getCost()));
-			info.add(getCosts);
-			info.add(getRev);
-			info.add(getProf);
-			itemContainerPanel.add(info);
 		}
 		
 		int totalHeight = ((FlowLayout) itemContainerPanel.getLayout()).getHgap() +(100 + ((FlowLayout) itemContainerPanel.getLayout()).getHgap()) * itemsSearched.size();
@@ -275,6 +274,13 @@ public class InventoryPage extends Page {
 		// TODO Auto-generated method stub
 		super.load();
 		BuildItemContainer();
+		
+		if(AccountDB.CURRENTACCOUNT_ID!=-1) {
+			Seller currAcc=((Seller) AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID));
+			getProf.setText("Total profit: $"+(currAcc.getProfit()));
+			getRev.setText("Total Revenue: $"+(currAcc.getRevenue()));
+			getCosts.setText("Total Costs: $"+(currAcc.getCost()));
+		}
 	}
 	
 

@@ -38,6 +38,7 @@ public class CartPage extends Page {
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel itemContainerPanel;
+	JLabel priceDisplay;
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
@@ -135,7 +136,14 @@ public class CartPage extends Page {
 		
 		//Add the price to one of these headers
 		ItemContainerHeader.add(Box.createHorizontalStrut(30));
-		ItemContainerHeader.add(Box.createHorizontalStrut(30));
+		
+		
+		JPanel getPrice=new JPanel();
+		getPrice.add(new JLabel("Total Price: "));
+		priceDisplay = new JLabel();
+		getPrice.add(priceDisplay);
+		ItemContainerHeader.add(getPrice);
+		//ItemContainerHeader.add(Box.createHorizontalStrut(30));
 		
 		ItemContainerHeader.setOpaque(false);
 		ItemContainerHeader.setPreferredSize(new Dimension(1100, 25));
@@ -153,20 +161,13 @@ public class CartPage extends Page {
 		
 		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 		Object[] keyset = cart.keySet().toArray();
-		double total_price=0;
 		for (int i = 0; i < keyset.length; i++) {
 			int itemID = (int) keyset[i];
 			JPanel itemPanel = createItem(itemID,cart.get(keyset[i]));
 			itemPanel.setPreferredSize(new Dimension(1100, 100));
 			itemContainerPanel.add(itemPanel);
-			
-			total_price+=(Double.parseDouble(ItemDB.getItem(itemID).getPrice())*cart.get(keyset[i]));
 		}
-		DecimalFormat form=new DecimalFormat("0.00");
-		JPanel getPrice=new JPanel();
-		getPrice.add(new JLabel("Total Price: "));
-		getPrice.add(new JLabel("$"+form.format(total_price)));
-		itemContainerPanel.add(getPrice);
+		
 		
 		FlowLayout itemContainer_Layout = (FlowLayout) itemContainerPanel.getLayout();
 		int totalHeight = itemContainer_Layout .getHgap() +(100 + itemContainer_Layout.getHgap()) * keyset.length;
@@ -209,6 +210,8 @@ public class CartPage extends Page {
 		JButton addBtn = new JButton("Add ( $" + i.getPrice()+ " )");
 		itemDisplay.add(addBtn);
 		
+		CartPage page = this;
+		
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -226,6 +229,7 @@ public class CartPage extends Page {
 
 				quantity.setText(Integer.toString(cart.get(itemID)));
 				AccountDB.save();
+				page.updatePriceDisplay();
 			}
 		});
 		
@@ -252,6 +256,7 @@ public class CartPage extends Page {
 						
 				}
 				AccountDB.save();
+				page.updatePriceDisplay();
 			}
 		});
 		
@@ -266,5 +271,13 @@ public class CartPage extends Page {
 		// TODO Auto-generated method stub
 		super.load();
 		BuildItemContainer();
+		
+		updatePriceDisplay();
+	}
+	/**
+	 * 
+	 */
+	private void updatePriceDisplay() {
+		priceDisplay.setText("$"+((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).getTotalPrice());
 	}
 }
