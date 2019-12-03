@@ -229,7 +229,7 @@ public class ShoppingPage extends Page {
 			}
 		});
 		
-		JLabel sellerName = new JLabel(AccountDB.getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
+		JLabel sellerName = new JLabel(AccountDB.getInstance().getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
 		item.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(i.getQuantity()), SwingConstants.CENTER);
@@ -244,7 +244,7 @@ public class ShoppingPage extends Page {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
+				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 				
 				int itemID = ItemDB.getItemID(i);
 				
@@ -259,7 +259,7 @@ public class ShoppingPage extends Page {
 					cart.put(itemID, 1)	;
 				}
 				
-				AccountDB.save();
+				AccountDB.getInstance().save();
 				
 				page.updateCartNumber();
 				
@@ -285,8 +285,8 @@ public class ShoppingPage extends Page {
 	 * 
 	 */
 	private void updateCartNumber() {
-		if(AccountDB.CURRENTACCOUNT_ID !=-1) {
-			Customer currAcc=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
+		if(AccountDB.getInstance().currentAccount_ID !=-1) {
+			Customer currAcc=(Customer)AccountDB.getInstance().getCurrentAccount();
 			int cartSize = currAcc.cart.size();
 			cartBtn.setText("Cart("+ cartSize +")");
 		}

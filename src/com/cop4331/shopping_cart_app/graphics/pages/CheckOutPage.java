@@ -82,7 +82,7 @@ public class CheckOutPage extends Page {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				HashMap<Integer,Integer> oldcart  = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
+				HashMap<Integer,Integer> oldcart  = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 				Object[] keyset = oldcart.keySet().toArray();
 				for (int i = 0; i < keyset.length; i++) {
 					int itemID = (int) keyset[i];
@@ -94,7 +94,7 @@ public class CheckOutPage extends Page {
 						new_quantity = 0;
 						System.err.println("the new quantity is negative... how?");
 					}
-					Seller currSeller=(Seller) AccountDB.getAccount(ItemDB.getItem(itemID).getSellerID());
+					Seller currSeller=(Seller) AccountDB.getInstance().getAccount(ItemDB.getItem(itemID).getSellerID());
 					double cost=qual*(Double.parseDouble(ItemDB.getItem(itemID).getInvPrice()));
 					double revenue=qual*(Double.parseDouble(ItemDB.getItem(itemID).getPrice()));
 					
@@ -107,8 +107,8 @@ public class CheckOutPage extends Page {
 				}
 				
 				
-				((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart = new HashMap<Integer,Integer>();
-				AccountDB.save();
+				((Customer)AccountDB.getInstance().getCurrentAccount()).cart = new HashMap<Integer,Integer>();
+				AccountDB.getInstance().save();
 				
 				getWindow().SetPage(1);
 				
@@ -237,7 +237,7 @@ public class CheckOutPage extends Page {
 		
 		itemContainerPanel.removeAll();
 		
-		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
+		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 		Object[] keyset = cart.keySet().toArray();
 		for (int i = 0; i < keyset.length; i++) {
 			
@@ -262,7 +262,7 @@ public class CheckOutPage extends Page {
 		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);
 		item.add(itemName);
 		
-		JLabel sellerName = new JLabel(AccountDB.getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
+		JLabel sellerName = new JLabel(AccountDB.getInstance().getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
 		item.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(qual), SwingConstants.CENTER);
@@ -282,6 +282,6 @@ public class CheckOutPage extends Page {
 		updatePriceDisplay();
 	}
 	private void updatePriceDisplay() {
-		priceDisplay.setText("$"+((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).getTotalPrice());
+		priceDisplay.setText("$"+((Customer)AccountDB.getInstance().getCurrentAccount()).getTotalPrice());
 	}
 }

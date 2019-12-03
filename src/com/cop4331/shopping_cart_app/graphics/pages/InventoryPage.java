@@ -176,7 +176,7 @@ public class InventoryPage extends Page {
 		List<Item> itemsSearched = ItemDB.getFullInventory();
 		double total_rev=0;
 		for (int i = 0; i < itemsSearched.size(); i++) {
-			if(itemsSearched.get(i).getSellerID() != AccountDB.CURRENTACCOUNT_ID)
+			if(itemsSearched.get(i).getSellerID() != AccountDB.getInstance().currentAccount_ID)
 				continue;
 			JPanel item = createItem(itemsSearched.get(i));
 			item.setPreferredSize(new Dimension(1100, 100));
@@ -275,8 +275,8 @@ public class InventoryPage extends Page {
 		super.load();
 		BuildItemContainer();
 		
-		if(AccountDB.CURRENTACCOUNT_ID!=-1) {
-			Seller currAcc=((Seller) AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID));
+		if(AccountDB.getInstance().currentAccount_ID !=-1) {
+			Seller currAcc=((Seller) AccountDB.getInstance().getCurrentAccount());
 			getProf.setText("Total profit: $"+(currAcc.getProfit()));
 			getRev.setText("Total Revenue: $"+(currAcc.getRevenue()));
 			getCosts.setText("Total Costs: $"+(currAcc.getCost()));

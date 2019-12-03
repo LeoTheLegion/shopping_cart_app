@@ -73,7 +73,7 @@ public class DescriptionPage extends Page implements IPopUp {
 		super.load();
 		
 		itemName.setText(item.getName()); 
-		sellerName.setText("Sold by "+ AccountDB.getAccount(item.getSellerID()).getUsername()); 
+		sellerName.setText("Sold by "+ AccountDB.getInstance().getAccount(item.getSellerID()).getUsername()); 
 		itemDescription.setText(item.getDescription()); 
 	}
 	

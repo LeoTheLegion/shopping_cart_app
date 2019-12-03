@@ -160,7 +160,7 @@ public class CartPage extends Page {
 		
 		itemContainerPanel.removeAll();
 		
-		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
+		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 		Object[] keyset = cart.keySet().toArray();
 		for (int i = 0; i < keyset.length; i++) {
 			int itemID = (int) keyset[i];
@@ -202,7 +202,7 @@ public class CartPage extends Page {
 			}
 		});
 		
-		JLabel sellerName = new JLabel(AccountDB.getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
+		JLabel sellerName = new JLabel(AccountDB.getInstance().getAccount(i.getSellerID()).getUsername(), SwingConstants.CENTER);
 		itemDisplay.add(sellerName);
 		
 		JLabel quantity = new JLabel(Integer.toString(qual), SwingConstants.CENTER);
@@ -216,7 +216,7 @@ public class CartPage extends Page {
 		addBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
+				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 				
 				if(cart.containsKey(itemID)) {
 					if(cart.get(itemID)<i.getQuantity())
@@ -229,7 +229,7 @@ public class CartPage extends Page {
 				}
 
 				quantity.setText(Integer.toString(cart.get(itemID)));
-				AccountDB.save();
+				AccountDB.getInstance().save();
 				page.updatePriceDisplay();
 			}
 		});
@@ -240,7 +240,7 @@ public class CartPage extends Page {
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
+				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 				
 				if(cart.containsKey(itemID)) {
 					
@@ -256,7 +256,7 @@ public class CartPage extends Page {
 					}
 						
 				}
-				AccountDB.save();
+				AccountDB.getInstance().save();
 				page.updatePriceDisplay();
 			}
 		});
@@ -279,6 +279,6 @@ public class CartPage extends Page {
 	 * 
 	 */
 	private void updatePriceDisplay() {
-		priceDisplay.setText("$"+((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).getTotalPrice());
+		priceDisplay.setText("$"+((Customer)AccountDB.getInstance().getCurrentAccount()).getTotalPrice());
 	}
 }

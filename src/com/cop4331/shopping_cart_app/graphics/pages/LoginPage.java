@@ -78,12 +78,12 @@ public class LoginPage extends Page {
 				String user = userField.getText();
 				String pass = passField.getText();
 				
-				int accountID = AccountDB.getAccountID(user, pass);
+				int accountID = AccountDB.getInstance().getAccountID(user, pass);
 				
 				if (accountID >= 0) {
-					Account a = AccountDB.getAccount(accountID);
+					Account a = AccountDB.getInstance().getAccount(accountID);
 					
-					AccountDB.CURRENTACCOUNT_ID = accountID;
+					AccountDB.getInstance().currentAccount_ID = accountID;
 					
 					if(a instanceof Customer)
 						getWindow().SetPage(1);
