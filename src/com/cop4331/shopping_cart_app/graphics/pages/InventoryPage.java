@@ -120,6 +120,7 @@ public class InventoryPage extends Page {
 		BuildItemContainer();
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
+		scrollableItemContainer.getVerticalScrollBar().setUnitIncrement(13);
 		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));

@@ -47,6 +47,17 @@ public class Customer extends Account {
 		return str;
 	}
 
+	public String getTotalPrice() {
+		double total_price=0;
+		Object[] keyset=cart.keySet().toArray();
+		for(int i=0; i<keyset.length; i++) {
+			Item item=ItemDB.getItem((int) keyset[i]);
+			total_price+=(Double.parseDouble(item.getPrice())*cart.get(keyset[i]));
+		}
+		DecimalFormat form=new DecimalFormat("0.00");
+		return form.format(total_price);
+	}
+	
 	public Customer(String username, String password) {
 		// TODO Auto-generated constructor stub
 		this.username = username;

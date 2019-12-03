@@ -116,6 +116,15 @@ public class ShoppingPage extends Page {
 		cartBtn.setPreferredSize(new Dimension(125,75));
 		cartBtn.setText("Cart");
 		headPanel.add(cartBtn);
+		System.out.println(AccountDB.CURRENTACCOUNT_ID);
+		
+		
+		//CURRENTACCOUNT_ID is set to -1 still
+		if(AccountDB.CURRENTACCOUNT_ID!=-1) {
+			Customer currAcc=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
+			JLabel cartPrice = new JLabel(currAcc.getTotalPrice(), SwingConstants.CENTER);
+			headPanel.add(cartPrice);
+		}
 		
 		cartBtn.addActionListener(new ActionListener() {
 			@Override
@@ -123,7 +132,7 @@ public class ShoppingPage extends Page {
 				getWindow().SetPage(PageManager.getInstance().getPageIndex(pageinQuestion)+1);
 			}
 		});
-		
+
 	}
 	/**
 	 * 
@@ -142,6 +151,7 @@ public class ShoppingPage extends Page {
 		BuildItemContainer();
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
+		scrollableItemContainer.getVerticalScrollBar().setUnitIncrement(13);
 		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));

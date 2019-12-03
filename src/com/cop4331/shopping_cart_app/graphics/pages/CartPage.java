@@ -50,6 +50,7 @@ public class CartPage extends Page {
 		
 		BuildHeadPanel();
 		BuildContentPanel();
+		//JPanel itemContainerPanel
 	}
 	/**
 	 * 
@@ -106,9 +107,11 @@ public class CartPage extends Page {
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
 		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		//change to 450
 		scrollableItemContainer.setPreferredSize(new Dimension(1200,550));
 		contentPanel.add(scrollableItemContainer);
 		
+		//add the profit here
 	}
 	/**
 	 */
@@ -130,6 +133,7 @@ public class CartPage extends Page {
 		quantity.setOpaque(true);
 		ItemContainerHeader.add(quantity);
 		
+		//Add the price to one of these headers
 		ItemContainerHeader.add(Box.createHorizontalStrut(30));
 		ItemContainerHeader.add(Box.createHorizontalStrut(30));
 		

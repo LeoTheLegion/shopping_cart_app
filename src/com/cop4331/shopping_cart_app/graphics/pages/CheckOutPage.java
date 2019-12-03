@@ -231,20 +231,20 @@ public class CheckOutPage extends Page {
 		
 		HashMap<Integer,Integer> cart = ((Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID)).cart;
 		Object[] keyset = cart.keySet().toArray();
-		double total_price=0;
 		for (int i = 0; i < keyset.length; i++) {
 			
 			Item item = ItemDB.getItem((int) keyset[i]);
 			JPanel itemPanel = createItem(item,cart.get(keyset[i]));
 			itemPanel.setPreferredSize(new Dimension(300, 100));
 			itemContainerPanel.add(itemPanel);
-			total_price+=(Double.parseDouble(item.getPrice())*cart.get(keyset[i]));
 			}
-		DecimalFormat form=new DecimalFormat("0.00");
 		JPanel getPrice=new JPanel();
+		System.out.println("Current Account "+AccountDB.CURRENTACCOUNT_ID);
+		Customer currAcc=(Customer)AccountDB.getAccount(AccountDB.CURRENTACCOUNT_ID);
 		getPrice.add(new JLabel("Total Price: "));
-		getPrice.add(new JLabel("$"+form.format(total_price)));
+		getPrice.add(new JLabel("$"+currAcc.getTotalPrice()));
 		itemContainerPanel.add(getPrice);
+		
 		FlowLayout itemContainer_Layout = (FlowLayout) itemContainerPanel.getLayout();
 		int totalHeight = itemContainer_Layout .getHgap() +(100 + itemContainer_Layout.getHgap()) * keyset.length;
 		itemContainerPanel.setPreferredSize(new Dimension(400,totalHeight));
