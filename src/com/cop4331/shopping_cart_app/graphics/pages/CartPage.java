@@ -180,7 +180,7 @@ public class CartPage extends Page {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JPanel createItem(int itemID,int qual) {
-		Item i = ItemDB.getItem(itemID);
+		Item i = ItemDB.getInstance().getItem(itemID);
 		JPanel itemDisplay = new JPanel(new GridLayout(1,2));
 		
 		JLabel itemName = new JLabel(i.getName(), SwingConstants.CENTER);

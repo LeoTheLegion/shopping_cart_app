@@ -51,7 +51,7 @@ public class Customer extends Account {
 		double total_price=0;
 		Object[] keyset=cart.keySet().toArray();
 		for(int i=0; i<keyset.length; i++) {
-			Item item=ItemDB.getItem((int) keyset[i]);
+			Item item=ItemDB.getInstance().getItem((int) keyset[i]);
 			total_price+=(Double.parseDouble(item.getPrice())*cart.get(keyset[i]));
 		}
 		DecimalFormat form=new DecimalFormat("0.00");

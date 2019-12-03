@@ -185,7 +185,7 @@ public class ShoppingPage extends Page {
 		
 		itemContainerPanel.removeAll();
 		
-		List<Item> itemsSearched = ItemDB.getFullInventory();
+		List<Item> itemsSearched = ItemDB.getInstance().getFullInventory();
 		
 		for (int i = 0; i < itemsSearched.size(); i++) {
 			Item item = itemsSearched.get(i);
@@ -246,9 +246,7 @@ public class ShoppingPage extends Page {
 				
 				HashMap<Integer,Integer> cart = ((Customer)AccountDB.getInstance().getCurrentAccount()).cart;
 				
-				int itemID = ItemDB.getItemID(i);
-				
-				
+				int itemID = ItemDB.getInstance().getItemID(i);
 				
 				if(cart.containsKey(itemID)) {
 					if(cart.get(itemID)<i.getQuantity())

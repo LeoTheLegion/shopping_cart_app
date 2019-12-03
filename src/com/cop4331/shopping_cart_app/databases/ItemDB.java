@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.cop4331.shopping_cart_app.filemanager.ILoad;
 import com.cop4331.shopping_cart_app.filemanager.ISave;
+import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 import com.cop4331.shopping_cart_app.item.Item;
 import com.cop4331.shopping_cart_app.item.JsonLoadItems;
 import com.cop4331.shopping_cart_app.item.JsonSaveItems;
@@ -22,11 +23,11 @@ import com.cop4331.shopping_cart_app.item.JsonSaveItems;
 
 public class ItemDB{
 
-	private static ArrayList<Item> items;
-	private static final String fileName = "Items.json";
+	private ArrayList<Item> items;
+	private final String fileName = "Items.json";
+	private static ItemDB INSTANCE;
 	
-	
-	public static void init() {
+	public ItemDB() {
 		if(ifFileExists()) {
 			load();
 		}else {
@@ -34,11 +35,25 @@ public class ItemDB{
 			save();
 		}
 	}
+	
+	public static ItemDB getInstance() {
+		if(INSTANCE == null) {
+			synchronized(WindowManager.class) {
+				if(INSTANCE == null)
+					INSTANCE = new ItemDB();
+			}
+		}
+		return INSTANCE;
+	}
+	
+	public static void init() {
+		getInstance();
+	}
 
 	/**
 	 * 
 	 */
-	private static void buildInitialDB() {
+	private void buildInitialDB() {
 		items = new ArrayList<Item>();
 		
 		addItem(new Item("Justins Item", "Justins Item to sell", 1,0,15,8));
@@ -46,12 +61,12 @@ public class ItemDB{
 
 	
 	 //updates the quantity of a certain item
-    public static void setQuantity(int itemID, int new_quantity) {
+    public void setQuantity(int itemID, int new_quantity) {
     	items.get(itemID).setQuantity(new_quantity);
     }
     
     //gets all items from a seller
-    public static List<Item> getItemBySeller(int id) {
+    public List<Item> getItemBySeller(int id) {
     	List<Item> seller_items=new ArrayList<Item>();
     	for(int i=0; i<items.size(); i++) {
     		if(items.get(i).getSellerID()==id) seller_items.add(items.get(i));
@@ -60,15 +75,15 @@ public class ItemDB{
     }
     
     //returns full item list, eventually change to sample list of items
-    public static List<Item> getFullInventory() {
+    public List<Item> getFullInventory() {
     	return items;
     }
     
-    public static Item getItem(int itemID) {
+    public Item getItem(int itemID) {
     	return items.get(itemID);
     }
     
-    public static int getItemID(Item a) {
+    public int getItemID(Item a) {
     	int value=-1;
     	for(int i=0; i<items.size(); i++) {
     		if(a==items.get(i)) value=i;
@@ -76,7 +91,7 @@ public class ItemDB{
     	return value; 
     }
     
-    public static void addItem(Item a) {
+    public void addItem(Item a) {
     	items.add(a);
     	//save(); <--- too slow
     }
@@ -85,19 +100,19 @@ public class ItemDB{
 	/**
 	 * @return
 	 */
-	private static boolean ifFileExists() {
+	private boolean ifFileExists() {
 		return new File(fileName).exists();
 	}
 	 
 	
-	static void load() {
+	void load() {
 		System.out.println("LOADING ITEMS");
 		ILoad<Item> itemloader = new JsonLoadItems();
 		
 		items = itemloader.load(fileName);
 	}
 	
-	public static void save() {
+	public void save() {
 		System.out.println("SAVING ITEMS");
 		ISave<Item> itemSaver = new JsonSaveItems();
 		itemSaver.save(fileName,items);

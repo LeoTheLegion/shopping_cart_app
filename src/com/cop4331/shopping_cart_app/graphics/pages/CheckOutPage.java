@@ -88,21 +88,21 @@ public class CheckOutPage extends Page {
 					int itemID = (int) keyset[i];
 					int qual = oldcart.get(keyset[i]);
 					
-					int new_quantity = ItemDB.getItem(itemID).getQuantity() - qual;
+					int new_quantity = ItemDB.getInstance().getItem(itemID).getQuantity() - qual;
 					
 					if(new_quantity < 0) {
 						new_quantity = 0;
 						System.err.println("the new quantity is negative... how?");
 					}
-					Seller currSeller=(Seller) AccountDB.getInstance().getAccount(ItemDB.getItem(itemID).getSellerID());
-					double cost=qual*(Double.parseDouble(ItemDB.getItem(itemID).getInvPrice()));
-					double revenue=qual*(Double.parseDouble(ItemDB.getItem(itemID).getPrice()));
+					Seller currSeller=(Seller) AccountDB.getInstance().getAccount(ItemDB.getInstance().getItem(itemID).getSellerID());
+					double cost=qual*(Double.parseDouble(ItemDB.getInstance().getItem(itemID).getInvPrice()));
+					double revenue=qual*(Double.parseDouble(ItemDB.getInstance().getItem(itemID).getPrice()));
 					
 					currSeller.addRev(revenue);
 					currSeller.addCost(cost);
 					
-					ItemDB.setQuantity(itemID, new_quantity);
-					ItemDB.save();
+					ItemDB.getInstance().setQuantity(itemID, new_quantity);
+					ItemDB.getInstance().save();
 					
 				}
 				
@@ -241,7 +241,7 @@ public class CheckOutPage extends Page {
 		Object[] keyset = cart.keySet().toArray();
 		for (int i = 0; i < keyset.length; i++) {
 			
-			Item item = ItemDB.getItem((int) keyset[i]);
+			Item item = ItemDB.getInstance().getItem((int) keyset[i]);
 			JPanel itemPanel = createItem(item,cart.get(keyset[i]));
 			itemPanel.setPreferredSize(new Dimension(300, 100));
 			itemContainerPanel.add(itemPanel);

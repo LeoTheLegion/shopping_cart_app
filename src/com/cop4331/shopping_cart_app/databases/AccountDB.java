@@ -14,12 +14,12 @@ import com.cop4331.shopping_cart_app.graphics.windowmanager.WindowManager;
 
 /**
  *
- * @author Justin Ament
+ * @author Justin Ament, Michael Mena
  */
 public class AccountDB {
     public int currentAccount_ID;
-    private static ArrayList<Account> accounts;
-    private static String fileName="Accounts.json";
+    private ArrayList<Account> accounts;
+    private final String fileName="Accounts.json";
     private static AccountDB INSTANCE;
     
     public AccountDB() {

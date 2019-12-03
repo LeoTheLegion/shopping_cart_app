@@ -173,7 +173,7 @@ public class InventoryPage extends Page {
 		
 		itemContainerPanel.removeAll();
 		
-		List<Item> itemsSearched = ItemDB.getFullInventory();
+		List<Item> itemsSearched = ItemDB.getInstance().getFullInventory();
 		double total_rev=0;
 		for (int i = 0; i < itemsSearched.size(); i++) {
 			if(itemsSearched.get(i).getSellerID() != AccountDB.getInstance().currentAccount_ID)
@@ -257,9 +257,9 @@ public class InventoryPage extends Page {
 					return;
 				}
 				
-				int itemID = ItemDB.getItemID(i);
-				ItemDB.setQuantity(itemID, newQuantity);
-				ItemDB.save();//<--- SUPER SLOW
+				int itemID = ItemDB.getInstance().getItemID(i);
+				ItemDB.getInstance().setQuantity(itemID, newQuantity);
+				ItemDB.getInstance().save();//<--- SUPER SLOW
 			}
 		});
 		
