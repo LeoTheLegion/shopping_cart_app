@@ -63,7 +63,6 @@ public class DescriptionPage extends Page implements IPopUp {
 		
 		
 	}
-	
 	/* (non-Javadoc)
 	 * @see com.cop4331.shopping_cart_app.graphics.Page#load()
 	 */
@@ -77,6 +76,9 @@ public class DescriptionPage extends Page implements IPopUp {
 		itemDescription.setText(item.getDescription()); 
 	}
 	
+	/**
+	 * @param i
+	 */
 	public void setItemToDisplay(Item i) {
 		this.item = i;
 	}

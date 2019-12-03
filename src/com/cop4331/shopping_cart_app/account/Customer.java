@@ -11,9 +11,13 @@ public class Customer extends Account {
 	
 	public HashMap<Integer,Integer> cart;
 	
+	/**
+	 * @param username
+	 * @param password
+	 * @param cartStr
+	 */
 	public Customer(String username, String password, String cartStr) {
-		this.username = username;
-		this.password = password;
+		super(username,password);
 		this.cart = new HashMap<Integer,Integer>();
 		
 		if(!cartStr.isEmpty()) {
@@ -30,6 +34,9 @@ public class Customer extends Account {
 		}
 	}
 	
+	/**
+	 * @return
+	 */
 	public String cartToString() {
 		String str = "";
 		Object[] keyset = cart.keySet().toArray();
@@ -47,6 +54,9 @@ public class Customer extends Account {
 		return str;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getTotalPrice() {
 		double total_price=0;
 		Object[] keyset=cart.keySet().toArray();
@@ -58,6 +68,10 @@ public class Customer extends Account {
 		return form.format(total_price);
 	}
 	
+	/**
+	 * @param username
+	 * @param password
+	 */
 	public Customer(String username, String password) {
 		// TODO Auto-generated constructor stub
 		this.username = username;

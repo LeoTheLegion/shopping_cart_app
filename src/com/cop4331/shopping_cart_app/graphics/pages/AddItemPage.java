@@ -314,11 +314,12 @@ public class AddItemPage extends Page implements IPopUp {
 		// TODO Auto-generated method stub
 		super.load();
 	}
-	
 	/**
-	 * @param labelWidthPercentage 
-	 * @param di 
-	 * @param text 
+	 * @param text
+	 * @param width
+	 * @param height
+	 * @param labelWidthPercentage
+	 * @param documentListener
 	 * @return
 	 */
 	private JPanel createFormInput(String text, int width, int height, float labelWidthPercentage, DocumentListener documentListener) {

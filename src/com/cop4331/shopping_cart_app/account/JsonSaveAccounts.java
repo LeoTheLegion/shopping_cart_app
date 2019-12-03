@@ -10,6 +10,9 @@ import com.cop4331.shopping_cart_app.filemanager.ISave;
 
 public class JsonSaveAccounts implements ISave<Account> {
 	
+	/* (non-Javadoc)
+	 * @see com.cop4331.shopping_cart_app.filemanager.ISave#save(java.lang.String, java.util.ArrayList)
+	 */
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public void save(String fileName, ArrayList<Account> accountList) {

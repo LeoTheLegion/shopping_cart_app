@@ -24,6 +24,9 @@ public class PageManager {
 	private List<Page> pages;
 	private static PageManager INSTANCE = null;
 	
+	/**
+	 * 
+	 */
 	private PageManager() {
 		pages = new ArrayList<Page>();
 		LoadPage(new LoginPage());
@@ -39,10 +42,16 @@ public class PageManager {
 		LoadPage(new AddItemPage());
 	}
 	
+	/**
+	 * 
+	 */
 	public static void init() {
 		getInstance();
 	}
 	
+	/**
+	 * @return
+	 */
 	public static PageManager getInstance() {
 		if(INSTANCE == null) {
 			synchronized(PageManager.class) {
@@ -52,15 +61,18 @@ public class PageManager {
 		}
 		return INSTANCE;
 	}
-
 	/**
-	 * 
+	 * @param p
 	 */
 	private void LoadPage(Page p) {
 		System.out.println("Building Page " + p.getClass() + ". Assigning to pageIndex:" + pages.size() );
 		pages.add(p);
 	}
 
+	/**
+	 * @param pageIndex
+	 * @return
+	 */
 	public Page getPage(int pageIndex) {
 		// TODO Auto-generated method stub
 		
@@ -70,6 +82,10 @@ public class PageManager {
 		return pages.get(pageIndex);
 	}
 
+	/**
+	 * @param page
+	 * @return
+	 */
 	public int getPageIndex(Page page) {
 		for (int i = 0; i < pages.size(); i++) {
 			if(getPage(i) == page)

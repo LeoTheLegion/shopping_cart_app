@@ -25,17 +25,23 @@ public abstract class Page extends JPanel {
 		super(null);
 		buildPage();
 	}
-
+	
 	/**
 	 * 
 	 */
 	protected void buildPage() {
 	}
 	
+	/**
+	 * @return
+	 */
 	protected Window getWindow() {
 		return (Window) SwingUtilities.getWindowAncestor(this);
 	}
 
+	/**
+	 * 
+	 */
 	protected void load() {
 		System.out.println("Loading Page "+this.getClass().getName());
 	}

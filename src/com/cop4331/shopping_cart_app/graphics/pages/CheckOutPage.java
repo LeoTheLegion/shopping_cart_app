@@ -36,7 +36,7 @@ public class CheckOutPage extends Page {
 	JPanel itemContainerPanel;
 	JLabel priceDisplay;
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#buildPage()
 	 */
 	@Override
 	protected void buildPage() {
@@ -182,9 +182,10 @@ public class CheckOutPage extends Page {
 		
 	}
 	/**
-	 * @param labelWidthPercentage 
-	 * @param di 
-	 * @param text 
+	 * @param text
+	 * @param width
+	 * @param height
+	 * @param labelWidthPercentage
 	 * @return
 	 */
 	private JPanel createFormInput(String text, int width, int height, float labelWidthPercentage) {
@@ -203,6 +204,7 @@ public class CheckOutPage extends Page {
 		return input;
 	}
 	/**
+	 * @return
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -253,7 +255,8 @@ public class CheckOutPage extends Page {
 		itemContainerPanel.setPreferredSize(new Dimension(400,totalHeight));
 	}
 	/**
-	 * @param q 
+	 * @param i
+	 * @param qual
 	 * @return
 	 */
 	private JPanel createItem(Item i,int qual) {
@@ -270,9 +273,8 @@ public class CheckOutPage extends Page {
 		
 		return item;
 	}
-
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#load()
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#load()
 	 */
 	@Override
 	protected void load() {
@@ -281,6 +283,9 @@ public class CheckOutPage extends Page {
 		BuildItemContainer();
 		updatePriceDisplay();
 	}
+	/**
+	 * 
+	 */
 	private void updatePriceDisplay() {
 		priceDisplay.setText("$"+((Customer)AccountDB.getInstance().getCurrentAccount()).getTotalPrice());
 	}

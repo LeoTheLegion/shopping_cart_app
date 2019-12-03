@@ -12,6 +12,9 @@ import com.cop4331.shopping_cart_app.filemanager.ILoad;
 
 public class JsonLoadAccounts implements ILoad<Account> {
 
+	/* (non-Javadoc)
+	 * @see com.cop4331.shopping_cart_app.filemanager.ILoad#load(java.lang.String)
+	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	public ArrayList<Account> load(String fileName) {

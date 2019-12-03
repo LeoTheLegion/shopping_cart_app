@@ -21,6 +21,9 @@ public class WindowManager {
 	private List<Window> windows;
 	private static WindowManager INSTANCE = null;
 	
+	/**
+	 * 
+	 */
 	private WindowManager() {
 		windows = new ArrayList<Window>();
 		
@@ -30,6 +33,9 @@ public class WindowManager {
 	}
 	
 	
+	/**
+	 * @return
+	 */
 	public static WindowManager getInstance() {
 		if(INSTANCE == null) {
 			synchronized(WindowManager.class) {
@@ -40,15 +46,26 @@ public class WindowManager {
 		return INSTANCE;
 	}
 	
+	/**
+	 * 
+	 */
 	public static void init() {
 		getInstance();
 	}
 
 
+	/**
+	 * @param pageIndex
+	 */
 	public void createNewWindow(int pageIndex) {
 		createNewWindow(pageIndex,App.WINDOW_WIDTH,App.WINDOW_HEIGHT);
 	}
 	
+	/**
+	 * @param pageIndex
+	 * @param width
+	 * @param height
+	 */
 	public void createNewWindow(int pageIndex,int width,int height) {
 		// TODO Auto-generated method stub
 		System.out.println("Building new window :" + 
@@ -71,7 +88,6 @@ public class WindowManager {
 		w.SetPage(pageIndex);
 		windows.add(w);
 	}
-
 	/**
 	 * @return
 	 */
@@ -80,6 +96,9 @@ public class WindowManager {
 	}
 
 
+	/**
+	 * @return
+	 */
 	public int count() {
 		// TODO Auto-generated method stub
 		return windows.size();

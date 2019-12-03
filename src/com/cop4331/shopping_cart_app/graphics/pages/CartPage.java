@@ -42,6 +42,9 @@ public class CartPage extends Page {
 	/* (non-Javadoc)
 	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
 	 */
+	/* (non-Javadoc)
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#buildPage()
+	 */
 	@Override
 	protected void buildPage() {
 		// TODO Auto-generated method stub
@@ -116,6 +119,7 @@ public class CartPage extends Page {
 		//add the profit here
 	}
 	/**
+	 * @return
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -175,7 +179,8 @@ public class CartPage extends Page {
 		itemContainerPanel.setPreferredSize(new Dimension(1200,totalHeight));
 	}
 	/**
-	 * @param q 
+	 * @param itemID
+	 * @param qual
 	 * @return
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -263,9 +268,8 @@ public class CartPage extends Page {
 		
 		return itemDisplay;
 	}
-
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#load()
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#load()
 	 */
 	@Override
 	protected void load() {

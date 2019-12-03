@@ -12,26 +12,33 @@ package com.cop4331.shopping_cart_app.account;
 public class Account {
     protected  String username="";
     protected  String password="";
-    protected  String acc_type="";
     
-    public Account(String username, String password, String acc_type) {
+    /**
+     * @param username
+     * @param password
+     */
+    public Account(String username, String password) {
     	this.username=username;
     	this.password=password;
-    	this.acc_type=acc_type;
     }
     
+    /**
+     * 
+     */
     public Account() {
     	//account doesn't exist, no credentials
     }
     
-    public String getAccType() {
-    	return this.acc_type;
-    }
-    
+    /**
+     * @return
+     */
     public String getUsername() {
     	return this.username;
     }
     
+    /**
+     * @return
+     */
     public String getPassword() {
     	return this.password;
     }

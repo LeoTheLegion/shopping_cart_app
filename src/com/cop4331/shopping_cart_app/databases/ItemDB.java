@@ -27,6 +27,9 @@ public class ItemDB{
 	private final String fileName = "Items.json";
 	private static ItemDB INSTANCE;
 	
+	/**
+	 * 
+	 */
 	public ItemDB() {
 		if(ifFileExists()) {
 			load();
@@ -36,6 +39,9 @@ public class ItemDB{
 		}
 	}
 	
+	/**
+	 * @return
+	 */
 	public static ItemDB getInstance() {
 		if(INSTANCE == null) {
 			synchronized(WindowManager.class) {
@@ -46,6 +52,9 @@ public class ItemDB{
 		return INSTANCE;
 	}
 	
+	/**
+	 * 
+	 */
 	public static void init() {
 		getInstance();
 	}
@@ -61,11 +70,19 @@ public class ItemDB{
 
 	
 	 //updates the quantity of a certain item
+    /**
+     * @param itemID
+     * @param new_quantity
+     */
     public void setQuantity(int itemID, int new_quantity) {
     	items.get(itemID).setQuantity(new_quantity);
     }
     
     //gets all items from a seller
+    /**
+     * @param id
+     * @return
+     */
     public List<Item> getItemBySeller(int id) {
     	List<Item> seller_items=new ArrayList<Item>();
     	for(int i=0; i<items.size(); i++) {
@@ -75,14 +92,25 @@ public class ItemDB{
     }
     
     //returns full item list, eventually change to sample list of items
+    /**
+     * @return
+     */
     public List<Item> getFullInventory() {
     	return items;
     }
     
+    /**
+     * @param itemID
+     * @return
+     */
     public Item getItem(int itemID) {
     	return items.get(itemID);
     }
     
+    /**
+     * @param a
+     * @return
+     */
     public int getItemID(Item a) {
     	int value=-1;
     	for(int i=0; i<items.size(); i++) {
@@ -91,6 +119,9 @@ public class ItemDB{
     	return value; 
     }
     
+    /**
+     * @param a
+     */
     public void addItem(Item a) {
     	items.add(a);
     	//save(); <--- too slow
@@ -105,6 +136,9 @@ public class ItemDB{
 	}
 	 
 	
+	/**
+	 * 
+	 */
 	void load() {
 		System.out.println("LOADING ITEMS");
 		ILoad<Item> itemloader = new JsonLoadItems();
@@ -112,6 +146,9 @@ public class ItemDB{
 		items = itemloader.load(fileName);
 	}
 	
+	/**
+	 * 
+	 */
 	public void save() {
 		System.out.println("SAVING ITEMS");
 		ISave<Item> itemSaver = new JsonSaveItems();

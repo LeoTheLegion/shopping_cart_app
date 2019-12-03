@@ -41,6 +41,9 @@ public class Window extends JFrame {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * @param pageIndex
+	 */
 	public void SetPage(int pageIndex) {
 		this.getContentPane().removeAll();
 		this.repaint();
@@ -59,6 +62,9 @@ public class Window extends JFrame {
 		this.repaint();
 		this.setVisible(true);
 	}
+	/**
+	 * 
+	 */
 	public void close() {
 		// TODO Auto-generated method stub
 		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));

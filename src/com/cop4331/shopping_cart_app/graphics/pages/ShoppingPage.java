@@ -44,7 +44,7 @@ public class ShoppingPage extends Page {
 	JTextField searchField;
 	JButton cartBtn;
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#buildPage()
 	 */
 	@Override
 	protected void buildPage() {
@@ -151,6 +151,7 @@ public class ShoppingPage extends Page {
 		
 	}
 	/**
+	 * @return
 	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
@@ -204,6 +205,7 @@ public class ShoppingPage extends Page {
 		itemContainerPanel.setPreferredSize(new Dimension(1200,totalHeight));
 	}
 	/**
+	 * @param i
 	 * @return
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -267,9 +269,8 @@ public class ShoppingPage extends Page {
 		
 		return item;
 	}
-
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#load()
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#load()
 	 */
 	@Override
 	protected void load() {
@@ -279,6 +280,9 @@ public class ShoppingPage extends Page {
 		updateCartNumber();
 		
 	}
+	/**
+	 * 
+	 */
 	/**
 	 * 
 	 */

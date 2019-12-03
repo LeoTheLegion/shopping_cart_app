@@ -49,7 +49,7 @@ public class InventoryPage extends Page {
 	private JPanel itemContainerPanel;
 	JLabel getProf,getRev,getCosts;
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#buildPage(com.shopping_cart_app.graphics.Window)
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#buildPage()
 	 */
 	@Override
 	protected void buildPage() {
@@ -137,6 +137,9 @@ public class InventoryPage extends Page {
 		
 		contentPanel.add(info);
 	}
+	/**
+	 * @return
+	 */
 	private JPanel createItemContainerHeader() {
 		JPanel ItemContainerHeader = new JPanel(new GridLayout(1,2));
 		
@@ -187,6 +190,7 @@ public class InventoryPage extends Page {
 		itemContainerPanel.setPreferredSize(new Dimension(1200,totalHeight));
 	}
 	/**
+	 * @param i
 	 * @return
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -265,9 +269,8 @@ public class InventoryPage extends Page {
 		
 		return item;
 	}
-
 	/* (non-Javadoc)
-	 * @see com.shopping_cart_app.graphics.Page#load()
+	 * @see com.cop4331.shopping_cart_app.graphics.Page#load()
 	 */
 	@Override
 	protected void load() {

@@ -22,6 +22,9 @@ public class AccountDB {
     private final String fileName="Accounts.json";
     private static AccountDB INSTANCE;
     
+    /**
+     * 
+     */
     public AccountDB() {
     	this.currentAccount_ID = -1;
     	if(ifFileExists()) {
@@ -32,6 +35,9 @@ public class AccountDB {
 		}
     }
     
+    /**
+     * @return
+     */
     public static AccountDB getInstance() {
 		if(INSTANCE == null) {
 			synchronized(WindowManager.class) {
@@ -42,12 +48,20 @@ public class AccountDB {
 		return INSTANCE;
 	}
     
+    /**
+     * 
+     */
     public static void init() {
     	getInstance();
     }
     
     //Returns true if the account is in the database, returns false if not
     //use getAccount method next
+    /**
+     * @param username
+     * @param password
+     * @return
+     */
     public boolean verify(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
     		if(accounts.get(i).getUsername()==username && accounts.get(i).getPassword()==password) {
@@ -57,6 +71,10 @@ public class AccountDB {
     	return false;
     }
     
+    /**
+     * @param username
+     * @return
+     */
     protected Account getAccByUsername(String username) {
     	
     	for(int i=0; i<accounts.size(); i++) {
@@ -70,6 +88,11 @@ public class AccountDB {
     
     //Returns an empty account if the account is not found, else returns the count if it is found
     //Method to be called after verify methodS
+    /**
+     * @param username
+     * @param password
+     * @return
+     */
     public Account getAccount(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
     		if(accounts.get(i).getUsername()==username && accounts.get(i).getPassword()==password) {
@@ -79,6 +102,11 @@ public class AccountDB {
     	return new Account();
     }
     
+    /**
+     * @param username
+     * @param password
+     * @return
+     */
     public int getAccountID(String username, String password) {
     	for(int i=0; i<accounts.size(); i++) {
     		Account a = accounts.get(i);
@@ -89,10 +117,17 @@ public class AccountDB {
     	return -1;
     }
     
+    /**
+     * @param id
+     * @return
+     */
     public Account getAccount(int id) {
     	return accounts.get(id);
     }
     
+    /**
+     * 
+     */
     private void createInitialAccounts() {
     	accounts=new ArrayList<Account>();
     	accounts.add(new Customer("michael", "1234",""));
@@ -104,20 +139,32 @@ public class AccountDB {
     	
     }
     
+    /**
+     * 
+     */
     public void save() {
     	ISave<Account> accountSaver=new JsonSaveAccounts();
     	accountSaver.save(fileName, accounts);
     }
     
+    /**
+     * 
+     */
     public void load() {
     	ILoad<Account> accountLoader = new JsonLoadAccounts();
     	accounts = accountLoader.load(fileName);
     }
     
+    /**
+     * @return
+     */
     private boolean ifFileExists() {
 		return new File(fileName).exists();
 	}
     
+    /**
+     * @return
+     */
     public Account getCurrentAccount() {
     	return accounts.get(currentAccount_ID);
     }
