@@ -65,7 +65,10 @@ public class ItemDB{
 	private void buildInitialDB() {
 		items = new ArrayList<Item>();
 		
-		addItem(new Item("Justins Item", "Justins Item to sell", 1,0,15,8));
+		addItem(new Item("Justins Item", "Justins Item to sell", 1,500,15,8));
+		addItem(new Item("Justins Item2", "Justins Item to sell", 1,500,15,8));
+		addItem(new Item("Justins Item3", "Justins Item to sell", 1,500,15,8));
+		addItem(new Item("Justins Item4", "Justins Item to sell", 1,500,15,8));
 	}
 	
     /**
