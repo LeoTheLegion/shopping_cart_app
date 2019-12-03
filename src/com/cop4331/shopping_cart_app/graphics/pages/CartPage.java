@@ -106,6 +106,7 @@ public class CartPage extends Page {
 		itemContainerPanel.setBackground(Color.black);
 		
 		JScrollPane scrollableItemContainer = new JScrollPane(itemContainerPanel);
+		scrollableItemContainer.getVerticalScrollBar().setUnitIncrement(13);
 		scrollableItemContainer.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableItemContainer.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		//change to 450
